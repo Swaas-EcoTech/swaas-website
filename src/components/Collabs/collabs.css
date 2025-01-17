@@ -1,0 +1,849 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Grey+Qo&family=Inika:wght@400;700&family=Noto+Music&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&display=swap');
+
+
+body {
+    font-family: "Inika", serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   
+   
+}
+.logo img{
+    width: 173px;
+    height: 106px;
+   
+    border-radius: 52.21px 0px 0px 0px;
+    opacity: 0px;
+
+    color: rgba(94, 120, 90, 1);
+    
+    cursor: pointer;
+}
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+nav ul li {
+    margin: 0 10px;
+}
+nav ul li a {
+    text-decoration: none;
+    color:black;
+    text-shadow:0.5px 0.5px grey;
+    padding: 5px 10px;
+    width: 685px;
+height: 34px;
+top: 48px;
+left: 732px;
+gap: 0px;
+opacity: 0px;
+
+}
+nav ul li a:hover, nav ul li a.active {
+    background-color: #6B8E23;
+    color: #fff;
+    border-radius: 23px;
+}
+.collabs-header .container .heading h1 {
+    position: absolute;
+   width: 356px;
+   height: 77px;
+   top: -81px;
+   left: 70px;
+   
+    font-family: "Inika", serif;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 72.5px;
+    align-items: center;
+    align-content: center;
+    font-style: normal;
+    text-shadow: 2px 2px gray;
+}
+.collabs-header .circle img{
+    width: 484px;
+    height: 82px;
+    top: 3px;
+    left: 230px;
+    border-radius: 50px;
+    border: 1px;
+    border-style: solid;
+    border-color: grey;
+    position: relative;
+    margin-left: -445px;
+align-content: center;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.collabs-header .star3 img{
+    height: 20px;
+    width: 20px;
+    border-radius: 0px;
+    border-color: white;
+    margin-left: 409px;
+    position: relative;
+bottom: 70px;
+left: 51px;
+
+}
+.collabs-header {
+    text-align: center;
+    padding: 20px 0;
+    width: 341px;
+    height: 32px;
+    margin: 39px;
+    margin-left: 436px;
+}
+.collabs-header .star4 img{
+    height: 12px;
+    width: 12px;
+    border-radius: 0px;
+    border-color: white;
+    margin-left: 430px;
+    position: relative;
+bottom: 83px;
+left: 52px;
+}
+
+.collabs-header .star1 img{
+    height: 20px;
+    width: 20px;
+    margin-right: 290px;
+    border-radius: 0px;
+    border-color: white;
+    margin-top: -5px;
+    position: relative;
+top: 81px;
+}
+
+.collabs-header .star2 img{
+    height: 12px;
+    width: 12px;
+    margin-right: 255px;
+    border-radius: 0px;
+    border-color: white;
+    margin-top: -15px;
+    margin-bottom: 20px;
+    position: relative;
+top: 86px;
+}
+
+
+
+.collabs-header .container{  
+    background-image: url(https://s3-alpha-sig.figma.com/img/d034/abdd/6ac8796387f8a20138cea101faef7338?Expires=1736726400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KXskEAvScKvQtCJGVKhOXpi50DqphEbDrzVQFVw-9ag0bap9UJHQIhlZGIGWGVBZVEIEFg78CWv7HkouRqDhiP20PrYPy5z2HswDWgarm0set~crbs2v-2iCwuWg5P0-rJ9QSGN4PTkSFsRMd4~c6yn0aH0NZCKL~6tGcK0DTQiCFpHpuyn2q8TcHbdiGghDtiwqfHEAxHrAwdoYFEZs4mjQi04roADRKcuforpZ1kFiqcsSjZBK9VSbkclBZCMgW1nBokrC1LSMTY4W3V63r8rugF2ofz5tFqfJzL6if0H4aGdSfSVtMkh~2MDQTmMqVhPUuC02w78ROv3v1rEX-A__) ; 
+    width: 543px;
+    height: 175px;
+    top: 126px;
+    left: 414px;
+    mix-blend-mode: luminosity;
+    align-items: center;
+    text-align: center;
+    align-content: center;
+    position: absolute;
+    display: flex;
+   
+    justify-content: center;
+    
+    
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+.content .text {
+    width: 60%;
+    padding: 20px;
+}
+.content .text h2 {
+    width: 465px;
+    height: 57px;
+    top: 363px;
+    left: 121px;
+    font-size: 50px;
+    color:rgba(94, 120, 90, 1);
+    
+    font-family: "Inika", serif;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 60.42px;
+}
+.content .text p {
+    font-size: 24px;
+    line-height: 29px;
+    
+    color: rgba(94, 120, 90, 1);
+    font-family: "Inika", serif;
+    font-weight: 400;
+
+    width: 485px;
+}
+.content .shapes {
+    width: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .shapes .shape1 {
+   
+    background-color: rgba(202, 196, 196, 1);
+    width: 405px;
+    height: 267px;
+    top: 762px;
+    left: 616px;
+    border-radius: 61px;
+    position: absolute;
+    margin: 10px;
+    
+    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.content .shapes .shape2{
+    background: rgba(59, 88, 55, 1);
+    width: 392px;
+    height: 295px;
+    top: 772px;
+    left: 670px;
+    border-radius: 80px;
+    position: absolute;
+
+}
+
+.content .shapes .shape3{
+    background: rgba(59, 88, 55, 1);
+    width: 264px;
+    height: 277px;
+    top: 545px;
+    left: 586px;
+    border-radius: 80px;
+    position: absolute;
+}
+
+.content .shapes .shape4{
+    background: rgba(217, 217, 217, 1);
+    
+    width: 264px;
+    height: 277px;
+    top: 519px;
+    left: 552px;
+    border-radius: 80px;
+    position: absolute;
+}
+.content .shapes .shape5{
+    background: rgba(59, 88, 55, 1);
+    width: 264px;
+    height: 277px;
+    top: 624px;
+    left: 975px;
+    border-radius: 80px;
+    position: absolute;
+}
+
+.content .shapes .shape6{
+    background: rgba(217, 217, 217, 1);
+
+    width: 264px;
+    height: 277px;
+    top: 592px;
+    left: 954px;
+    border-radius: 80px;
+    position: absolute;
+}
+
+.content .shapes .shape7{
+    background: rgba(59, 88, 55, 1);
+    width: 406px;
+    height: 295px;
+    top: 309px;
+    left: 716px;
+    border-radius: 80px;
+    position: absolute;
+
+
+}
+
+.content .shapes .shape8{
+    background: rgba(202, 196, 196, 1);
+    width: 406px;
+    height: 295px;
+    top: 278px;
+    left: 686px;
+    border-radius: 80px;
+    position: absolute;
+
+}
+.content .text p{
+    font-family: "Inika", serif;
+    color: black;
+}
+.collabs-header .container{
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+.leaf img{
+    width: 167px;
+    height: 239.55px;
+    top: 69.62px;
+    left: 1117px;
+    position: absolute;
+    transform: rotate(-59.77deg);
+}
+.leaf2 img{
+    width: 167px;
+    height: 239.55px;
+    position: absolute;
+    transform: rotate(105.77deg);
+    top: 969px;
+    left: -6px;
+}
+
+.oval img{
+    position: absolute;
+    top: 969px;
+    left: 980px;
+    width: 299.2px;
+    height: 315.16px;
+
+}
+
+
+
+
+
+  /* Large screens (desktops) */
+  @media screen and (max-width: 1200px) {
+    .content {
+        padding: 15px;
+    }
+    
+    .content .text {
+        width: 50%;
+    }
+    
+    .content .shapes {
+        width: 45%;
+    }
+    
+    .collabs-header .container {
+        width: 450px;
+    }
+    
+    .leaf img {
+        width: 140px;
+         height: 200px; 
+        
+    }
+}
+
+/* Medium screens (tablets) */
+@media screen and (max-width: 992px ) {
+    
+    
+   
+    .content .text {
+        width: 100%;
+        text-align: center;
+        height: auto;
+    }
+    
+    .content .text h2 {
+        width: 100%;
+        font-size: 40px;
+        line-height: 48px;
+        height: auto;
+    }
+    
+    .content .text p {
+        width: 100%;
+        font-size: 20px;
+        height: auto;
+    }
+    
+     .content .shapes{
+        width: 45%;
+        height: auto;     
+          margin-top: 30px;  
+          display: ruby;
+    }
+    
+     
+    /* Adjust shapes positions for tablet */
+  
+    .content .shapes [class^="shape"] {
+        position: relative;
+        top: unset;
+        left: unset;
+         margin: 15px auto; 
+    }
+    
+    .collabs-header {
+        margin-left: 0;
+        width: 100%;
+        
+    }
+    
+    .collabs-header .container {
+        position: relative;
+        width: 80%;
+        margin: 0 auto;
+        left: 0;
+        top: -50px;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+    
+    .collabs-header .container .heading h1 {
+        font-size: 45px;
+        width: 72%;
+        left: 78px;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        top: -81px;
+    }
+    .collabs-header .star1{
+        position: relative;
+        top: -176px;
+        left: -131px;
+    }
+
+.collabs-header .star2{
+    position: relative;
+    top: -173px;
+    left: -132px;
+}
+.collabs-header .star3{
+    position: relative;
+    top: -185px;
+    left: 10px;
+
+}
+.collabs-header .star4{
+    position: relative;
+    top: -187px;
+    left: 16px;
+}
+.leaf img{
+    position: relative;
+    left: 720px;
+    top: -58px;
+    
+    
+}
+.content .text h2{
+    position: relative;
+   top: -150px;
+  
+   left: 50px;
+   margin-left: -50px;
+}
+.content .text p{
+    position: relative;
+    top: -150px;
+}
+.content .shapes .shape1 {
+           
+    
+   
+    width: 385px;
+    height: 204px;
+    top: 379px;
+    left: -427px;
+    border-radius: 61px;
+    position: relative;
+   
+}
+.content .shapes .shape2{
+    width: 385px;
+    height: 204px;
+    top: 401px;
+    left: -10px;
+    border-radius: 80px;
+    position: relative;
+
+}
+
+.content .shapes .shape3{
+    
+    width: 223px;
+    height: 267px;
+    top: 239px;
+    left: -532px;
+    border-radius: 80px;
+    position: relative;
+}
+
+.content .shapes .shape4{
+    
+    
+    width: 223px;
+    height: 267px;
+    top: 214px;
+    left: -777px;
+    border-radius: 80px;
+    position: relative;
+}
+.content .shapes .shape5{
+   
+    width: 223px;
+    height: 267px;
+    top: 235px;
+    left: -1338px;
+    border-radius: 80px;
+    position: relative;
+}
+
+.content .shapes .shape6{
+   
+
+    width: 223px;
+    height: 267px;
+    top: 212px;
+    left: -1588px;
+    border-radius: 80px;
+    position: relative;
+}
+
+.content .shapes .shape7{
+   
+    width: 385px;
+    height: 204px;
+    top: 5px;
+    left: -1676px;
+    border-radius: 80px;
+    position: relative;
+
+
+}
+
+.content .shapes .shape8{
+    
+    width: 385px;
+    height: 204px;
+    top: -16px;
+    left: -2093px;
+    border-radius: 80px;
+    position: relative;
+
+}
+ .leaf2 img{
+    position: relative;
+    top: 415px;
+ }
+ .oval img{
+    position: relative;
+    top: 200px;
+    left: 569px;
+ }
+ 
+
+}
+
+/* Small screens (mobile phones) */
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 10px;
+    }
+    
+    .logo img {
+        width: 140px;
+        height: 85px;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    nav ul li {
+        margin: 5px 0;
+    }
+    
+    nav ul li a {
+        width: auto;
+        display: block;
+    }
+    
+    .collabs-header .container .heading h1 {
+        font-size: 35px;
+        line-height: 42px;
+        top: -60px;
+        left: 45px;
+  width: 369px;
+  height: 57px;
+    }
+    .collabs-header .container .circle img{
+        position: relative;
+        width: 150px;
+        left: 280px;
+    }
+    .collabs-header .star1 img{
+        position: relative;
+        top: 80px;
+        left: 70px;
+    }
+    .collabs-header .star2 img{
+        position: relative;
+        top: 80px;
+        left: 70px;
+    }
+    .collabs-header .star3 img{
+        position: relative;
+        top: -55px;
+        left: -16px;
+    }
+    .collabs-header .star4 img{
+        position: relative;
+        top: -65px;
+        left: -17px;
+    }
+    .leaf img{
+        position: relative;
+        left: 490px;
+        top: -120px;
+    }
+    .content .text h2 {
+        font-size: 32px;
+        line-height: 38px;
+    }
+    
+    .content .text p {
+        font-size: 18px;
+        line-height: 24px;
+    }
+    
+    /* Adjust shape sizes for mobile */
+    .content .shapes [class^="shape"] {
+        width: 100%;
+        height: 200px;
+       
+    }
+    
+    .content .shapes .shape1 {
+           
+    
+   
+        width: 346px;
+        height: 170px;
+        top: 233px;
+        left: -386px;
+        border-radius: 61px;
+        position: relative;
+       
+    }
+    .content .shapes .shape2{
+        width: 346px;
+        height: 170px;
+        top: 250px;
+        left: -14px;
+        border-radius: 80px;
+        position: relative;
+    
+    }
+    
+    .content .shapes .shape3{
+        
+        width: 183px;
+        height: 203px;
+        top: 96px;
+        left: -505px;
+        border-radius: 80px;
+        position: relative;
+    }
+    
+    .content .shapes .shape4{
+        
+        
+        width: 183px;
+        height: 203px;
+        top: 75px;
+        left: -709px;
+        border-radius: 80px;
+        position: relative;
+    }
+    .content .shapes .shape5{
+       
+        width: 183px;
+        height: 203px;
+        top: 108px;
+        left: -1164px;
+        border-radius: 80px;
+        position: relative;
+    }
+    
+    .content .shapes .shape6{
+       
+    
+        width: 183px;
+        height: 203px;
+        top: 91px;
+        left: -1371px;
+        border-radius: 80px;
+        position: relative;
+    }
+    
+    .content .shapes .shape7{
+       
+        width:  346px;
+        height: 170px;
+        top: -71px;
+        left: -1469px;
+        border-radius: 80px;
+        position: relative;
+    
+    
+    }
+    
+    .content .shapes .shape8{
+        
+        width: 346px;
+        height: 170px;
+        top: -96px;
+        left: -1839px;
+        border-radius: 80px;
+        position: relative;
+    
+    }
+    .leaf2 img{
+        position: relative;
+        top: 184px;
+    }
+    
+    .oval img {
+        width: 200px;
+        height: 210px;
+        position: relative;
+        top: 6px;
+        left: 439px;
+    }
+}
+
+/* Extra small screens */
+@media screen and (max-width: 480px) {
+    .collabs-header .container .heading h1 {
+        font-size: 28px;
+        line-height: 34px;
+        left: 44px;
+  width: 224px;
+  height: 44px;
+  top: -48px;
+    }
+    
+    
+    .content .text h2 {
+        font-size: 26px;
+        line-height: 32px;
+    }
+    
+    .content .shapes [class^="shape"] {
+        height: 150px;
+    }
+     .collabs-header .star1 img{
+        position: relative;
+        top: 70px;
+        left: 140px;
+    }
+    .collabs-header .star2 img{
+        position: relative;
+        top: 70px;
+  left: 142px;
+    }
+    .collabs-header .star3 img{
+        position: relative;
+        top: -45px;
+  left: -89px;
+    }
+    .collabs-header .star4 img{
+        position: relative;
+        top: -59px;
+  left: -88px
+    }
+    .leaf img{
+        position: relative;
+        left: 308px;
+  top: -66px;
+    }
+    .content .shapes .shape1{
+        position: relative;
+        width: 244px;
+        left: -286px;
+        top: 217px;
+    }
+    .content .shapes .shape2{
+        position: relative;
+        top: 234px;
+        width: 244px;
+        left: -13px;
+    }
+    .content .shapes .shape3{
+        position: relative;
+        width: 150px;
+        top: 103px;
+  left: -368px;
+  height: 163px;
+  border-radius: 80px;
+        
+    }
+    .content .shapes .shape4{
+        position: relative;
+        width: 150px;
+        height: 163px;
+        top: 86px;
+  left: -536px;
+  border-radius: 61px;
+    }
+    .content .shapes .shape5{
+        position: relative;
+        width: 150px;
+        height: 163px;
+        top: 124px;
+  left: -871px;
+  border-radius: 80px;
+    }
+    .content .shapes .shape6{
+        position: relative;
+        width: 150px;
+        height: 163px;
+        top: 106px;
+  left: -1038px;
+  border-radius: 61px;
+    }
+    .content .shapes .shape7{
+        position: relative;
+        width: 244px;
+        top: -14px;
+        left: -1111px;
+    }
+    .content .shapes .shape8{
+        position: relative;
+        top: -30px;
+        left: -1383px;
+        width: 244px;
+        border-radius: 61px;
+
+    }
+    .oval img{
+        position: relative;
+        left: 250px;
+    }
+} 

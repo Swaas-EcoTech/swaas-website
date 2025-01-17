@@ -1,0 +1,68 @@
+/* Gallery container */
+.gallery-container {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Title section */
+.gallery-title-section {
+  margin-top: 2.5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem; /* Space between items in mobile view */
+}
+
+.gallery-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery-title {
+  border: 1px solid #556b2f;
+  margin-left: rem;
+  box-shadow: 0 4px 6px rgba(85, 107, 47, 0.5); /* Olive green shadow */
+  transition: box-shadow 0.3s ease-in-out;
+  border-radius: 9999px;
+  width: 24rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.gallery-title:hover {
+  box-shadow: 0 6px 12px rgba(85, 107, 47, 0.7);
+}
+
+.gallery-leaf {
+  margin-top: 1rem;
+}
+
+/* Images */
+.gallery-image {
+  border: 1px solid #556b2f;
+  box-shadow: 0 4px 6px rgba(85, 107, 47, 0.5);
+  transition: box-shadow 0.3s ease-in-out;
+  border-radius: 9999px;
+  width: 10rem; /* Equivalent to w-40 in Tailwind */
+  height: 16rem; /* Equivalent to h-64 in Tailwind */
+}
+
+.gallery-image:hover {
+  box-shadow: 0 8px 16px rgba(85, 107, 47, 0.7);
+}
+
+/* Images section */
+.gallery-images-section {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 1rem; /* Space between items in mobile view */
+}

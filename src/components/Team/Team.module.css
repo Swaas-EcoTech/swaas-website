@@ -1,0 +1,529 @@
+.body{
+  overflow:hidden;
+  margin: 0;
+  height: 100vh;
+}
+.page-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(#00000008 1px, transparent 1px),
+    linear-gradient(90deg, #00000008 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: -2;
+  pointer-events: none;
+}
+
+.teamContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  position: relative;
+  min-height: 100vh;
+  flex-grow: 1;
+  
+}
+
+.leafDecoration {
+  position: relative;
+  z-index: -1;
+}
+
+@keyframes moveAndRotateLeaves {
+  0% {
+    transform: rotate(2deg) translateX(0) translateY(0); 
+  }
+  50% {
+    transform: rotate(5deg) translateX(10px) translateY(-20px);
+  }
+  100% {
+    transform: rotate(2deg) translateX(0) translateY(0); 
+  }
+}
+
+.leafTopRight {
+  position: fixed;
+  top: 150px;
+  right: -0.2%;
+  width: 160px;
+  height: auto;
+  opacity: 1;
+  z-index: -1;
+  animation: moveAndRotateLeaves 5s ease-in-out infinite; 
+}
+.leafBottomLeft {
+  position: fixed;
+  top: 290px;
+  left: 0;
+  width: 160px;
+  height: auto;
+  transform-origin: 50% 50%; 
+  transform: rotate(100deg);
+  opacity: 1;
+  z-index: -1;
+  animation: moveAndRotateLeaves2 5s ease-in-out infinite;
+}
+
+
+@keyframes moveAndRotateLeaves2 {
+  0% {
+    transform: rotate(100deg) translateX(0) translateY(0);
+  }
+  50% {
+    transform: rotate(105deg) translateX(5px) translateY(-10px); 
+  }
+  100% {
+    transform: rotate(100deg) translateX(0) translateY(0);
+  }
+}
+
+.diamondDecoration {
+  position: absolute;
+  background-color: #7BAE7F; 
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); 
+  transform: rotate(0deg); 
+  opacity: 0.8; 
+  z-index: 1; 
+  border: none; 
+}
+
+.diamond1 {
+  width: 25px;
+  height: 25px;
+  top: 240px;
+  left: 390px;
+}
+
+.diamond2 {
+  width: 15px;
+  height: 15px;
+  top: 130px;
+  right: 383px;
+}
+.diamond3 {
+  width: 15px;
+  height: 15px;
+  top: 249px;
+  left: 416px;
+}
+
+.diamond4 {
+  width: 25px;
+  height: 25px;
+  top: 120px;
+  right: 400px;
+}
+
+.teamHeader {
+  text-align: center;
+  margin: 5rem 0;
+  position: relative;
+  font-family: "Inika", serif;
+
+}
+.teamHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 115%;
+  height: 115%;
+  max-width: 600px; 
+  max-height: 300px;
+  background-image: 
+    linear-gradient(#00000020 1px, transparent 1px),
+    linear-gradient(90deg, #00000020 1px, transparent 1px);
+  background-size: 15px 15px; 
+  z-index: -1; 
+  opacity: 0.9; 
+  pointer-events: none;
+}
+.teamHeader h1 {
+  font-size: 2.5rem;
+  font-family: "Inika", serif;
+  font-weight: bold;
+  display: inline-block;
+  padding: 1rem 3rem;
+  border: 1px solid #000;
+  border-radius: 40px;
+  font-family: "Inika", serif;
+  position: relative;
+  background-color: #fff;
+}
+
+.categoryNav {
+  display: flex;
+  gap: 1.5rem;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.categoryButton {
+  padding: 0.5rem 1.5rem;
+  background: none;
+  border: none;
+  font-family: "Inika", serif;
+  font-weight:400;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.active {
+  background-color: #CBD5C0;
+  border-radius: 20px;
+}
+
+.wavyLine {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: -3rem 0;
+  margin-left: 290px;
+  top: 3cap;
+  overflow: hidden;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  padding: 2rem 0;
+  height:fit-content;
+}
+
+.teamCardContainer {
+  position: relative;
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+  
+}
+
+.teamCardBackground {
+  position: absolute;
+  top: 20px;
+  left: 18px;
+  width: 100%;
+  height: 100%;
+  background-color: #73956F;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.teamCard {
+  background-color: #D9D9D9;
+  border-radius: 7px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  height: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+.teamImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 0rem;
+}
+
+.memberName {
+  background-color: #84aa80;
+  padding: 0.75rem;
+  font-family: "Inika", serif;
+  text-align: center;
+  border-radius: 9px;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  margin-block-start: 1rem;
+  
+}
+
+.memberDescription {
+  background-color: #e6e6e6;
+  padding: 0.5rem;
+  text-align: center;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-family: "Inika", serif;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+  max-width: 90%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+.bottomLeftImage {
+  position: relative;
+  bottom: -10px;
+  left: -74.8vh;
+  width: 200px;
+  height: 200px;
+  z-index: -1;
+  opacity: 1;
+}
+
+.bottomRightImage {
+  position: relative;
+  left:1425px;
+
+  z-index: -1;
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .teamCard {
+    padding: 1rem;
+  }
+
+  .teamImage {
+    max-height: 200px;
+  }
+
+  .memberName {
+    font-size: 1rem;
+  }
+
+  .memberDescription {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .teamCard {
+    padding: 0.5rem;
+  }
+
+  .teamImage {
+    max-height: 150px;
+  }
+
+  .memberName {
+    font-size: 0.9rem;
+  }
+
+  .memberDescription {
+    font-size: 0.8rem;
+  }
+}
+
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; 
+}
+
+
+.popupContent {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.popupContent h2 {
+  font-size: 1.5rem;
+  font-family: "Inika", serif;
+  margin-bottom: 1rem;
+}
+
+
+.popupContent p {
+  font-family: "Inika", serif;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+
+.closeButton {
+  background-color: #84aa80;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.teamImage:hover, .memberName:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teamCardContainer {
+  position: relative;
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+  height: 400px;
+}
+
+.teamCardBackground {
+  position: absolute;
+  top: 20px;
+  left: 18px;
+  width: 100%;
+  height: 100%;
+  background-color: #73956F;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.flipCard {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px;
+  position: relative;
+}
+
+.flipCardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flipCard:hover .flipCardInner {
+  transform: rotateY(180deg);
+}
+
+.flipCardFront, .flipCardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 7px;
+}
+
+.flipCardFront {
+  background-color: #D9D9D9;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.flipCardBack {
+  background-color: #84aa80;
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.teamImage {
+  width: 100%;
+  height: 100%; 
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.memberName {
+  position: absolute; /* Position it relative to its parent */
+  bottom: -100px; /* Adjust this to control the vertical placement */
+  background-color: #B4C79D;
+  padding: 1rem;
+  font-family: "Inika", serif;
+  text-align: center;
+  border-radius: 9px;
+  font-weight: 600;
+  width: 100%;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+
+.memberDescription {
+  color: white;
+  font-family: "Inika", serif;
+  font-size: 0.80rem;
+  line-height: 1.5;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border-radius: 0;
+}
+
+.teamImage:hover, .memberName:hover {
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 768px) {
+  .teamCardContainer {
+    height: 300px;
+  }
+
+  .teamImage {
+    height: 150px;
+  }
+
+  .memberName {
+    font-size: 1rem;
+  }
+
+  .memberDescription {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .teamCardContainer {
+    height: 280px;
+  }
+
+  .teamImage {
+    height: 130px;
+  }
+
+  .memberName {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+
+  .memberDescription {
+    font-size: 0.1rem;
+  }
+}
