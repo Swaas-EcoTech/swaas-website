@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/swaas-website/static/css/main.7f1a28d6.css",
+    "main.js": "/swaas-website/static/js/main.8b1564c6.js",
+    "static/js/453.bd4a3607.chunk.js": "/swaas-website/static/js/453.bd4a3607.chunk.js",
+    "static/media/ML.jpg": "/swaas-website/static/media/ML.3d487520a4404198dc18.jpg",
+    "static/media/JK.jpg": "/swaas-website/static/media/JK.c1e9562ea52bb45cff43.jpg",
+    "static/media/I.png": "/swaas-website/static/media/I.bc641fdbf4f28909f9e8.png",
+    "static/media/HK.jpg": "/swaas-website/static/media/HK.98cc4f397a34dd9a6e7e.jpg",
+    "static/media/VT.jpg": "/swaas-website/static/media/VT.afb25d74427cff04e84a.jpg",
+    "static/media/PS.jpg": "/swaas-website/static/media/PS.21de7348e9257cf83df4.jpg",
+    "static/media/N.jpg": "/swaas-website/static/media/N.db4c54f23c73d15765bf.jpg",
+    "static/media/PS1.jpg": "/swaas-website/static/media/PS1.473d5b91ea98fb181d70.jpg",
+    "static/media/screen.png": "/swaas-website/static/media/screen.6b3a79458c9ccc10bb86.png",
+    "static/media/image-5.png": "/swaas-website/static/media/image-5.eb3f547eb4cec5784ab6.png",
+    "static/media/img1.png": "/swaas-website/static/media/img1.7a78d77a2b255b8d338f.png",
+    "static/media/leaf.png": "/swaas-website/static/media/leaf.4cf660806dca3d540b9d.png",
+    "index.html": "/swaas-website/index.html",
+    "main.7f1a28d6.css.map": "/swaas-website/static/css/main.7f1a28d6.css.map",
+    "main.8b1564c6.js.map": "/swaas-website/static/js/main.8b1564c6.js.map",
+    "453.bd4a3607.chunk.js.map": "/swaas-website/static/js/453.bd4a3607.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7f1a28d6.css",
+    "static/js/main.8b1564c6.js"
+  ]
+}
