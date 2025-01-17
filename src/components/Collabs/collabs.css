@@ -53,12 +53,13 @@ nav ul li a:hover, nav ul li a.active {
     border-radius: 23px;
 }
 .collabs-header .container .heading h1 {
+    /* display: flex; */
     position: absolute;
-   width: 356px;
+   /* width: 356px; */
    height: 77px;
    top: -81px;
-   left: 70px;
-   
+   left: 104px;
+   width: 50%;
     font-family: "Inika", serif;
     font-weight: 700;
     font-size: 60px;
@@ -90,9 +91,10 @@ justify-content: center;
     border-radius: 0px;
     border-color: white;
     margin-left: 409px;
-    position: relative;
+    position: absolute;
 bottom: 70px;
-left: 51px;
+left: 28%;
+top: 138px;
 
 }
 .collabs-header {
@@ -109,9 +111,10 @@ left: 51px;
     border-radius: 0px;
     border-color: white;
     margin-left: 430px;
-    position: relative;
-bottom: 83px;
-left: 52px;
+    position: absolute;
+
+left: 28%;
+  top: 156px;
 }
 
 .collabs-header .star1 img{
@@ -120,9 +123,11 @@ left: 52px;
     margin-right: 290px;
     border-radius: 0px;
     border-color: white;
-    margin-top: -5px;
-    position: relative;
-top: 81px;
+    margin-top: 0%;
+    position: absolute;
+top: 257px;
+margin-right: 18%;
+left: 27%;
 }
 
 .collabs-header .star2 img{
@@ -133,28 +138,28 @@ top: 81px;
     border-color: white;
     margin-top: -15px;
     margin-bottom: 20px;
-    position: relative;
-top: 86px;
+    position: absolute;
+top: 294px;
+left: 28.5%;
 }
 
 
 
 .collabs-header .container{  
     background-image: url(https://s3-alpha-sig.figma.com/img/d034/abdd/6ac8796387f8a20138cea101faef7338?Expires=1736726400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KXskEAvScKvQtCJGVKhOXpi50DqphEbDrzVQFVw-9ag0bap9UJHQIhlZGIGWGVBZVEIEFg78CWv7HkouRqDhiP20PrYPy5z2HswDWgarm0set~crbs2v-2iCwuWg5P0-rJ9QSGN4PTkSFsRMd4~c6yn0aH0NZCKL~6tGcK0DTQiCFpHpuyn2q8TcHbdiGghDtiwqfHEAxHrAwdoYFEZs4mjQi04roADRKcuforpZ1kFiqcsSjZBK9VSbkclBZCMgW1nBokrC1LSMTY4W3V63r8rugF2ofz5tFqfJzL6if0H4aGdSfSVtMkh~2MDQTmMqVhPUuC02w78ROv3v1rEX-A__) ; 
-    width: 543px;
+    /* width: 543px; */
     height: 175px;
     top: 126px;
-    left: 414px;
+    /* left: 414px; */
     mix-blend-mode: luminosity;
-    align-items: center;
+    /* align-items: center; */
     text-align: center;
-    align-content: center;
+    /* align-content: center; */
     position: absolute;
-    display: flex;
+    /* display: flex;
    
-    justify-content: center;
-    
-    
+    justify-content: center; */
+    background-repeat: round;
 }
 
 .content {
@@ -204,7 +209,8 @@ top: 86px;
     width: 405px;
     height: 267px;
     top: 762px;
-    left: 616px;
+    /* left: 616px; */
+    left: 57%;
     border-radius: 61px;
     position: absolute;
     margin: 10px;
@@ -220,7 +226,8 @@ top: 86px;
     width: 392px;
     height: 295px;
     top: 772px;
-    left: 670px;
+    /* left: 670px; */
+    left: 61%;
     border-radius: 80px;
     position: absolute;
 
@@ -231,7 +238,8 @@ top: 86px;
     width: 264px;
     height: 277px;
     top: 545px;
-    left: 586px;
+    /* left: 586px; */
+    left: 48%;
     border-radius: 80px;
     position: absolute;
 }
@@ -242,7 +250,8 @@ top: 86px;
     width: 264px;
     height: 277px;
     top: 519px;
-    left: 552px;
+    /* left: 552px; */
+    left: 45%;
     border-radius: 80px;
     position: absolute;
 }
@@ -250,8 +259,10 @@ top: 86px;
     background: rgba(59, 88, 55, 1);
     width: 264px;
     height: 277px;
-    top: 624px;
-    left: 975px;
+    /* top: 624px; */
+    top: 587px;
+    /* left: 975px; */
+    left: 76%;
     border-radius: 80px;
     position: absolute;
 }
@@ -261,8 +272,10 @@ top: 86px;
 
     width: 264px;
     height: 277px;
-    top: 592px;
-    left: 954px;
+    /* top: 592px; */
+    top: 555px;
+    /* left: 954px; */
+    left: 73%;
     border-radius: 80px;
     position: absolute;
 }
@@ -272,7 +285,8 @@ top: 86px;
     width: 406px;
     height: 295px;
     top: 309px;
-    left: 716px;
+    /* left: 716px; */
+    left: 56%;
     border-radius: 80px;
     position: absolute;
 
@@ -284,7 +298,8 @@ top: 86px;
     width: 406px;
     height: 295px;
     top: 278px;
-    left: 686px;
+    /* left: 686px; */
+    left: 54%;
     border-radius: 80px;
     position: absolute;
 
@@ -294,33 +309,54 @@ top: 86px;
     color: black;
 }
 .collabs-header .container{
-    align-items: center;
-    align-content: center;
-    justify-content: center;
+    
+
+    display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  width: 40%;
+  left: 25%;
+
 }
 .leaf img{
     width: 167px;
     height: 239.55px;
     top: 69.62px;
-    left: 1117px;
-    position: absolute;
+    /* left: 1117px; */
+    /* position: absolute; */
     transform: rotate(-59.77deg);
+
+
+    display: flex;
+    position: fixed;
+    right: 0%;
 }
 .leaf2 img{
+    /* display: flex;
+    position: fixed; */
+
+
     width: 167px;
     height: 239.55px;
-    position: absolute;
+     position: absolute; 
     transform: rotate(105.77deg);
     top: 969px;
-    left: -6px;
+     left: -6px; 
 }
 
+   
+
 .oval img{
-    position: absolute;
+     position: absolute; 
     top: 969px;
-    left: 980px;
+    /* left: 980px; */
     width: 299.2px;
     height: 315.16px;
+
+    display: flex;
+   
+    right: 0%;
 
 }
 
@@ -352,6 +388,19 @@ top: 86px;
         
     }
 }
+/*default*/
+ /* @media screen and (max-width: 1440px ){
+   .collabs-header .container .heading h1{
+    width: 356px;
+height: 77px;
+top: 165px;
+left: 554px;
+gap: 0px;
+opacity: 0px;
+font-size: 60px;
+   }
+
+}  */
 
 /* Medium screens (tablets) */
 @media screen and (max-width: 992px ) {
@@ -402,9 +451,9 @@ top: 86px;
     
     .collabs-header .container {
         position: relative;
-        width: 80%;
+        width: 60%;
         margin: 0 auto;
-        left: 0;
+        left: -40px;
         top: -50px;
         align-items: center;
         align-content: center;
@@ -414,37 +463,37 @@ top: 86px;
     .collabs-header .container .heading h1 {
         font-size: 45px;
         width: 72%;
-        left: 78px;
+        left: 50px;
         align-items: center;
         align-content: center;
         justify-content: center;
-        top: -81px;
+        top: -72px;
     }
-    .collabs-header .star1{
+    .collabs-header .star1 img{
         position: relative;
-        top: -176px;
-        left: -131px;
+        top: -88px;
+        left: -22%;
     }
 
-.collabs-header .star2{
+.collabs-header .star2 img{
     position: relative;
-    top: -173px;
-    left: -132px;
+    top: -78px;
+    left: -14%;
 }
-.collabs-header .star3{
+.collabs-header .star3 img{
     position: relative;
-    top: -185px;
-    left: 10px;
+    top: -264px;
+    left: -4%;
 
 }
-.collabs-header .star4{
+.collabs-header .star4 img{
     position: relative;
-    top: -187px;
-    left: 16px;
+    top: -272px;
+    left: -3%;
 }
 .leaf img{
     position: relative;
-    left: 720px;
+    left: 84%;
     top: -58px;
     
     
@@ -552,7 +601,7 @@ top: 86px;
  .oval img{
     position: relative;
     top: 200px;
-    left: 569px;
+    left: 66%;
  }
  
 
@@ -583,13 +632,19 @@ top: 86px;
         width: auto;
         display: block;
     }
+    .collabs-header .container{
+        position: relative;
+        width: 326px;
+        left: 0px;
+        height: 150px;
+    }
     
     .collabs-header .container .heading h1 {
         font-size: 35px;
         line-height: 42px;
         top: -60px;
-        left: 45px;
-  width: 369px;
+        left: 51px;
+  width: 177px;
   height: 57px;
     }
     .collabs-header .container .circle img{
@@ -599,28 +654,30 @@ top: 86px;
     }
     .collabs-header .star1 img{
         position: relative;
-        top: 80px;
-        left: 70px;
+        top: -91px;
+        left: -12%;
     }
     .collabs-header .star2 img{
         position: relative;
-        top: 80px;
-        left: 70px;
+        top: -82px;
+        left: 2%;
     }
     .collabs-header .star3 img{
         position: relative;
-        top: -55px;
-        left: -16px;
+        top: -234px;
+        left: -14%;
     }
     .collabs-header .star4 img{
         position: relative;
-        top: -65px;
-        left: -17px;
+        top: -243px;
+        left: -13%;
     }
     .leaf img{
         position: relative;
-        left: 490px;
-        top: -120px;
+        /* left: 494px; */
+        /* left: 363px; */
+        left: 78%;
+        top: -57px;
     }
     .content .text h2 {
         font-size: 32px;
@@ -666,7 +723,7 @@ top: 86px;
         width: 183px;
         height: 203px;
         top: 96px;
-        left: -505px;
+        left: -532px;
         border-radius: 80px;
         position: relative;
     }
@@ -677,7 +734,7 @@ top: 86px;
         width: 183px;
         height: 203px;
         top: 75px;
-        left: -709px;
+        left: -740px;
         border-radius: 80px;
         position: relative;
     }
@@ -733,8 +790,10 @@ top: 86px;
         width: 200px;
         height: 210px;
         position: relative;
-        top: 6px;
-        left: 439px;
+        top: 4px;
+        /* left: 437px; */
+        /* left: 310px; */
+        left: 69%;
     }
 }
 
@@ -748,7 +807,12 @@ top: 86px;
   height: 44px;
   top: -48px;
     }
-    
+    .collabs-header .container{
+        position: relative;
+        width: 352px;
+        height: 145px;
+        left: -11px;
+    }
     
     .content .text h2 {
         font-size: 26px;
@@ -760,27 +824,28 @@ top: 86px;
     }
      .collabs-header .star1 img{
         position: relative;
-        top: 70px;
-        left: 140px;
+        top: -95px;
+        left: -27%;
     }
     .collabs-header .star2 img{
         position: relative;
-        top: 70px;
-  left: 142px;
+        top: -85px;
+  left: -4%;
     }
     .collabs-header .star3 img{
         position: relative;
-        top: -45px;
-  left: -89px;
+        top: -231px;
+  left: -17%;
     }
     .collabs-header .star4 img{
         position: relative;
-        top: -59px;
-  left: -88px
+        top: -239px;
+  left: -16%;
     }
     .leaf img{
         position: relative;
-        left: 308px;
+        /* left: 308px; */
+        left: 68%;
   top: -66px;
     }
     .content .shapes .shape1{
@@ -844,6 +909,7 @@ top: 86px;
     }
     .oval img{
         position: relative;
-        left: 250px;
+        /* left: 250px; */
+        left: 56%;
     }
 } 
