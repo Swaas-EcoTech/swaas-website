@@ -1,5 +1,7 @@
 import Navbar from "../components/Navbar"
-// Create reusable components for gallery items
+import DecorativeLeaves from '../components/DecorativeLeaves';
+import BottomDecorations from "../components/BottomDecorations";
+
 const GalleryImage = ({ src, alt, className, shape = "rounded" }) => {
   return (
     <div className={`gallery-image-container ${shape}`}>
@@ -55,10 +57,11 @@ const Gallery = () => {
   return (
     <div>
         <Navbar/>
+        <DecorativeLeaves />
     <div
       className="gallery-container"
       style={{
-        backgroundImage: `url(${'/screen.png'})`,
+        // backgroundImage: `url(${'/screen.png'})`,
       }}
     >
       <div className="gallery-content">
@@ -87,10 +90,9 @@ const Gallery = () => {
           <GalleryImage src={sampleImages[4].src} alt={sampleImages[4].alt} />
         </section>
 
-        {/* Decorative elements */}
-        <div className="decorative-leaf left-leaf"></div>
-        <div className="decorative-leaf right-leaf"></div>
+
         <div className="bottom-curve"></div>
+        <BottomDecorations/>
       </div>
     </div>
     </div>

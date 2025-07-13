@@ -3,8 +3,8 @@ import  { useState } from 'react';
 import eventsData from './EventData.jsx';
 import EventCard from '../components/EventsCard.jsx';
 import Navbar from '../components/Navbar.jsx';
-
-
+import DecorativeLeaves from '../components/DecorativeLeaves.jsx';
+import BottomDecorations from '../components/BottomDecorations.jsx';
 const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState("Upcoming Events");
 
@@ -12,9 +12,10 @@ const Events = () => {
   return (
     <div>
       <Navbar />
+      <DecorativeLeaves />
     <div className="pageBackground">
       <div className="teamContainer">
-        <img
+        {/* <img
           src='/image-5.png'
           alt="Decorative Leaf"
           className={`leafDecoration leafTopRight`}
@@ -23,7 +24,7 @@ const Events = () => {
           src='/image-5.png'
           alt="Decorative Leaf"
           className={`leafDecoration leafBottomLeft`}
-        />
+        /> */}
 
         <div className={`diamondDecoration diamond1`}></div>
         <div className={`diamondDecoration diamond2`}></div>
@@ -69,6 +70,7 @@ const Events = () => {
         alt="Bottom Right Decoration"
         className={`bottomRightImage`}
       />
+      
     </div>
     </div>
   );

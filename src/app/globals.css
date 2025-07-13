@@ -206,366 +206,370 @@ html, body {
 .Home {
   margin-top: -11px;
   font-family: "Inika", serif;
-  background-color:rgba(119, 139, 99, 1);
+  background-color: rgba(119, 139, 99, 1);
+  border: none; /* Remove any border */
+  outline: none; /* Remove any outline */
+  
+  h1 {
+    text-align: center;
+    font-size: 65px;
+    margin-bottom: -20px;
+    color: #ffffff;
+    margin-bottom: -22px;
+    margin-top: 10px;
+    border: none; /* Remove any border from h1 */
+    outline: none; /* Remove any outline from h1 */
+    /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #ffffff;
+    border: none; /* Remove any border from h2 */
+    outline: none; /* Remove any outline from h2 */
+    /* text-shadow: 4px 4px 8px #858585; */
+  }
+  
+  .image-text-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .home-image {
+    margin: 30px;
+    margin-left: 70px;
+    position: relative;
+  }
+  
+  .graybox {
+    width: 500px;
+    height: 410px;
+    background-color: #7e9b7a;
+    border-radius: 15px;
+    box-shadow: 30px 30px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure image doesn't overflow */
+  }
+  
+  .graybox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This will make the image cover the entire box */
+    border-radius: 15px; /* Match the border radius of the container */
+  }
+  
+  .home-text {
+    margin-right: 40px;
+    width: 55%;
+    padding: 15px;
+    background-color: rgba(198, 225, 158, 1);
+    border-radius: 15px;
+    font-size: 1.2rem;
+    color: rgba(59, 88, 55, 1);
+    line-height: 1.4;
+    text-align: justify;
+    box-shadow: 30px 30px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .bottom-home {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .homeimage1, .homeimage2, .logos, .hometext1 {
+    width: 25%;
+    height: 180px;
+  }
+  
+  .homeimage1 {
+    background-color: #d8e5ba;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .homeimage1 img {
+    height: 160px;
+    max-width: 100%;
+    margin-top: 20px;
+  }
+  
+  .hometext1 {
+    background-color: #ddc75a;
+    color: black;
+  }
+  
+  .hometext1 p {
+    margin: 35px;
+    font-size: 2rem;
+    color: black;
+  }
+  
+  .homeimage2 {
+    background-color: #73956f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .homeimage2 img {
+    height: 160px;
+    max-width: 100%;
+    margin-top: 20px;
+  }
+  
+  .logos {
+    background-color: #454851;
+    color: white;
+  }
+  
+  .logos p {
+    text-align: center;
+    font-size: large;
+  }
+  
+  .logo-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+  }
+  
+  .logo-container img {
+    height: 35px;
+    filter: invert(1) brightness(2);
+  }
+  
+  .logo-container a {
+    color: white;
+  }
+  
+  .leaf-right-top {
+    position: absolute;
+    top: 35%;
+    top: 30%;
+    right: 10px;
+    width: 120px;
+    height: auto;
+    z-index: 1;
+    transform: rotate(-14.85deg);
+  }
+  
+  .leaf-left-circle {
+    position: absolute;
+    top: 25%;
+    left: 15px;
+    transform: translateY(-10%) rotatex(-366deg) rotatey(532deg) rotate(-55deg);
+    width: 150px;
+    height: auto;
+    z-index: 2;
+  }
+  
+  @media (max-width: 1024px) {
     h1 {
-      text-align: center;
-      font-size: 65px;
-      margin-bottom: -20px;
-      color: #ffffff;
-      margin-bottom: -22px;
-      margin-top: 10px;
-      /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+      font-size: 50px;
     }
+    
     h2 {
-      text-align: center;
-      font-size: 30px;
-      color: #ffffff;
-      /* text-shadow: 4px 4px 8px #858585; */
+      font-size: 25px;
     }
+    
+    .graybox {
+      width: 300px;
+      height: 300px;
+    }
+    
+    .home-text {
+      width: 100%;
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .Home {
+      padding: 20px;
+      font-size: 1rem;
+    }
+    
+    .home-heading h1 {
+      font-size: 50px;
+    }
+    
+    .home-heading h2 {
+      font-size: 24px;
+    }
+    
     .image-text-wrapper {
-      display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
       gap: 20px;
     }
+    
     .home-image {
-      margin: 30px;
-      margin-left: 70px;
-      position: relative;
-    }
-    .graybox {
-        width: 400px;
-        height: 400px;
-        background-color:#7e9b7a;
-        border-radius: 15px;
-        box-shadow: 30px 30px 5px rgba(0, 0, 0, 0.3); 
-      } 
-    .home-text {
-      margin-right: 40px;
-      width: 55%;
-      padding: 15px;
-      background-color: rgba(198, 225, 158, 1);
-      border-radius: 15px;
-      font-size: 1.2rem;
-      color: rgba(59, 88, 55, 1);
-      line-height: 1.4;
-      text-align: justify;
-      box-shadow: 30px 30px 5px rgba(0, 0, 0, 0.1);
-    }
-    .bottom-home{
-        display: flex;
-  justify-content: space-between;
-    }
-    .homeimage1,.homeimage2,.logos,.hometext1{
-        width: 25%;
-        height: 180px;
-    }
-    .homeimage1{
-        background-color: #d8e5ba;
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-    }
-    .homeimage1 img{
-      height: 160px;
-      max-width: 100%;
-      margin-top: 20px;
-    }
-    .hometext1{
-        background-color: #ddc75a;
-        color: black;
-    }
-    .hometext1 p{
-        margin: 35px;
-        font-size: 2rem;
-        color: black;
-    }
-    .homeimage2{
-        background-color: #73956f;
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-    }
-    .homeimage2 img{
-      height: 160px;
-      max-width: 100%;
-      margin-top: 20px;
-    }
-    .logos{
-        background-color: #454851;
-        color: white;
-    }
-    .logos p{
+      margin: 20px 0;
+      width: 80%;
       text-align: center;
-      font-size: large;
     }
+    
+    .graybox {
+      width: 100%;
+      height: 300px;
+      background-color: #7e9b7a;
+      border-radius: 15px;
+      box-shadow: 30px 30px 5px rgba(0, 0, 0, 0.3);
+      margin: 0 auto;
+    }
+    
+    .home-text {
+      width: 90%;
+      margin-top: 20px;
+      padding: 15px;
+      font-size: 1.2rem;
+      background-color: #d8e5ba;
+      border-radius: 15px;
+      text-align: justify;
+      margin: 40px;
+    }
+    
+    .bottom-home {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .homeimage1, .homeimage2, .logos, .hometext1 {
+      width: 100%;
+      margin-bottom: 10px;
+      margin-left: 10px;
+      margin-right: 15px;
+    }
+    
+    .homeimage1 img, .homeimage2 img {
+      height: auto;
+      max-width: 40%;
+    }
+    
+    .hometext1 {
+      background-color: #ddc75a;
+      color: aliceblue;
+      padding: 1px;
+      text-align: center;
+    }
+    
+    .hometext1 p {
+      font-size: 1.1rem;
+      margin: 10px;
+      text-align: center;
+      margin-top: 50%;
+    }
+    
     .logo-container {
-      display: flex;
-      justify-content: center;
-      gap:40px;
+      flex-direction: column;
+      gap: 15px;
     }
-    .logo-container img{
-      height:35px;
-      filter:invert(1) brightness(2)
+    
+    .logo-container img {
+      height: 30px;
     }
-    .logo-container a{
-      color:white;
+    
+    .leaf-left-circle, .leaf-right-top {
+      width: 120px;
     }
-    .leaf-right-top {
-        position: absolute;
-        top: 35%;                      
-        top: 30%;                      
-        right: 10px;
-        width: 120px;
-        height: auto;
-        z-index: 1;
-        transform: rotate(-14.85deg); 
-      }
-      .leaf-left-circle {
-        position: absolute;
-        top: 25%;
-        left: 15px;
-        transform: translateY(-10%) rotatex(-366deg) rotatey(532deg) rotate(-55deg);
-        width: 150px;
-        height: auto;
-        z-index: 2;
-      }
-      @media (max-width: 1024px) {
-        h1 {
-          font-size: 50px;
-        }
-    
-        h2 {
-          font-size: 25px;
-        }
-    
-        .graybox {
-          width: 300px;
-          height: 300px;
-        }
-    
-        .home-text {
-          width: 100%;
-          font-size: 1.2rem;
-        }
-      }
-    
-     
-      @media (max-width: 480px) {
-        .Home {
-          padding: 10px;
-          font-size: 0.9rem;
-        }
-      
-        .home-heading h1 {
-          font-size: 40px;
-        }
-      
-        .home-heading h2 {
-          font-size: 20px;
-        }
-      
-        .image-text-wrapper {
-          flex-direction: column;
-          align-items: center;
-          gap: 20px;
-        }
-      
-        .home-image {
-          margin: 20px 0;
-          width: 80%;
-          text-align: center;
-        }
-      
-        .graybox {
-          width: 100%; 
-          height: 180px; 
-          border-radius: 15px;
-          box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.3);
-          padding: 100px;
-          padding-right:55px;
-        }
-      
-        .home-text {
-          width: 100%;
-          margin-top: 10px;
-          padding: 15px;
-          font-size: 1.2rem;
-          background-color: #d8e5ba;
-          border-radius: 15px;
-          text-align: justify;
-        }
-      
-        .bottom-home {
-          display: block;
-          width: 100%;
-          text-align: center;
-        }
-      
-        .homeimage1,
-        .homeimage2,
-        .logos,
-        .hometext1 {
-          width: 100%;
-          margin-bottom: 20px;
-        }
-      
-        .homeimage1 img,
-        .homeimage2 img {
-          height: auto;
-          max-width: 90%;
-        }
-      
-        .hometext1 {
-          background-color: #ddc75a;
-          color: aliceblue;
-          padding: 10px;
-          text-align: center;
-        }
-      
-        .hometext1 p {
-          font-size: 1.3rem;
-          margin: 10px;
-          text-align: center;
-        }
-      
-        .logo-container {
-          flex-direction: column;
-          gap: 15px;
-        }
-      
-        .logo-container img {
-          height: 30px;
-        }
-      
-        .leaf-left-circle,
-        .leaf-right-top {
-          width: 100px;
-        }
-      }
-      
-      @media (max-width: 768px) {
-        .Home {
-          padding: 20px;
-          font-size: 1rem; 
-        }
-      
-        .home-heading h1 {
-          font-size: 50px; 
-        }
-      
-        .home-heading h2 {
-          font-size: 24px; 
-        }
-      
-        .image-text-wrapper {
-          flex-direction: column; 
-          align-items: center; 
-          gap: 20px; 
-        }
-      
-        .home-image {
-          margin: 20px 0;
-          width: 80%; 
-          text-align: center;
-        }
-      
-        .graybox {
-          width: 100%; 
-          height: 300px; 
-          background-color: #7e9b7a;
-          border-radius: 15px;
-          box-shadow: 30px 30px 5px rgba(0, 0, 0, 0.3);
-          margin: 0 auto; 
-        }
-      
-        .home-text {
-          width: 90%; 
-          margin-top: 20px; 
-          padding: 15px;
-          font-size: 1.2rem;
-          background-color: #d8e5ba;
-          border-radius: 15px;
-          text-align: justify;
-          margin: 40px;
-          
-        }
-      
-        .bottom-home {
-          display: block; 
-          width: 100%;
-          text-align: center; 
-        }
-      
-        .homeimage1,
-        .homeimage2,
-        .logos,
-        .hometext1 {
-          width: 100%; 
-          margin-bottom: 10px;
-          margin-left: 10px;
-          margin-right: 15px; 
-        }
-      
-        .homeimage1 img,
-        .homeimage2 img {
-          height: auto;
-          max-width: 40%; 
-        }
-      
-        .hometext1 {
-          background-color: #ddc75a;
-          color: aliceblue;
-          padding: 1px;
-          text-align: center;
-        }
-      
-        .hometext1 p {
-          font-size: 1.1rem;
-          margin: 10px;
-          text-align: center;
-          margin-top: 50%;
-        }
-      
-        .logo-container {
-          flex-direction: column;
-          gap: 15px;
-        }
-      
-        .logo-container img {
-          height: 30px; 
-        }
-      
-        .leaf-left-circle,
-        .leaf-right-top {
-          width: 120px; 
-        }
-      }
-      
-      @media (max-width: 768px) {
-        .hometext1 {
-          font-size: 1rem;
-          text-align: justify;
-        }
-        .hometext1 p {
-          margin: 10px;
-          font-size: 0.9rem;
-          line-height: 1.6;
-        }
-      }
-      @media (max-width: 480px) {
-        .graybox {
-          width: 100%; 
-          height: auto; 
-          max-width: 300px; 
-          margin: 0 auto; 
-        }
-      }
-      
-      
   }
-  @import url("https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap");
+  
+  @media (max-width: 480px) {
+    .Home {
+      padding: 10px;
+      font-size: 0.9rem;
+    }
+    
+    .home-heading h1 {
+      font-size: 40px;
+    }
+    
+    .home-heading h2 {
+      font-size: 20px;
+    }
+    
+    .image-text-wrapper {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .home-image {
+      margin: 20px 0;
+      width: 80%;
+      text-align: center;
+    }
+    
+    .graybox {
+      width: 100%;
+      height: 180px;
+      border-radius: 15px;
+      box-shadow: 15px 15px 5px rgba(0, 0, 0, 0.3);
+      padding: 0; /* Remove padding that was causing issues */
+    }
+    
+    .home-text {
+      width: 100%;
+      margin-top: 10px;
+      padding: 15px;
+      font-size: 1.2rem;
+      background-color: #d8e5ba;
+      border-radius: 15px;
+      text-align: justify;
+    }
+    
+    .bottom-home {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .homeimage1, .homeimage2, .logos, .hometext1 {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    
+    .homeimage1 img, .homeimage2 img {
+      height: auto;
+      max-width: 90%;
+    }
+    
+    .hometext1 {
+      background-color: #ddc75a;
+      color: aliceblue;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    .hometext1 p {
+      font-size: 1.3rem;
+      margin: 10px;
+      text-align: center;
+    }
+    
+    .logo-container {
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .logo-container img {
+      height: 30px;
+    }
+    
+    .leaf-left-circle, .leaf-right-top {
+      width: 100px;
+    }
+  }
+}
 
+@import url("https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap");
 /* GalleryPage Css */
 .gallery-container {
   min-height: 100vh;

@@ -1,10 +1,11 @@
 "use client";
 import React from "react";
 import Navbar from "./components/Navbar";
-
+import DecorativeLeaves from "./components/DecorativeLeaves";
 const Home = () => {
   return (
-    <>
+    <div className="">
+      <DecorativeLeaves/>
       <Navbar />
       <div className="Home">
         <div className="home-heading">
@@ -15,7 +16,7 @@ const Home = () => {
         <div className="image-text-wrapper">
           <div className="home-image">
             <div className="graybox">
-              {/* <img src="/Front-img.jpeg" alt="HomeImage" /> */}
+              <img src="/Front-img.jpeg" alt="HomeImage" />
             </div>
           </div>
           <div className="home-text">
@@ -70,12 +71,11 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <img src="/leaf.png" alt="Left Leaf" className="leaf-left-circle" />
-        <img src="/leaf.png" alt="Right Leaf" className="leaf-right-top" />
       </div>
+      
 
       <style jsx>{``}</style>
-    </>
+      </div>
   );
 };
 

@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import teamData from "./teamData.jsx";
 import Navbar from "../components/Navbar.jsx";
 import TeamHeader from "../components/grid.jsx";
+import DecorativeLeaves from "../components/DecorativeLeaves.jsx";
+import BottomDecorations from "../components/BottomDecorations";
 
 const Team = () => {
   const [selectedTeam, setSelectedTeam] = useState("Core");
@@ -10,6 +12,7 @@ const Team = () => {
   return (
     <div>
         <Navbar />
+      <DecorativeLeaves />
     <div className="pageBackground">
       <div className="teamContainer">
         <img
@@ -76,7 +79,8 @@ const Team = () => {
           ))}
         </section>
       </div>
-
+      {/* <BottomDecorations/> */}
+{/* 
       <img
         src={'/image-14.png'}
         alt="Bottom Left Decoration"
@@ -86,7 +90,7 @@ const Team = () => {
         src={'/image-10.png'}
         alt="Bottom Right Decoration"
         className={`bottomRightImage`}
-      />
+      /> */}
     </div>
     </div>
   );
