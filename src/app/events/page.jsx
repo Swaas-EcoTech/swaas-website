@@ -6,7 +6,7 @@ import Navbar from '../components/Navbar.jsx';
 import DecorativeLeaves from '../components/DecorativeLeaves.jsx';
 import BottomDecorations from '../components/BottomDecorations.jsx';
 const Events = () => {
-  const [selectedEvent, setSelectedEvent] = useState("Upcoming Events");
+  const [selectedEvent, setSelectedEvent] = useState("Past Events");
 
 
   return (

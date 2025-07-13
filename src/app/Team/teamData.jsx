@@ -9,7 +9,7 @@ const teamData = {
       { name: "Avneet", img: '/HK.jpg', description: "Every plan, every pivot, every last-minute save—Avneet’s got it covered. The silent engine behind the scenes, he powers Swaas’s biggest wins with calm precision and quiet mastery." },
     ],
     Design: [
-      { name: "Gurpratit", img: '/PS1.jpg', description: "A perfectionist with an eye for soul, Gurpratit weaves identity into every frame. She protects Swaas’s visual soul—crafting designs that don’t just look right, but feel like us." },
+      { name: "Gurpratit", img: '/Team/Pratit.jpeg', description: "A perfectionist with an eye for soul, Gurpratit weaves identity into every frame. She protects Swaas’s visual soul—crafting designs that don’t just look right, but feel like us." },
     ],
     Technical: [
       { name: "Aman", img: '/PS.jpg', description: "Focused, fluent, and fiercely dependable, Aman is Swaas’s digital architect. Code is his second language—and his first love." },

@@ -1,24 +1,4 @@
 const eventsData = {
-  "Upcoming Events": [
-    {
-      date: "3rd",
-      month: "November",
-      year: "2025",
-      title: "Loren Ipsum",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      imageUrl: "/HK.jpg",
-    },
-    {
-      date: "3rd",
-      month: "November",
-      year: "2025",
-      title: "Loren Ipsum",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      imageUrl: "/JK.jpg",
-    },
-  ],
   "Past Events": [
     {
       date: "17th - 21st",
@@ -100,6 +80,26 @@ const eventsData = {
       description:
         "SWAAS, in collaboration with FFT, hosted 'The Ultimate Tech Battle', a thrilling quiz competition celebrating technology and sustainability. Participants competed for the title of TECH WIZARD, winning cash prizes, medals, and subscriptions. The event was fun-filled and intellectually stimulating, with refreshments for attendees.",
       imageUrl: "/placeholder.svg?height=200&width=200",
+    },
+  ],
+  "Upcoming Events": [
+    {
+      date: "3rd",
+      month: "November",
+      year: "2025",
+      title: "Loren Ipsum",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      imageUrl: "/HK.jpg",
+    },
+    {
+      date: "3rd",
+      month: "November",
+      year: "2025",
+      title: "Loren Ipsum",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      imageUrl: "/JK.jpg",
     },
   ],
 };
