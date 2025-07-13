@@ -1,6 +1,6 @@
 'use client';
 import  { useState } from 'react';
-import eventsData from './EventData.js';
+import eventsData from './EventData.jsx';
 import EventCard from '../components/EventsCard.jsx';
 import Navbar from '../components/Navbar.jsx';
 
