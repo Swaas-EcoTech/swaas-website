@@ -1,30 +1,31 @@
 const teamData = {
     Core: [
       
-      { name: "Mehak Lakhina", img: '/ML.jpg', description: "Meet Mehak, our compassionate President and the heart of Swaas. With a warm and welcoming spirit, Mehak inspires and empowers our community, fostering a culture of kindness, inclusivity, and collaboration. As a visionary leader, she guides our team with clarity, purpose, and passion, driving us towards a brighter future." },
-      { name: "Vanshika Tanwar", img: '/VT.jpg', description: "Meet Vanshika, our Vice President who makes Swaas feel like home. She plays a pivotal role in driving the mission forward. She is a dedicated leader with a passion for integrating technology and sustainability. Her leadership and vision inspire our community to strive for a brighter, more innovative tomorrow." },
-      { name: "Prableen Singh", img: '/PS1.jpg', description: "Meet Prableen, our Design Lead and General Secretary, whose tireless efforts keep Swaas running seamlessly. As the backbone of our organization, Prableen expertly juggles graphic design, communications, and task management, ensuring everything runs like clockwork. His exceptional organizational skills, dedication, and mentorship make him an invaluable asset to our team." },
+      { name: "Yogita", img: '/Team/Yogita.jpeg', description: "A visionary with a diplomat’s poise, Yogita leads Swaas with fierce creativity and unwavering devotion. Every initiative she touches carries a distinct charm—rooted in purpose, and powered by love for the society she holds close." },
+      { name: "Shreya", img: '/Team/Shreya.png', description: "Composed in thought and precise in action, Shreya brings balance to the heart of Swaas. With quiet resolve and steady grace, she turns vision into movement—anchoring every idea with purpose." },
+      { name: "Kashish", img: '/Team/Kashish.jpeg', description: "Soft in tone, steady in will—Kashish is the quiet rhythm behind Swaas. A dreamer at heart, yet fiercely resolute when duty calls, she ensures every breath we take flows in harmony and purpose." },
     ],
     Execution: [
-      { name: "Harjot Kaur", img: '/HK.jpg', description: "Meet Harjot, our dynamic Social Media Lead, who brings creativity and passion to our digital landscape. Her carefully crafted stories consistently earn compliments, and Swaas' social media presence has soared under her leadership. Harjot is the heart and life of Swaas, amplifying our mission with her expertise and infectious laugh, connecting us with a wider audience and inspiring meaningful engagement." },
-      { name: "Jagrit Khurana", img: '/JK.jpg', description: "Meet Jagrit, our accomplished Management Lead, who brings exceptional leadership and organizational expertise to our team. With a proactive approach, meticulous attention to detail, and a talent for motivating others, Jagrit ensures seamless project execution. His confident decision-making, generosity, and positivity make him an invaluable asset to our organization." },
+      { name: "Avneet", img: '/HK.jpg', description: "Every plan, every pivot, every last-minute save—Avneet’s got it covered. The silent engine behind the scenes, he powers Swaas’s biggest wins with calm precision and quiet mastery." },
     ],
     Design: [
-      { name: "Prableen Singh", img: '/PS1.jpg', description: "Prableen is also the Design Lead, bringing creativity and organizational skills to our visual identity and communications." },
+      { name: "Gurpratit", img: '/PS1.jpg', description: "A perfectionist with an eye for soul, Gurpratit weaves identity into every frame. She protects Swaas’s visual soul—crafting designs that don’t just look right, but feel like us." },
     ],
     Technical: [
-      { name: "Prabhsurat Singh", img: '/PS.jpg', description: "Meet Prabhsurat, our innovative Technical Co-Lead, who masterfully architects technical solutions that drive sustainable development. As an exceptional app developer, Prabhsurat leverages his technical expertise, problem-solving skills, and eco-friendly passion to keep us at the forefront of innovation. A dedicated leader, he guides and inspires our technical teams, empowering them to reach new heights." },
-      { name: "Ishwardeep Singh", img: '/I.jpg', description: "Meet Ishwardeep, our Tech Co-lead, who brings exceptional expertise in cybersecurity to the table. With Ishwar's contributions, his team achieved an impressive Rank 40 in India in the prestigious CTF competition. He uses his technical skills to guide his team in building their expertise, providing the necessary resources and support, helping them grow and overcome challenges together." },
+      { name: "Aman", img: '/PS.jpg', description: "Focused, fluent, and fiercely dependable, Aman is Swaas’s digital architect. Code is his second language—and his first love." },
     ],
-    "Social Media": [
-      { name: "Harjot Kaur", img: '/HK.jpg', description: "Harjot, our Social Media Lead, brings creativity and passion to our digital landscape, amplifying our mission through carefully crafted stories." },
+    SocialMedia: [
+      { name: "Gurprajas", img: '/Team/Gurprajas.jpeg', description: "Youngest in age, fierce in drive—Gurprajas is Swaas' digital storyteller. With creativity and spark, she turns ideas into impact, one post at a time." },
     ],
-    Editorial: [
-      { name: "Neeraj Gandhi", img: '/N.jpg', description: "Meet Neeraj, our talented Content Lead, who masterfully crafts the voice of our organization. By creating compelling, mission-driven content, Neeraj inspires and engages our audience. A collaborative and dynamic team player, he fosters a culture of creativity, positivity, and growth, elevating our message and impact." },
+    Content: [
+      { name: "Karman", img: '/N.jpg', description: "Precise, composed, and deeply thoughtful—Karman helps shape Swaas’s voice one word at a time. A mindful storyteller at heart, she brings clarity to purpose." },
     ],
     Outreach: [
-      { name: "Prableen Singh", img: '/PS1.jpg', description: "Prableen also leads outreach initiatives, establishing partnerships and ensuring the project reaches new audiences." },
+      { name: "Manya", img: '/Team/Manya.jpeg', description: "Effortlessly magnetic and endlessly familiar, Manya is Swaas’s loudest echo. A natural connector and relentless hype-machine, she ensures every event isn’t just heard—it’s felt." },
     ],
+    Convener: [
+      { name: "Mrs.Manpreet kaur", img: '/Team/ManpreetKaur.png', description: "A perfectionist with an eye for soul, Gurpratit weaves identity into every frame. She protects Swaas’s visual soul—crafting designs that don’t just look right, but feel like us." },
+    ]
 };
 
 export default teamData;

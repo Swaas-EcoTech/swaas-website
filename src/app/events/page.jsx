@@ -51,11 +51,20 @@ const Events = () => {
           </div>
         </nav>
 
-        <div className={`eventsContainer`}>
-          <EventCard />
-          <EventCard />
-          <EventCard />
-        </div>
+<div className={`eventsContainer`}>
+  {eventsData[selectedEvent]?.map((event, index) => (
+    <EventCard
+      key={index}
+      date={event.date}
+      month={event.month}
+      year={event.year}
+      title={event.title}
+      description={event.description}
+      imageUrl={event.imageUrl}
+    />
+  ))}
+</div>
+
 
 
         

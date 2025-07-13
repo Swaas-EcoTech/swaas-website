@@ -56,10 +56,6 @@ function Navbar() {
             <Link href="/Team" className={pathname === "/Team" ? "active" : ""}>
               Team
             </Link>
-            <div className="dropdown-content">
-              <Link href="/Alumni">2024-2025</Link>
-              <Link href="/Team2025">2025-2026</Link>
-            </div>
           </li>
           <li>
             <Link href="/gallery" className={pathname === "/gallery" ? "active" : ""}>
@@ -69,6 +65,11 @@ function Navbar() {
           <li>
             <Link href="/collabs" className={pathname === "/collabs" ? "active" : ""}>
               Collabs
+            </Link>
+          </li>
+          <li>
+            <Link href="/Alumni" className={pathname === "/Alumni" ? "active" : ""}>
+              Alumni
             </Link>
           </li>
         </ul>

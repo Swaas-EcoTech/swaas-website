@@ -18,7 +18,7 @@ const DecorativeLeaves = () => {
       <style jsx>{`
         .leafDecoration {
           position: fixed;
-          z-index: 50; /* Changed from -1 to 50 to make it visible */
+          z-index: 1; /* Changed from -1 to 50 to make it visible */
           pointer-events: none; /* Prevents interference with user interactions */
         }
         
