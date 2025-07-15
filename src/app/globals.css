@@ -925,28 +925,26 @@ body {
   transform: rotate(-14.85deg); /* Slight tilt */
 }
 
-.circle-text-container {
+/* .circle-text-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -490px;
-  /* margin-left: -1110px; */
   margin-right: 400px;
   background: none;
-}
+} */
 
 .circle {
-  width: 400px;
-  height: 400px;
+  width: 50%;
+  height: 50%;
   border-radius: 50%;
   border-color: #5e785a;
   overflow: hidden; /* Ensures the image stays within the circle */
   box-shadow: 26px 28px 5px #5e785a;
   margin-right: 180px;
   margin-top: -60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
 }
 
 .circle img {
@@ -1108,19 +1106,6 @@ body {
     /* margin-left: -1110px; */
     margin-right: 400px;
     background: none;
-  }
-  .circle {
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    border-color: #5e785a;
-    overflow: hidden; /* Ensures the image stays within the circle */
-    box-shadow: 26px 28px 5px #5e785a;
-    margin-right: 180px;
-    margin-top: -60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .circle img {
     width: 100%;

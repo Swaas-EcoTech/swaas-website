@@ -6,19 +6,19 @@ const teamData = {
       { name: "Kashish", img: '/Team/Kashish.jpeg', description: "Soft in tone, steady in will—Kashish is the quiet rhythm behind Swaas. A dreamer at heart, yet fiercely resolute when duty calls, she ensures every breath we take flows in harmony and purpose." },
     ],
     Execution: [
-      { name: "Avneet", img: '/HK.jpg', description: "Every plan, every pivot, every last-minute save—Avneet’s got it covered. The silent engine behind the scenes, he powers Swaas’s biggest wins with calm precision and quiet mastery." },
+      { name: "Avneet", img: '/Team/avneet.jpeg', description: "Every plan, every pivot, every last-minute save—Avneet’s got it covered. The silent engine behind the scenes, he powers Swaas’s biggest wins with calm precision and quiet mastery." },
     ],
     Design: [
       { name: "Gurpratit", img: '/Team/Pratit.jpeg', description: "A perfectionist with an eye for soul, Gurpratit weaves identity into every frame. She protects Swaas’s visual soul—crafting designs that don’t just look right, but feel like us." },
     ],
     Technical: [
-      { name: "Aman", img: '/PS.jpg', description: "Focused, fluent, and fiercely dependable, Aman is Swaas’s digital architect. Code is his second language—and his first love." },
+      { name: "Aman", img: '/Team/aman.jpeg', description: "Focused, fluent, and fiercely dependable, Aman is Swaas’s digital architect. Code is his second language—and his first love." },
     ],
     SocialMedia: [
       { name: "Gurprajas", img: '/Team/Gurprajas.jpeg', description: "Youngest in age, fierce in drive—Gurprajas is Swaas' digital storyteller. With creativity and spark, she turns ideas into impact, one post at a time." },
     ],
     Content: [
-      { name: "Karman", img: '/N.jpg', description: "Precise, composed, and deeply thoughtful—Karman helps shape Swaas’s voice one word at a time. A mindful storyteller at heart, she brings clarity to purpose." },
+      { name: "Karman", img: '/Team/karman.jpeg', description: "Precise, composed, and deeply thoughtful—Karman helps shape Swaas’s voice one word at a time. A mindful storyteller at heart, she brings clarity to purpose." },
     ],
     Outreach: [
       { name: "Manya", img: '/Team/Manya.jpeg', description: "Effortlessly magnetic and endlessly familiar, Manya is Swaas’s loudest echo. A natural connector and relentless hype-machine, she ensures every event isn’t just heard—it’s felt." },

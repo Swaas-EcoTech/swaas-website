@@ -7,7 +7,7 @@ const eventsData = {
       title: "Donation Drive 2025",
       description:
         "SWAAS, in collaboration with the Robin Hood Army, conducted the Donation Drive 2025 from 17th to 21st February. Donation boxes placed across the campus collected clothes, books, toys, and essentials. Volunteers distributed these items to underprivileged children and also organized a food drive, sharing meals and spending time teaching and interacting with children. The initiative brought smiles and support to those in need, making a heartfelt impact.",
-      imageUrl: "/ML.jpg",
+      imageUrl: "/.jpg",
     },
     {
       date: "22nd",
@@ -16,7 +16,7 @@ const eventsData = {
       title: "LinkedIn and GitHub Session",
       description:
         "On 22nd February 2025, SWAAS organized an impactful online session with Aman Singh, Tech Lead, focused on empowering students to shape their tech careers. The session covered LinkedIn profile building, GitHub optimization, and networking strategies. Students learned how to craft impressive profiles, maintain clean codebases, and approach professionals meaningfully. It was an engaging, interactive session filled with practical tips and real-world insights.",
-      imageUrl: "/VT.jpg",
+      imageUrl: "/.jpg",
     },
     {
       date: "22nd",
@@ -25,7 +25,7 @@ const eventsData = {
       title: "Farewell to Seniors",
       description:
         "SWAAS bid a heartfelt farewell to its senior core team with an evening of celebration, games, and joyful memories. Juniors expressed gratitude through fun activities, cake cutting, and emotional moments, recognizing the seniors’ dedication, leadership, and friendship throughout their journey in SWAAS.",
-      imageUrl: "/PS1.jpg",
+      imageUrl: "/.jpg",
     },
     {
       date: "28th",
@@ -34,7 +34,7 @@ const eventsData = {
       title: "National Science Day – Tarang 2025",
       description:
         "SWAAS participated in Tarang 2025, the National Science Day celebration at GTBIT. The team volunteered in events like 'Pretty Petals', helping in coordination and showcasing the blend of science and creativity. Their contribution ensured the event's success and student engagement.",
-      imageUrl: "/N.jpg",
+      imageUrl: "/.jpg",
     },
     {
       date: "7th",
@@ -43,7 +43,7 @@ const eventsData = {
       title: "Spreading Smiles",
       description:
         "As part of the 'Spreading Smiles' initiative, SWAAS organized a heartwarming outreach near the slum area beside GTBIT. Volunteers distributed colorful balloons and spent time playing and interacting with children. The event aimed to bring joy, laughter, and a sense of connection, proving that small gestures can create meaningful impact.",
-      imageUrl: "/I.png",
+      imageUrl: "/.png",
     },
     {
       date: "8th",
@@ -52,7 +52,7 @@ const eventsData = {
       title: "International Women’s Day",
       description:
         "SWAAS celebrated Women’s Day with an inspiring and joyful event. It began with a heartfelt address by Director Dr. Rominder Kaur Randhawa, honored with a handmade bouquet by the SWAAS team. The event included Shabad-Kirtan by Divine Circle, songs, fun games, engaging questionnaires, musical performances, and a DJ session. The celebration honored womanhood, unity, and empowerment in a vibrant atmosphere.",
-      imageUrl: "/HK.jpg",
+      imageUrl: "/.jpg",
     },
     {
       date: "21st",
@@ -90,7 +90,7 @@ const eventsData = {
       title: "Loren Ipsum",
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      imageUrl: "/HK.jpg",
+      imageUrl: "/.jpg",
     },
     {
       date: "3rd",
@@ -99,7 +99,7 @@ const eventsData = {
       title: "Loren Ipsum",
       description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      imageUrl: "/JK.jpg",
+      imageUrl: "/.jpg",
     },
   ],
 };
