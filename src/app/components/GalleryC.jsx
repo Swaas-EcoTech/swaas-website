@@ -6,28 +6,33 @@ import {
   useState,
 } from "react";
 import { gsap } from "gsap";
-const useMedia = (
-  queries,
-  values,
-  defaultValue
-) => {
-  const get = () =>
-    values[queries.findIndex((q) => matchMedia(q).matches)] ?? defaultValue;
+const useMedia = (queries, values, defaultValue) => {
+  const get = () => {
+    if (typeof window !== 'undefined') {
+      return values[queries.findIndex((q) => window.matchMedia(q).matches)] ?? defaultValue;
+    }
+    return defaultValue;
+  };
 
   const [value, setValue] = useState(get);
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     const handler = () => setValue(get);
-    queries.forEach((q) => matchMedia(q).addEventListener("change", handler));
-    return () =>
-      queries.forEach((q) =>
-        matchMedia(q).removeEventListener("change", handler)
-      );
+    const mediaQueries = queries.map((q) => window.matchMedia(q));
+
+    mediaQueries.forEach((mq) => mq.addEventListener("change", handler));
+
+    return () => {
+      mediaQueries.forEach((mq) => mq.removeEventListener("change", handler));
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [queries]);
 
   return value;
 };
+
 
 const useMeasure = () => {
   const ref = useRef(null);

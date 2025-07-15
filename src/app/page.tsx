@@ -25,16 +25,16 @@ const Home = () => {
               Eco-Technical Society of GTBIT, was established in 2009 to tackle
               pressing social and environmental issues through innovative use of
               technology and community-driven initiatives. The name SWAAS,
-              meaning "breath" in Hindi, reflects its mission to breathe life
+              meaning breath in Hindi, reflects its mission to breathe life
               into causes that matter, from environmental conservation to
               community empowerment. Since its formation, SWAAS has become a
               dynamic platform for passionate students and dedicated teachers
               working together to foster positive change. The society organizes
               impactful events involving a sense of responsibility toward the
-              environment. One of SWAAS' most notable contributions was the
-              Covigo Web Project, developed during India's second COVID-19 wave
+              environment. One of SWAAS most notable contributions was the
+              Covigo Web Project, developed during Indias second COVID-19 wave
               to provide critical resources like emergency clinic beds and
-              oxygen chambers. This initiative underscored the society's
+              oxygen chambers. This initiative underscored the societys
               commitment to leveraging technology for humanitarian needs. Beyond
               crisis response, SWAAS is dedicated to long-term growth and
               community development. Through donation drives, wellness programs
