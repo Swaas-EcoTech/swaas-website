@@ -13,17 +13,16 @@ function Navbar() {
     setMenuOpen(!menuOpen);
   };
 
-  const backgroundColor = pathname === "/" ? "#778B63" : "transparent";
+  const backgroundColor = pathname === "/" ? "#778B63" : "#ffffff";
 
   return (
     <>
-      <Head>
-        {/* Load font here */}
+      {/* <Head>
         <link
           href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap"
           rel="stylesheet"
         />
-      </Head>
+      </Head> */}
 
       <nav className="navbar" style={{ backgroundColor }}>
         <div className="navbar-logo">
@@ -82,7 +81,6 @@ function Navbar() {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          background-color: #ffffff;
           padding: 5px 5px;
           color: rgb(0, 0, 0);
           font-family: 'Inika', serif;
