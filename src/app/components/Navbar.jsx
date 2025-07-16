@@ -84,6 +84,7 @@ function Navbar() {
           padding: 5px 5px;
           color: rgb(0, 0, 0);
           font-family: 'Inika', serif;
+          opacity:100;
           position: relative;
           z-index: 100;
         }
@@ -102,6 +103,7 @@ function Navbar() {
           display: flex;
           gap: 5px;
           margin-left: auto;
+          opacity:100;
           padding: 0;
         }
 
