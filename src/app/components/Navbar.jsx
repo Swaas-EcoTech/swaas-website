@@ -117,6 +117,8 @@ function Navbar() {
           font-size: 24px;
           transition: all 0.3s ease;
           font-weight: 400;
+            opacity: 100;
+
           padding: 10px 20px;
           border-radius: 18px;
         }
@@ -130,15 +132,6 @@ function Navbar() {
         .navbar-links a:hover {
           background-color: #b4c79d;
           border-radius: 50px;
-        }
-
-        .navbar-line {
-          width: 95%;
-          height: 1.5px;
-          background-color: #000000;
-          margin: 5px auto;
-          opacity: 50%;
-          z-index: 1;
         }
 
         .dropdown {

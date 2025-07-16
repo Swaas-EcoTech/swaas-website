@@ -120,6 +120,7 @@ body {
 .navbar-links {
   list-style-type: none;
   display: flex;
+  opacity: 100;
   gap: 5px;
   margin-left: auto;
   padding: 0;
@@ -133,6 +134,7 @@ body {
   text-decoration: none;
   color: rgb(0, 0, 0);
   font-size: 24px;
+  opacity: 100;
   transition: all 0.3s ease;
   font-weight: 400;
   padding: 10px 20px;
@@ -143,6 +145,8 @@ body {
   background-color: #b4c79d;
   color: rgb(0, 0, 0);
   border-radius: 50px;
+    opacity: 100;
+
 }
 
 .navbar-links a:hover {
@@ -153,9 +157,8 @@ body {
 .navbar-line {
   width: 95%;
   height: 1.5px;
-  background-color: #000000;
   margin: 5px auto;
-  opacity: 50%;
+  opacity: 100%;
   z-index: 1;
 }
 
