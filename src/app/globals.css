@@ -3272,15 +3272,6 @@ nav ul li a.active {
 /* ADDITIONAL RESPONSIVE FIXES - These override problematic styles */
 
 /* Global overflow fixes */
-html,
-body {
-  overflow-x: hidden !important;
-  max-width: 100vw !important;
-}
-
-* {
-  box-sizing: border-box;
-}
 
 /* Container width fixes */
 @media (max-width: 1440px) {
