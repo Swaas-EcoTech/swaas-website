@@ -1,7 +1,7 @@
 import BottomDecorations from "../components/BottomDecorations";
 import Navbar from "../components/Navbar";
 import DecorativeLeaves from "../components/DecorativeLeaves";
-
+import './collabs.css'
 const Collab = () => {
   return (
     <div>

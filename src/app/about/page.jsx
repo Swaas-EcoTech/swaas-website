@@ -2,7 +2,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import DecorativeLeaves from '../components/DecorativeLeaves';
-
+import "./about.css"
 
 const About = () => {
   return (

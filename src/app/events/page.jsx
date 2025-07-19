@@ -5,6 +5,7 @@ import EventCard from '../components/EventsCard.jsx';
 import Navbar from '../components/Navbar.jsx';
 import DecorativeLeaves from '../components/DecorativeLeaves.jsx';
 import BottomDecorations from '../components/BottomDecorations.jsx';
+import "../globals.css"
 const Events = () => {
   const [selectedEvent, setSelectedEvent] = useState("Past Events");
 

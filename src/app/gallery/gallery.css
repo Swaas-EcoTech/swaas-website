@@ -1,0 +1,284 @@
+/* Gallery Page Styles */
+.circular-gallery {
+  display: flex;
+  width: 100%;
+  height: 120%;
+  cursor: grab;
+}
+
+.circular-gallery:active {
+  cursor: grabbing;
+}
+
+.gallery-container {
+  min-height: 100%;
+  background-position: center;
+  padding: 3rem 0rem;
+}
+
+.gallery-content {
+  position: relative;
+}
+
+/* Title section */
+.gallery-title-section {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  position: relative;
+}
+
+.gallery-title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery-title {
+  background-color: white;
+  transition: all 0.3s ease-in-out;
+  border-radius: 9999px;
+  width: 24rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.gallery-title:hover {
+  box-shadow: 0 6px 12px rgba(85, 107, 47, 0.7);
+  transform: translateY(-2px);
+}
+
+/* Diamond icons */
+.diamond-icon {
+  animation: pulse 3s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+/* Wavy line with leaf */
+.wavy-line-container {
+  margin: 3rem auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.wavy-line-container svg {
+  max-width: 100%;
+}
+
+.gallery-leaf {
+  position: absolute;
+  bottom: -20px;
+  max-width: 80px;
+  transform: translateX(20px);
+}
+
+/* Gallery image containers */
+.gallery-image-container {
+  position: relative;
+  margin: 1rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery-image-container:hover {
+  transform: translateY(-5px);
+}
+
+.gallery-image-placeholder {
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-image-container.rounded .gallery-image-placeholder {
+  width: 16rem;
+  height: 16rem;
+  border-radius: 50%;
+}
+
+.gallery-image-container.rounded-square .gallery-image-placeholder {
+  width: 20rem;
+  height: 16rem;
+  border-radius: 2.5rem;
+}
+
+.gallery-image-container::after {
+  content: "";
+  position: absolute;
+  bottom: -0.75rem;
+  right: -0.75rem;
+  background-color: #648a5e;
+  z-index: 0;
+}
+
+.gallery-image-container.rounded::after {
+  width: 16rem;
+  height: 16rem;
+  border-radius: 50%;
+}
+
+.gallery-image-container.rounded-square::after {
+  width: 20rem;
+  height: 16rem;
+  border-radius: 2.5rem;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* Images sections */
+.gallery-images-top-row,
+.gallery-images-bottom-row {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.gallery-images-bottom-row {
+  margin-top: 3rem;
+}
+
+/* Decorative elements */
+.decorative-leaf {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.left-leaf {
+  bottom: 10%;
+  left: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150"><path d="M10 140C20 120 30 100 50 90C70 80 90 80 110 90C130 100 140 120 145 140" stroke="%23648a5e" stroke-width="1.5" fill="none"/><path d="M30 130C40 110 50 90 70 80C90 70 110 70 130 80" stroke="%23648a5e" stroke-width="1.5" fill="none"/><path d="M50 120C60 100 70 80 90 70C110 60 130 60 150 70" stroke="%23648a5e" stroke-width="1.5" fill="none"/></svg>');
+}
+
+.right-leaf {
+  top: 20%;
+  right: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150"><path d="M140 10C120 20 100 30 90 50C80 70 80 90 90 110C100 130 120 140 140 145" stroke="%23648a5e" stroke-width="1.5" fill="none"/><path d="M130 30C110 40 90 50 80 70C70 90 70 110 80 130" stroke="%23648a5e" stroke-width="1.5" fill="none"/><path d="M120 50C100 60 80 70 70 90C60 110 60 130 70 150" stroke="%23648a5e" stroke-width="1.5" fill="none"/></svg>');
+}
+
+.bottom-curve {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 150px;
+  background-color: #b4c79d;
+  border-top-left-radius: 100%;
+  z-index: -1;
+}
+
+/* Gallery Responsive Styles */
+@media (max-width: 1024px) {
+  .gallery-title {
+    width: 20rem;
+    font-size: 2rem;
+  }
+
+  .gallery-image-container.rounded .gallery-image-placeholder,
+  .gallery-image-container.rounded::after {
+    width: 14rem;
+    height: 14rem;
+  }
+
+  .gallery-image-container.rounded-square .gallery-image-placeholder,
+  .gallery-image-container.rounded-square::after {
+    width: 18rem;
+    height: 14rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-title {
+    width: 16rem;
+    height: 3.5rem;
+    font-size: 1.75rem;
+    width: clamp(200px, 80vw, 300px) !important;
+    font-size: clamp(1rem, 4vw, 1.5rem) !important;
+  }
+
+  .gallery-image-container.rounded .gallery-image-placeholder,
+  .gallery-image-container.rounded::after {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .gallery-image-container.rounded-square .gallery-image-placeholder,
+  .gallery-image-container.rounded-square::after {
+    width: 16rem;
+    height: 12rem;
+  }
+
+  .wavy-line-container svg {
+    width: 90%;
+  }
+
+  .gallery-images-top-row,
+  .gallery-images-bottom-row {
+    justify-content: center !important;
+    gap: 1rem !important;
+  }
+
+  .gallery-image-container {
+    margin: 0.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-title-section {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .gallery-title {
+    width: 14rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+
+  .gallery-image-container.rounded .gallery-image-placeholder,
+  .gallery-image-container.rounded::after {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .gallery-image-container.rounded-square .gallery-image-placeholder,
+  .gallery-image-container.rounded-square::after {
+    width: 14rem;
+    height: 10rem;
+  }
+
+  .decorative-leaf {
+    width: 100px;
+    height: 100px;
+  }
+}

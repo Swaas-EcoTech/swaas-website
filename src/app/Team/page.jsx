@@ -15,17 +15,6 @@ const Team = () => {
       <DecorativeLeaves />
     <div className="pageBackground">
       <div className="teamContainer">
-        {/* <img
-          src={'/image-5.png'}
-          alt="Decorative Leaf"
-          className={`leafDecoration leafTopRight`}
-        />
-        <img
-          src={'/image-5.png'}
-          alt="Decorative Leaf"
-          className={`leafDecoration leafBottomLeft`}
-        /> */}
-
         <div className={`diamondDecoration diamond1`}></div>
         <div className={`diamondDecoration diamond2`}></div>
         <div className={`diamondDecoration diamond3`}></div>

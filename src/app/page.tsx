@@ -2,6 +2,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import DecorativeLeaves from "./components/DecorativeLeaves";
+
 const Home = () => {
   return (
     <div className="">

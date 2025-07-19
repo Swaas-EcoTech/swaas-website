@@ -1,8 +1,9 @@
-'use client';
-import Navbar from "../components/Navbar"
-import DecorativeLeaves from '../components/DecorativeLeaves';
-import Masonry from '../components/GalleryC';
-import Header from '../components/grid';
+"use client";
+import Navbar from "../components/Navbar";
+import DecorativeLeaves from "../components/DecorativeLeaves";
+import Masonry from "../components/GalleryC";
+import Header from "../components/grid";
+import "./gallery.css";
 const DiamondIcon = () => {
   return (
     <svg
@@ -20,114 +21,576 @@ const DiamondIcon = () => {
         strokeWidth="1.5"
       />
     </svg>
-  )
-}
+  );
+};
 
 const Gallery = () => {
-  const items = [
-    {
-      id: "1",
-      img: "/Gallery/BottleForChange2.jpg",
-      url: "https://example.com/one",
-      height: 400,
-    },
-    {
-      id: "2",
-      img: "https://picsum.photos/id/1011/600/750?grayscale",
-      url: "https://example.com/two",
-      height: 250,
-    },
-    {
-      id: "3",
-      img: "https://picsum.photos/id/1020/600/800?grayscale",
-      url: "https://example.com/three",
-      height: 600,
-    },
-    {
-      id: "4",
-      img: "https://picsum.photos/id/1018/600/700?grayscale",
-      url: "https://example.com/four",
-      height: 350,
-    },
-    {
-      id: "5",
-      img: "/Events/BottleForChange.jpg",
-      url: "https://example.com/five",
-      height: 500,
-    },
-    {
-      id: "6",
-      img: "https://picsum.photos/id/1019/600/650?grayscale",
-      url: "https://example.com/six",
-      height: 300,
-    },
-    {
-      id: "7",
-      img: "https://picsum.photos/id/1021/600/750?grayscale",
-      url: "https://example.com/seven",
-      height: 450,
-    },
-    {
-      id: "8",
-      img: "https://picsum.photos/id/1022/600/900?grayscale",
-      url: "https://example.com/eight",
-      height: 550,
-    },
-    {
-      id: "9",
-      img: "https://picsum.photos/id/1023/600/700?grayscale",
-      url: "https://example.com/nine",
-      height: 400,
-    },
-    {
-      id: "10",
-      img: "https://picsum.photos/id/1024/600/800?grayscale",
-      url: "https://example.com/ten",
-      height: 480,
-    },
-    {
-      id: "11",
-      img: "https://picsum.photos/id/1025/600/650?grayscale",
-      url: "https://example.com/eleven",
-      height: 320,
-    },
-    {
-      id: "12",
-      img: "https://picsum.photos/id/1026/600/750?grayscale",
-      url: "https://example.com/twelve",
-      height: 380,
-    },
-        {
-      id: "12",
-      img: "https://picsum.photos/id/1026/600/750?grayscale",
-      url: "https://example.com/twelve",
-      height: 460,
-    },
-        {
-      id: "13",
-      img: "https://picsum.photos/id/1026/600/750?grayscale",
-      url: "https://example.com/twelve",
-      height: 380,
-    },
-        {
-      id: "14",
-      img: "https://picsum.photos/id/1026/600/750?grayscale",
-      url: "https://example.com/twelve",
-      height: 380,
-    },
-        {
-      id: "15",
-      img: "https://picsum.photos/id/1026/600/750?grayscale",
-      url: "https://example.com/twelve",
-      height: 380,
-    },
-    {
-      id: "16",
-      img: "https://picsum.photos/id/1026/600/750?grayscale",
-      url: "https://example.com/twelve",
-      height: 580,
-    },
-  ];
+const items = [
+  {
+    id: "1",
+    img: "/Gallery/1.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 631,
+  },
+  {
+    id: "4",
+    img: "/Gallery/4.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 689,
+  },
+  {
+    id: "5",
+    img: "/Gallery/5.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 563,
+  },
+  {
+    id: "7",
+    img: "/Gallery/7.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 521,
+  },
+  {
+    id: "9",
+    img: "/Gallery/9.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 596,
+  },
+  {
+    id: "10",
+    img: "/Gallery/10.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 1203,
+  },
+  {
+    id: "11",
+    img: "/Gallery/11.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 657,
+  },
+  {
+    id: "15",
+    img: "/Gallery/15.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 763,
+  },
+  {
+    id: "17",
+    img: "/Gallery/17.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 621,
+  },
+  {
+    id: "18",
+    img: "/Gallery/18.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 879,
+  },
+  {
+    id: "21",
+    img: "/Gallery/21.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 373,
+  },
+  {
+    id: "32",
+    img: "/Gallery/32.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 459,
+  },
+  {
+    id: "33",
+    img: "/Gallery/33.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 371,
+  },
+  {
+    id: "34",
+    img: "/Gallery/34.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 455,
+  },
+  {
+    id: "35",
+    img: "/Gallery/35.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 536,
+  },
+  {
+    id: "36",
+    img: "/Gallery/36.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 488,
+  },
+  {
+    id: "37",
+    img: "/Gallery/37.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 307,
+  },
+  {
+    id: "38",
+    img: "/Gallery/38.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 596,
+  },
+  {
+    id: "39",
+    img: "/Gallery/39.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 485,
+  },
+  {
+    id: "40",
+    img: "/Gallery/40.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 476,
+  },
+  {
+    id: "41",
+    img: "/Gallery/41.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 428,
+  },
+  {
+    id: "42",
+    img: "/Gallery/42.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 387,
+  },
+  {
+    id: "43",
+    img: "/Gallery/43.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 503,
+  },
+  {
+    id: "44",
+    img: "/Gallery/44.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 377,
+  },
+  {
+    id: "46",
+    img: "/Gallery/46.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 562,
+  },
+  {
+    id: "47",
+    img: "/Gallery/47.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 689,
+  },
+  {
+    id: "48",
+    img: "/Gallery/48.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 912,
+  },
+  {
+    id: "49",
+    img: "/Gallery/49.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 981,
+  },
+  {
+    id: "50",
+    img: "/Gallery/50.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 558,
+  },
+  {
+    id: "51",
+    img: "/Gallery/51.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 348,
+  },
+  {
+    id: "52",
+    img: "/Gallery/52.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 259,
+  },
+  {
+    id: "71",
+    img: "/Gallery/71s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 512,
+  },
+  {
+    id: "73",
+    img: "/Gallery/73s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 266,
+  },
+  {
+    id: "77",
+    img: "/Gallery/77s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 489,
+  },
+  {
+    id: "79",
+    img: "/Gallery/79s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 453,
+  },
+  {
+    id: "88",
+    img: "/Gallery/88s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 548,
+  },
+  {
+    id: "90",
+    img: "/Gallery/90s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 413,
+  },
+  {
+    id: "91",
+    img: "/Gallery/91s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 283,
+  },
+  {
+    id: "100",
+    img: "/Gallery/100s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 332,
+  },
+  {
+    id: "104",
+    img: "/Gallery/104s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 314,
+  },
+  {
+    id: "105",
+    img: "/Gallery/105s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 372,
+  },
+  {
+    id: "106",
+    img: "/Gallery/106s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 608,
+  },
+  {
+    id: "112",
+    img: "/Gallery/112s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 538,
+  },
+  {
+    id: "114",
+    img: "/Gallery/114s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 755,
+  },
+  {
+    id: "119",
+    img: "/Gallery/119s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 281,
+  },
+  {
+    id: "126",
+    img: "/Gallery/126s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 873,
+  },
+  {
+    id: "137",
+    img: "/Gallery/137s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 443,
+  },
+  {
+    id: "139",
+    img: "/Gallery/139s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 364,
+  },
+  {
+    id: "142",
+    img: "/Gallery/142s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 520,
+  },
+  {
+    id: "143",
+    img: "/Gallery/143s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 285,
+  },
+  {
+    id: "144",
+    img: "/Gallery/144s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 267,
+  },
+  {
+    id: "145",
+    img: "/Gallery/145s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 389,
+  },
+  {
+    id: "150",
+    img: "/Gallery/150s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 558,
+  },
+  {
+    id: "153",
+    img: "/Gallery/153s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 499,
+  },
+  {
+    id: "154",
+    img: "/Gallery/154s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 400,
+  },
+  {
+    id: "155",
+    img: "/Gallery/155s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 255,
+  },
+  {
+    id: "157",
+    img: "/Gallery/157s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 552,
+  },
+  {
+    id: "161",
+    img: "/Gallery/161s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 411,
+  },
+  {
+    id: "185",
+    img: "/Gallery/185s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 473,
+  },
+  {
+    id: "195",
+    img: "/Gallery/195s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 462,
+  },
+  {
+    id: "205",
+    img: "/Gallery/205s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 261,
+  },
+  {
+    id: "206",
+    img: "/Gallery/206s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 575,
+  },
+  {
+    id: "221",
+    img: "/Gallery/221s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 330,
+  },
+  {
+    id: "228",
+    img: "/Gallery/228s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 515,
+  },
+  {
+    id: "233",
+    img: "/Gallery/233s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 352,
+  },
+  {
+    id: "235",
+    img: "/Gallery/235s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 292,
+  },
+  {
+    id: "236",
+    img: "/Gallery/236s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 572,
+  },
+  {
+    id: "250",
+    img: "/Gallery/250s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 359,
+  },
+  {
+    id: "256",
+    img: "/Gallery/256s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 303,
+  },
+  {
+    id: "269",
+    img: "/Gallery/269s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 506,
+  },
+  {
+    id: "270",
+    img: "/Gallery/270s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 409,
+  },
+  {
+    id: "272",
+    img: "/Gallery/272s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 565,
+  },
+  {
+    id: "306",
+    img: "/Gallery/306s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 522,
+  },
+  {
+    id: "307",
+    img: "/Gallery/307s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 327,
+  },
+  {
+    id: "308",
+    img: "/Gallery/308s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 579,
+  },
+  {
+    id: "311",
+    img: "/Gallery/311s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 278,
+  },
+  {
+    id: "312",
+    img: "/Gallery/312s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 365,
+  },
+  {
+    id: "314",
+    img: "/Gallery/314s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 369,
+  },
+  {
+    id: "334",
+    img: "/Gallery/334s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 512,
+  },
+  {
+    id: "336",
+    img: "/Gallery/336s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 486,
+  },
+  {
+    id: "337",
+    img: "/Gallery/337s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 542,
+  },
+  {
+    id: "339",
+    img: "/Gallery/339s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 307,
+  },
+  {
+    id: "340",
+    img: "/Gallery/340s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 281,
+  },
+  {
+    id: "341",
+    img: "/Gallery/341s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 479,
+  },
+  {
+    id: "343",
+    img: "/Gallery/343s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 507,
+  },
+  {
+    id: "363",
+    img: "/Gallery/363s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 423,
+  },
+  {
+    id: "367",
+    img: "/Gallery/367s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 625,
+  },
+  {
+    id: "464",
+    img: "/Gallery/464s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 543,
+  },
+  {
+    id: "465",
+    img: "/Gallery/465s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 750,
+  },
+  {
+    id: "466",
+    img: "/Gallery/466s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 431,
+  },
+  {
+    id: "467",
+    img: "/Gallery/467s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 456,
+  },
+  {
+    id: "468",
+    img: "/Gallery/468s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 752,
+  },
+  {
+    id: "469",
+    img: "/Gallery/469s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 565,
+  },
+  {
+    id: "471",
+    img: "/Gallery/471s.jpg",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 501,
+  },
+];
 
   return (
     <div>
@@ -139,7 +602,7 @@ const Gallery = () => {
           <section className="gallery-title-section">
             <DiamondIcon />
             <div className="gallery-title-container">
-            <Header title={"GALLERY"}/>
+              <Header title={"GALLERY"} />
             </div>
             <DiamondIcon />
           </section>
@@ -203,8 +666,13 @@ const Gallery = () => {
         }
 
         @keyframes gentle-rotate {
-          0%, 100% { transform: rotate(0deg); }
-          50% { transform: rotate(45deg); }
+          0%,
+          100% {
+            transform: rotate(0deg);
+          }
+          50% {
+            transform: rotate(45deg);
+          }
         }
 
         .masonry-wrapper {
@@ -255,12 +723,12 @@ const Gallery = () => {
             font-size: 2.5rem;
             letter-spacing: 4px;
           }
-          
+
           .gallery-title-section {
             gap: 20px;
             margin: 40px 0 30px 0;
           }
-          
+
           .masonry-wrapper {
             margin-top: 40px;
             padding: 0 5px;
@@ -272,14 +740,14 @@ const Gallery = () => {
             font-size: 2rem;
             letter-spacing: 2px;
           }
-          
+
           .gallery-content {
             padding: 0 10px;
           }
         }
       `}</style>
     </div>
-  )
-}
+  );
+};
 
 export default Gallery;

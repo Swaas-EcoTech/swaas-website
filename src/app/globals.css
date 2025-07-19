@@ -8,7 +8,6 @@ body {
   /* overflow-x: hidden; */
   width: 100%;
 }
-
 /* app/globals.css */
 .App {
   text-align: center;
@@ -2804,8 +2803,7 @@ nav ul li a.active {
 .leafTopRight {
   position: fixed;
   top: 150px;
-  right: -0.2%;
-  width: 160px;
+  right: 0px;  width: 160px;
   height: auto;
   opacity: 1;
   z-index: -1;
