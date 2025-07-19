@@ -5,8 +5,9 @@ import { cookies } from "next/headers";
 
 export async function DELETE(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
+  const { params } = context;
   const cookieStore = cookies();
   const isAdmin = cookieStore.get("isAdmin")?.value;
 
@@ -31,8 +32,9 @@ export async function DELETE(
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: { id: string } }
 ) {
+  const { params } = context;
   const cookieStore = cookies();
   const isAdmin = cookieStore.get("isAdmin")?.value;
 
