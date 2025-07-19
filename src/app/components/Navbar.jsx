@@ -100,7 +100,6 @@ function Navbar() {
         </ul>
       </nav>
 
-      <div className="navbar-line"></div>
 
       <style jsx>{`
         .navbar {

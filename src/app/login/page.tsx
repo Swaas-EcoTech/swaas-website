@@ -33,7 +33,7 @@ export default function LoginPage() {
       } else {
         setError("Invalid password. Please try again.");
       }
-    } catch (err) {
+    } catch {
       setError("Login failed. Please check your connection.");
     } finally {
       setLoading(false);

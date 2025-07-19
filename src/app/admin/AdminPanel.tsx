@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import './AdminPanel.css'; // Your enhanced CSS file
+import "./AdminPanel.css"; // Your enhanced CSS file
 import Navbar from "../components/Navbar";
 interface Post {
   _id: string;
@@ -15,7 +15,11 @@ export default function AdminPanel() {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(false);
   const [editingPost, setEditingPost] = useState<Post | null>(null);
-  const [editForm, setEditForm] = useState({ name: '', content: '', imageUrl: '' });
+  const [editForm, setEditForm] = useState({
+    name: "",
+    content: "",
+    imageUrl: "",
+  });
   const [deleteLoading, setDeleteLoading] = useState<string | null>(null);
   const router = useRouter();
 
@@ -33,7 +37,12 @@ export default function AdminPanel() {
   };
 
   const deletePost = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this post? This action cannot be undone.")) return;
+    if (
+      !confirm(
+        "Are you sure you want to delete this post? This action cannot be undone."
+      )
+    )
+      return;
 
     setDeleteLoading(id);
     try {
@@ -52,18 +61,18 @@ export default function AdminPanel() {
     setEditForm({
       name: post.name,
       content: post.content,
-      imageUrl: post.imageUrl || ''
+      imageUrl: post.imageUrl || "",
     });
   };
 
   const cancelEdit = () => {
     setEditingPost(null);
-    setEditForm({ name: '', content: '', imageUrl: '' });
+    setEditForm({ name: "", content: "", imageUrl: "" });
   };
 
   const saveEdit = async () => {
     if (!editingPost) return;
-    
+
     // Basic validation
     if (!editForm.name.trim() || !editForm.content.trim()) {
       alert("Please fill in both title and content fields.");
@@ -72,7 +81,9 @@ export default function AdminPanel() {
 
     setLoading(true);
     try {
-      await axios.put(`/api/posts/${editingPost._id}`, editForm, { withCredentials: true });
+      await axios.put(`/api/posts/${editingPost._id}`, editForm, {
+        withCredentials: true,
+      });
       await fetchPosts(); // Refresh after update
       cancelEdit();
     } catch (err) {
@@ -97,12 +108,12 @@ export default function AdminPanel() {
   // Helper function to truncate content for display
   const truncateContent = (content: string, maxLength: number = 200) => {
     if (content.length <= maxLength) return content;
-    return content.substring(0, maxLength) + '...';
+    return content.substring(0, maxLength) + "...";
   };
 
   return (
     <div className="admin-panel">
-            <Navbar/>
+      <Navbar />
 
       <header className="admin-header">
         <div className="header-content">
@@ -126,22 +137,30 @@ export default function AdminPanel() {
             <div className="empty-icon">🌿</div>
             <h3>No Content Yet</h3>
             <p>
-              Your SWAAS content will appear here once you create posts. 
-              Start sharing your society's impactful initiatives and environmental projects.
+              {`Your SWAAS content will appear here once you create posts.
+  Start sharing your society's impactful initiatives and environmental projects.`}
             </p>
           </div>
         ) : (
           posts.map((post) => (
             <article className="post-card" key={post._id}>
               {editingPost?._id === post._id ? (
-                <form className="edit-form" onSubmit={(e) => { e.preventDefault(); saveEdit(); }}>
+                <form
+                  className="edit-form"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    saveEdit();
+                  }}
+                >
                   <div className="form-group">
                     <label htmlFor={`title-${post._id}`}>Post Title</label>
                     <input
                       id={`title-${post._id}`}
                       type="text"
                       value={editForm.name}
-                      onChange={(e) => setEditForm({ ...editForm, name: e.target.value })}
+                      onChange={(e) =>
+                        setEditForm({ ...editForm, name: e.target.value })
+                      }
                       className="edit-input"
                       placeholder="Enter post title..."
                       maxLength={100}
@@ -152,7 +171,9 @@ export default function AdminPanel() {
                     <textarea
                       id={`content-${post._id}`}
                       value={editForm.content}
-                      onChange={(e) => setEditForm({ ...editForm, content: e.target.value })}
+                      onChange={(e) =>
+                        setEditForm({ ...editForm, content: e.target.value })
+                      }
                       className="edit-textarea"
                       rows={6}
                       placeholder="Share your society's initiatives, events, or environmental projects..."
@@ -160,27 +181,35 @@ export default function AdminPanel() {
                     />
                   </div>
                   <div className="form-group">
-                    <label htmlFor={`image-${post._id}`}>Image URL (Optional)</label>
+                    <label htmlFor={`image-${post._id}`}>
+                      Image URL (Optional)
+                    </label>
                     <input
                       id={`image-${post._id}`}
                       type="url"
                       value={editForm.imageUrl}
-                      onChange={(e) => setEditForm({ ...editForm, imageUrl: e.target.value })}
+                      onChange={(e) =>
+                        setEditForm({ ...editForm, imageUrl: e.target.value })
+                      }
                       className="edit-input"
                       placeholder="https://example.com/image.jpg"
                     />
                   </div>
                   <div className="edit-actions">
-                    <button 
-                      type="submit" 
-                      disabled={loading || !editForm.name.trim() || !editForm.content.trim()} 
+                    <button
+                      type="submit"
+                      disabled={
+                        loading ||
+                        !editForm.name.trim() ||
+                        !editForm.content.trim()
+                      }
                       className="save-button"
                     >
-                      {loading ? '🌱 Saving...' : 'Save Changes'}
+                      {loading ? "🌱 Saving..." : "Save Changes"}
                     </button>
-                    <button 
-                      type="button" 
-                      onClick={cancelEdit} 
+                    <button
+                      type="button"
+                      onClick={cancelEdit}
                       className="cancel-button"
                       disabled={loading}
                     >
@@ -208,25 +237,25 @@ export default function AdminPanel() {
                         title="Delete this post"
                       >
                         <span className="delete-icon">
-                          {deleteLoading === post._id ? '⏳' : ' Delete '}
+                          {deleteLoading === post._id ? "⏳" : " Delete "}
                         </span>
                       </button>
                     </div>
                   </header>
-                  
+
                   <div className="post-text">
                     {truncateContent(post.content)}
                   </div>
-                  
+
                   {post.imageUrl && (
                     <div className="post-image-container">
-                      <img 
-                        src={post.imageUrl} 
+                      <img
+                        src={post.imageUrl}
                         alt={`Visual content for ${post.name}`}
                         className="post-image"
                         loading="lazy"
                         onError={(e) => {
-                          e.currentTarget.style.display = 'none';
+                          e.currentTarget.style.display = "none";
                         }}
                       />
                     </div>
