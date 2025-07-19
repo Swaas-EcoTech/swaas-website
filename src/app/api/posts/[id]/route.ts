@@ -3,11 +3,15 @@ import dbConnect from "@/lib/mongodb";
 import Post from "@/models/Post";
 import { cookies } from "next/headers";
 
+interface RouteContext {
+  params: Promise<{ id: string }>;
+}
+
 export async function DELETE(
   req: NextRequest,
-  context: { params: { id: string } }
+  context: RouteContext
 ) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const isAdmin = cookieStore.get("isAdmin")?.value;
 
   if (isAdmin !== "true") {
@@ -17,7 +21,8 @@ export async function DELETE(
   await dbConnect();
 
   try {
-    const deleted = await Post.findByIdAndDelete(context.params.id);
+    const params = await context.params;
+    const deleted = await Post.findByIdAndDelete(params.id);
     if (!deleted) {
       return NextResponse.json({ error: "Post not found" }, { status: 404 });
     }
@@ -30,9 +35,9 @@ export async function DELETE(
 
 export async function PUT(
   req: NextRequest,
-  context: { params: { id: string } }
+  context: RouteContext
 ) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const isAdmin = cookieStore.get("isAdmin")?.value;
 
   if (isAdmin !== "true") {
@@ -43,7 +48,8 @@ export async function PUT(
 
   try {
     const body = await req.json();
-    const updated = await Post.findByIdAndUpdate(context.params.id, body, {
+    const params = await context.params;
+    const updated = await Post.findByIdAndUpdate(params.id, body, {
       new: true,
       runValidators: true,
     });
