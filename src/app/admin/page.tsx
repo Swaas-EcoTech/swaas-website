@@ -3,7 +3,8 @@ import { redirect } from "next/navigation";
 import AdminPanel from "./AdminPanel";
 
 export default async function AdminPage() {
-  const isAdmin = cookies().get("isAdmin")?.value;
+  const cookieStore = await cookies();
+  const isAdmin = cookieStore.get("isAdmin")?.value;
 
   if (isAdmin !== "true") {
     redirect("/login");
