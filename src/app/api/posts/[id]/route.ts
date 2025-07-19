@@ -7,7 +7,6 @@ export async function DELETE(
   req: NextRequest,
   context: { params: { id: string } }
 ) {
-  const { params } = context;
   const cookieStore = cookies();
   const isAdmin = cookieStore.get("isAdmin")?.value;
 
@@ -18,11 +17,10 @@ export async function DELETE(
   await dbConnect();
 
   try {
-    const deleted = await Post.findByIdAndDelete(params.id);
+    const deleted = await Post.findByIdAndDelete(context.params.id);
     if (!deleted) {
       return NextResponse.json({ error: "Post not found" }, { status: 404 });
     }
-
     return NextResponse.json({ message: "Deleted successfully" });
   } catch (err) {
     console.error(err);
@@ -34,7 +32,6 @@ export async function PUT(
   req: NextRequest,
   context: { params: { id: string } }
 ) {
-  const { params } = context;
   const cookieStore = cookies();
   const isAdmin = cookieStore.get("isAdmin")?.value;
 
@@ -45,8 +42,8 @@ export async function PUT(
   await dbConnect();
 
   try {
-    const body = await req.json(); // read request body
-    const updated = await Post.findByIdAndUpdate(params.id, body, {
+    const body = await req.json();
+    const updated = await Post.findByIdAndUpdate(context.params.id, body, {
       new: true,
       runValidators: true,
     });
