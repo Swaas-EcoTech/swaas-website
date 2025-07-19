@@ -47,7 +47,7 @@ export default function LoginPage() {
   };
 
   return (
-    <dov>
+    <div>
       <Navbar/>
     <div className="login-container">
       <div className="login-background">
@@ -192,6 +192,6 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
-    </dov>
+    </div>
   );
 }
