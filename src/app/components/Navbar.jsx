@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Head from "next/head";
+import { Shadow } from "ogl";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -14,7 +15,6 @@ function Navbar() {
   };
 
   const backgroundColor = pathname === "/" ? "#778B63" : "#ffffff";
-
   return (
     <>
       {/* <Head>
@@ -26,7 +26,10 @@ function Navbar() {
 
       <nav className="navbar" style={{ backgroundColor }}>
         <div className="navbar-logo">
-          <img src="/logo-swaas.jpg" alt="Logo" />
+          <img
+            src={pathname === "/" ? "/logohome.png" : "/logo-swaas.jpg"}
+            alt="Logo"
+          />
         </div>
 
         <div className="hamburger" onClick={toggleMenu}>
@@ -42,12 +45,18 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="/about" className={pathname === "/about" ? "active" : ""}>
-              About
+            <Link
+              href="/community"
+              className={pathname === "/community" ? "active" : ""}
+            >
+              Community
             </Link>
           </li>
           <li>
-            <Link href="/events" className={pathname === "/events" ? "active" : ""}>
+            <Link
+              href="/events"
+              className={pathname === "/events" ? "active" : ""}
+            >
               Events
             </Link>
           </li>
@@ -57,18 +66,35 @@ function Navbar() {
             </Link>
           </li>
           <li>
-            <Link href="/gallery" className={pathname === "/gallery" ? "active" : ""}>
+            <Link
+              href="/gallery"
+              className={pathname === "/gallery" ? "active" : ""}
+            >
               Gallery
             </Link>
           </li>
           <li>
-            <Link href="/collabs" className={pathname === "/collabs" ? "active" : ""}>
+            <Link
+              href="/collabs"
+              className={pathname === "/collabs" ? "active" : ""}
+            >
               Collabs
             </Link>
           </li>
           <li>
-            <Link href="/Alumni" className={pathname === "/Alumni" ? "active" : ""}>
+            <Link
+              href="/Alumni"
+              className={pathname === "/Alumni" ? "active" : ""}
+            >
               Alumni
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/about"
+              className={pathname === "/about" ? "active" : ""}
+            >
+              About
             </Link>
           </li>
         </ul>
@@ -83,8 +109,8 @@ function Navbar() {
           align-items: center;
           padding: 5px 5px;
           color: rgb(0, 0, 0);
-          font-family: 'Inika', serif;
-          opacity:100;
+          font-family: "Inika", serif;
+          opacity: 100;
           position: relative;
           z-index: 100;
         }
@@ -103,7 +129,7 @@ function Navbar() {
           display: flex;
           gap: 5px;
           margin-left: auto;
-          opacity:100;
+          opacity: 100;
           padding: 0;
         }
 
@@ -117,7 +143,7 @@ function Navbar() {
           font-size: 24px;
           transition: all 0.3s ease;
           font-weight: 400;
-            opacity: 100;
+          opacity: 100;
 
           padding: 10px 20px;
           border-radius: 18px;
@@ -146,7 +172,6 @@ function Navbar() {
           width: fit-content;
           top: 120%;
         }
-
         .dropdown-content a {
           width: max-content;
           color: black;
