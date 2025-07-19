@@ -46,6 +46,14 @@ function Navbar() {
           </li>
           <li>
             <Link
+              href="/about"
+              className={pathname === "/about" ? "active" : ""}
+            >
+              About
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/community"
               className={pathname === "/community" ? "active" : ""}
             >
@@ -87,14 +95,6 @@ function Navbar() {
               className={pathname === "/Alumni" ? "active" : ""}
             >
               Alumni
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/about"
-              className={pathname === "/about" ? "active" : ""}
-            >
-              About
             </Link>
           </li>
         </ul>
@@ -154,7 +154,7 @@ function Navbar() {
           background-color: #b4c79d;
           color: rgb(0, 0, 0);
           justify-content: center;
-          align-item:center;
+          align-item: center;
           border-radius: 50px;
         }
 
@@ -213,7 +213,7 @@ function Navbar() {
             top: 80px;
             left: 15px;
             right: 15px;
-            padding: 7px 14px; 
+            padding: 7px 14px;
             border-radius: 15px;
             z-index: 99;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

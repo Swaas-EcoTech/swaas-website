@@ -1,5 +1,13 @@
-'use client';
-import { Camera, Mesh, Plane, Program, Renderer, Texture, Transform } from "ogl";
+"use client";
+import {
+  Camera,
+  Mesh,
+  Plane,
+  Program,
+  Renderer,
+  Texture,
+  Transform,
+} from "ogl";
 import { useEffect, useRef } from "react";
 
 function debounce(func, wait) {
@@ -23,7 +31,12 @@ function autoBind(instance) {
   });
 }
 
-function createTextTexture(gl, text, font = "bold 30px monospace", color = "black") {
+function createTextTexture(
+  gl,
+  text,
+  font = "bold 30px monospace",
+  color = "black"
+) {
   const canvas = document.createElement("canvas");
   const context = canvas.getContext("2d");
   context.font = font;
@@ -44,7 +57,14 @@ function createTextTexture(gl, text, font = "bold 30px monospace", color = "blac
 }
 
 class Title {
-  constructor({ gl, plane, renderer, text, textColor = "#000000", font = "30px sans-serif" }) {
+  constructor({
+    gl,
+    plane,
+    renderer,
+    text,
+    textColor = "#000000",
+    font = "30px sans-serif",
+  }) {
     autoBind(this);
     this.gl = gl;
     this.plane = plane;
@@ -55,7 +75,12 @@ class Title {
     this.createMesh();
   }
   createMesh() {
-    const { texture, width, height } = createTextTexture(this.gl, this.text, this.font, this.textColor);
+    const { texture, width, height } = createTextTexture(
+      this.gl,
+      this.text,
+      this.font,
+      this.textColor
+    );
     const geometry = new Plane(this.gl);
     const program = new Program(this.gl, {
       vertex: `
@@ -197,7 +222,10 @@ class Media {
     img.src = this.image;
     img.onload = () => {
       texture.image = img;
-      this.program.uniforms.uImageSizes.value = [img.naturalWidth, img.naturalHeight];
+      this.program.uniforms.uImageSizes.value = [
+        img.naturalWidth,
+        img.naturalHeight,
+      ];
     };
   }
   createMesh() {
@@ -263,13 +291,21 @@ class Media {
     if (viewport) {
       this.viewport = viewport;
       if (this.plane.program.uniforms.uViewportSizes) {
-        this.plane.program.uniforms.uViewportSizes.value = [this.viewport.width, this.viewport.height];
+        this.plane.program.uniforms.uViewportSizes.value = [
+          this.viewport.width,
+          this.viewport.height,
+        ];
       }
     }
     this.scale = this.screen.height / 1500;
-    this.plane.scale.y = (this.viewport.height * (900 * this.scale)) / this.screen.height;
-    this.plane.scale.x = (this.viewport.width * (700 * this.scale)) / this.screen.width;
-    this.plane.program.uniforms.uPlaneSizes.value = [this.plane.scale.x, this.plane.scale.y];
+    this.plane.scale.y =
+      (this.viewport.height * (900 * this.scale)) / this.screen.height;
+    this.plane.scale.x =
+      (this.viewport.width * (700 * this.scale)) / this.screen.width;
+    this.plane.program.uniforms.uPlaneSizes.value = [
+      this.plane.scale.x,
+      this.plane.scale.y,
+    ];
     this.padding = 2;
     this.width = this.plane.scale.x + this.padding;
     this.widthTotal = this.width * this.length;
@@ -326,13 +362,13 @@ class App {
   }
   createMedias(items, bend = 1, textColor, borderRadius, font) {
     const defaultItems = [
-      { image: '/ML.jpg', text: "Mehak Lakhina" },
+      { image: "/ML.jpg", text: "Mehak Lakhina" },
       { image: `/VT.jpg`, text: "Vanshika Tanwar" },
       { image: `/PS1.jpg`, text: "Prableen Singh" },
       { image: `/HK.jpg`, text: "Harjot Kaur" },
-      { image: `/JK.jpg`, text: "Jagrit Khurana" },
       { image: `/PS.jpg`, text: "Prabhsurat Singh" },
       { image: `/I.png`, text: "Ishwardeep Singh" },
+      { image: `/JKb.jpg`, text: "Jagrit Khurana" },
       { image: `/HK.jpg`, text: "Harjot Kaur" },
       { image: `/N.jpg`, text: "Neeraj Gandhi" },
     ];
@@ -374,7 +410,8 @@ class App {
   }
   onWheel(e) {
     const delta = e.deltaY || e.wheelDelta || e.detail;
-    this.scroll.target += (delta > 0 ? this.scrollSpeed : -this.scrollSpeed) * 0.2;
+    this.scroll.target +=
+      (delta > 0 ? this.scrollSpeed : -this.scrollSpeed) * 0.2;
     this.onCheckDebounce();
   }
   onCheck() {
@@ -398,11 +435,17 @@ class App {
     const width = height * this.camera.aspect;
     this.viewport = { width, height };
     if (this.medias) {
-      this.medias.forEach((media) => media.onResize({ screen: this.screen, viewport: this.viewport }));
+      this.medias.forEach((media) =>
+        media.onResize({ screen: this.screen, viewport: this.viewport })
+      );
     }
   }
   update() {
-    this.scroll.current = lerp(this.scroll.current, this.scroll.target, this.scroll.ease);
+    this.scroll.current = lerp(
+      this.scroll.current,
+      this.scroll.target,
+      this.scroll.ease
+    );
     const direction = this.scroll.current > this.scroll.last ? "right" : "left";
     if (this.medias) {
       this.medias.forEach((media) => media.update(this.scroll, direction));
@@ -438,7 +481,11 @@ class App {
     window.removeEventListener("touchstart", this.boundOnTouchDown);
     window.removeEventListener("touchmove", this.boundOnTouchMove);
     window.removeEventListener("touchend", this.boundOnTouchUp);
-    if (this.renderer && this.renderer.gl && this.renderer.gl.canvas.parentNode) {
+    if (
+      this.renderer &&
+      this.renderer.gl &&
+      this.renderer.gl.canvas.parentNode
+    ) {
       this.renderer.gl.canvas.parentNode.removeChild(this.renderer.gl.canvas);
     }
   }
@@ -455,7 +502,15 @@ export default function CircularGallery({
 }) {
   const containerRef = useRef(null);
   useEffect(() => {
-    const app = new App(containerRef.current, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase });
+    const app = new App(containerRef.current, {
+      items,
+      bend,
+      textColor,
+      borderRadius,
+      font,
+      scrollSpeed,
+      scrollEase,
+    });
     return () => {
       app.destroy();
     };
