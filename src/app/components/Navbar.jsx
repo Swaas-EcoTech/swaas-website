@@ -27,7 +27,7 @@ function Navbar() {
       <nav className="navbar" style={{ backgroundColor }}>
         <div className="navbar-logo">
           <img
-            src={pathname === "/" ? "/logohome.png" : "/logo-swaas.jpg"}
+            src={pathname === "/" ? "/logoHome.png" : "/logo-swaas.jpg"}
             alt="Logo"
           />
         </div>
