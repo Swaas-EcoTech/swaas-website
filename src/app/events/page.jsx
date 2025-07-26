@@ -47,9 +47,9 @@ const Events = () => {
               {eventType}
             </button>
           ))}
-          <div className={`wavyLine`}>
+          {/* <div className={`wavyLine`}>
             <img src={'/img1.png'} alt="Wavy line decoration" />
-          </div>
+          </div> */}
         </nav>
 
 <div className={`eventsContainer`}>
@@ -62,15 +62,12 @@ const Events = () => {
       title={event.title}
       description={event.description}
       imageUrl={event.imageUrl}
+      instagramLink={event.instagramLink}
     />
   ))}
 </div>
-
-
-
-        
-      </div>
-      <img
+</div>
+      {/* <img
         src={'/image-14.png'}
         alt="Bottom Left Decoration"
         className={`bottomLeftImage`}
@@ -80,9 +77,9 @@ const Events = () => {
         alt="Bottom Right Decoration"
         className={`bottomRightImage`}
       />
-      
-    </div>
-    </div>
+       */}
+</div>
+</div>
   );
 }
 

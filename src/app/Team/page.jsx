@@ -35,9 +35,6 @@ const Team = () => {
               {team}
             </button>
           ))}
-          <div className="wavyLine">
-            <img src={'/img1.png'} alt="Wavy line decoration" />
-          </div>
         </nav>
 
         <section className={`teamGrid`}>

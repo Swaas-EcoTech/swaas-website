@@ -7,25 +7,25 @@ import Header from "../components/grid";
 import Loader from "../components/Loader"
 import "./gallery.css"
 
-const DiamondIcon = () => {
-  return (
-    <svg
-      width="40"
-      height="40"
-      viewBox="0 0 40 40"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="diamond-icon"
-    >
-      <path
-        d="M20 0L26.7949 13.2051L40 20L26.7949 26.7949L20 40L13.2051 26.7949L0 20L13.2051 13.2051L20 0Z"
-        fill="none"
-        stroke="#556b2f"
-        strokeWidth="1.5"
-      />
-    </svg>
-  )
-}
+// const DiamondIcon = () => {
+//   return (
+//     <svg
+//       width="40"
+//       height="40"
+//       viewBox="0 0 40 40"
+//       fill="none"
+//       xmlns="http://www.w3.org/2000/svg"
+//       className="diamond-icon"
+//     >
+//       <path
+//         d="M20 0L26.7949 13.2051L40 20L26.7949 26.7949L20 40L13.2051 26.7949L0 20L13.2051 13.2051L20 0Z"
+//         fill="none"
+//         stroke="#556b2f"
+//         strokeWidth="1.5"
+//       />
+//     </svg>
+//   )
+// }
 
 const Gallery = () => {
   const [isLoading, setIsLoading] = useState(true)
@@ -646,11 +646,11 @@ const items = [
           <div className="">
             {/* Title section */}
             <section className="gallery-title-section">
-              <DiamondIcon />
+              {/* <DiamondIcon /> */}
               <div className="gallery-title-container">
                 <Header title={"GALLERY"} />
               </div>
-              <DiamondIcon />
+              {/* <DiamondIcon /> */}
             </section>
             <DecorativeLeaves />
             {/* Masonry Gallery */}
