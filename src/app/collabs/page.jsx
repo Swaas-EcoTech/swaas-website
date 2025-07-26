@@ -6,8 +6,22 @@ import DecorativeLeaves from '../components/DecorativeLeaves';
 const Collab = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState({});
+  const [windowWidth, setWindowWidth] = useState(1200); // Default fallback value
   const contentRef = useRef(null);
   const shapesRef = useRef(null);
+
+  // Handle window resize and set initial width
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Set initial width
+    setWindowWidth(window.innerWidth);
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -267,16 +281,13 @@ const Collab = () => {
 
       {/* Navbar Component */}
       <DecorativeLeaves/>
-<Navbar/>
-
+      <Navbar/>
 
       {/* Parallax Background */}
       <div className="parallax-bg" style={{
         transform: `translateY(${scrollY * 0.5}px)`
       }}></div>
 
-      {/* Header Section */}
-      
       {/* Content Section */}
       <div ref={contentRef} style={{
         display: 'flex',
@@ -292,13 +303,13 @@ const Collab = () => {
           data-animate
           className={isVisible['text-content'] ? 'animate-slideInLeft' : ''}
           style={{
-            width: window.innerWidth <= 992 ? '100%' : '60%',
+            width: windowWidth <= 992 ? '100%' : '60%',
             padding: '2rem',
             opacity: isVisible['text-content'] ? 1 : 0
           }}
         >
           <h2 style={{
-            fontSize: window.innerWidth <= 480 ? '2rem' : window.innerWidth <= 768 ? '2.5rem' : '3rem',
+            fontSize: windowWidth <= 480 ? '2rem' : windowWidth <= 768 ? '2.5rem' : '3rem',
             color: 'rgba(94, 120, 90, 1)',
             fontFamily: 'Inika, serif',
             fontWeight: 700,
@@ -309,7 +320,7 @@ const Collab = () => {
           </h2>
           
           <p style={{
-            fontSize: window.innerWidth <= 480 ? '1rem' : window.innerWidth <= 768 ? '1.125rem' : '1.25rem',
+            fontSize: windowWidth <= 480 ? '1rem' : windowWidth <= 768 ? '1.125rem' : '1.25rem',
             lineHeight: '1.6',
             color: 'rgba(94, 120, 90, 1)',
             fontFamily: 'Inika, serif',
@@ -333,7 +344,7 @@ const Collab = () => {
           data-animate
           className={isVisible.shapes ? 'animate-slideInRight' : ''}
           style={{
-            width: window.innerWidth <= 992 ? '100%' : '35%',
+            width: windowWidth <= 992 ? '100%' : '35%',
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
@@ -354,7 +365,7 @@ const Collab = () => {
                 borderRadius: '80px',
                 animationDelay: `${index * 0.1}s`,
                 animationDuration: `${4 + index * 0.5}s`,
-                ...getShapeStyle(num, window.innerWidth)
+                ...getShapeStyle(num, windowWidth)
               }}
             ></div>
           ))}
@@ -377,7 +388,7 @@ const Collab = () => {
           }}
         >
           <h2 style={{
-            fontSize: window.innerWidth <= 480 ? '2rem' : '2.5rem',
+            fontSize: windowWidth <= 480 ? '2rem' : '2.5rem',
             color: 'rgba(94, 120, 90, 1)',
             fontFamily: 'Inika, serif',
             fontWeight: 700,
