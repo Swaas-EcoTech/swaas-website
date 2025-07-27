@@ -33,7 +33,7 @@ const Events = () => {
         <div className={`diamondDecoration diamond4`}></div>
 
         <header className={`teamHeader`}>
-          <h1>Events</h1>
+          <h1>Our Events</h1>
         </header>
 
         <nav className={`categoryNav`}>
@@ -63,6 +63,8 @@ const Events = () => {
       description={event.description}
       imageUrl={event.imageUrl}
       instagramLink={event.instagramLink}
+      projectImages={event.projectImages || []} 
+
     />
   ))}
 </div>
