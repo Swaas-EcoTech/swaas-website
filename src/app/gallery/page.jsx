@@ -645,11 +645,16 @@ const items = [
         <div className="">
           <div className="">
             {/* Title section */}
-            <section className="gallery-title-section">
+            <section className="">
               {/* <DiamondIcon /> */}
-              <div className="gallery-title-container">
-                <Header title={"GALLERY"} />
+      <div className="teamContainer">
+                        <div className={`diamondDecoration diamond1`}></div>
+        <div className={`diamondDecoration diamond2`}></div>
+        <div className={`diamondDecoration diamond3`}></div>
+        <div className={`diamondDecoration diamond4`}></div>
+                <Header title={"OUR GALLERY"} />
               </div>
+              
               {/* <DiamondIcon /> */}
             </section>
             <DecorativeLeaves />

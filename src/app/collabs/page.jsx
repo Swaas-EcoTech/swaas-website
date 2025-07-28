@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import DecorativeLeaves from "../components/DecorativeLeaves";
-
+import Header from "../components/grid";
 const Collab = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState({});
@@ -95,14 +95,24 @@ const Collab = () => {
         overflow: "hidden",
       }}
     >
-      <style jsx>{`
-        @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Grey+Qo&family=Inika:wght@400;700&family=Noto+Music&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Russo+One&display=swap");
+      <style jsx>
+        {`
+          @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Grey+Qo&family=Inika:wght@400;700&family=Noto+Music&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Russo+One&display=swap");
 
           @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            25% { transform: translateY(-10px) rotate(1deg); }
-            50% { transform: translateY(-5px) rotate(-1deg); }
-            75% { transform: translateY(-15px) rotate(0.5deg); }
+            0%,
+            100% {
+              transform: translateY(0px) rotate(0deg);
+            }
+            25% {
+              transform: translateY(-10px) rotate(1deg);
+            }
+            50% {
+              transform: translateY(-5px) rotate(-1deg);
+            }
+            75% {
+              transform: translateY(-15px) rotate(0.5deg);
+            }
           }
 
           @keyframes fadeInUp {
@@ -150,7 +160,11 @@ const Collab = () => {
           }
 
           @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
               transform: translateY(0);
             }
             40% {
@@ -162,14 +176,24 @@ const Collab = () => {
           }
 
           @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% {
+              transform: scale(1);
+            }
+            50% {
+              transform: scale(1.05);
+            }
+            100% {
+              transform: scale(1);
+            }
           }
 
           @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
+            0% {
+              background-position: -200% 0;
+            }
+            100% {
+              background-position: 200% 0;
+            }
           }
 
           .animate-fadeInUp {
@@ -201,7 +225,12 @@ const Collab = () => {
           }
 
           .shimmer {
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(
+              90deg,
+              transparent,
+              rgba(255, 255, 255, 0.2),
+              transparent
+            );
             background-size: 200% 100%;
             animation: shimmer 2s infinite;
           }
@@ -219,14 +248,14 @@ const Collab = () => {
             position: relative;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             cursor: pointer;
           }
 
           .photo-card:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
           }
 
           .photo-card img {
@@ -245,7 +274,7 @@ const Collab = () => {
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
             color: white;
             padding: 1rem;
             transform: translateY(100%);
@@ -283,24 +312,29 @@ const Collab = () => {
             left: 0;
             width: 100%;
             height: 120%;
-            background: linear-gradient(135deg, #f0f8f0 0%, #e8f5e8 50%, #d0e8d0 100%);
+            background: linear-gradient(
+              135deg,
+              #f0f8f0 0%,
+              #e8f5e8 50%,
+              #d0e8d0 100%
+            );
             z-index: -1;
           }
           .collab-heading-section {
             position: relative;
             text-align: center;
             padding-top: 80px;
-            }
+          }
 
           .collab-grid-image {
             position: absolute;
-            top: 70%;
+            top: 60%;
             left: 50%;
             transform: translate(-50%, -50%);
             width: 100%;
             max-width: 600px;
             height: auto;
-            z-index: 1;
+            z-index: 0;
             opacity: 0.5;
           }
 
@@ -350,7 +384,8 @@ const Collab = () => {
               padding: 8px 30px;
             }
 
-            .collab-star-left, .collab-star-right {
+            .collab-star-left,
+            .collab-star-right {
               width: 70px;
               left: 5%;
               right: 5%;
@@ -364,10 +399,10 @@ const Collab = () => {
 
             .collab-title {
               font-size: 1.8rem;
-
             }
 
-            .collab-star-left, .collab-star-right {
+            .collab-star-left,
+            .collab-star-right {
               width: 50px;
               left: 2%;
               right: 2%;
@@ -380,7 +415,7 @@ const Collab = () => {
             }
 
             .collab-grid-image {
-              max-width: 300px;
+              z-index: -1;
             }
 
             .collab-title {
@@ -389,7 +424,8 @@ const Collab = () => {
               white-space: normal;
             }
 
-            .collab-star-left, .collab-star-right {
+            .collab-star-left,
+            .collab-star-right {
               width: clamp(30px, 8vw, 40px);
               left: 5%;
               right: 5%;
@@ -405,7 +441,8 @@ const Collab = () => {
               width: 70%;
             }
 
-            .collab-star-left, .collab-star-right {
+            .collab-star-left,
+            .collab-star-right {
               width: clamp(30px, 8vw, 40px);
             }
           }
@@ -415,7 +452,8 @@ const Collab = () => {
               font-size: clamp(1rem, 4.5vw, 1.2rem);
             }
 
-            .collab-star-left, .collab-star-right {
+            .collab-star-left,
+            .collab-star-right {
               width: clamp(25px, 7vw, 30px);
             }
           }
@@ -427,7 +465,7 @@ const Collab = () => {
               gap: 1rem;
               padding: 1rem;
             }
-            
+
             .photo-card {
               margin: 0 auto;
               max-width: 350px;
@@ -454,11 +492,17 @@ const Collab = () => {
       ></div>
 
       {/* Collab Page Heading Section */}
-      <div className="collab-heading-section">
-        <img src="/grid.png" alt="Grid" className="collab-grid-image" />
-        <h1 className="collab-title">Our Collabs</h1> {/* Changed title text */}
-      </div>
+      <div>
+        <div className="teamContainer">
+          <div className={`diamondDecoration diamond1`}></div>
+          <div className={`diamondDecoration diamond2`}></div>
+          <div className={`diamondDecoration diamond3`}></div>
+          <div className={`diamondDecoration diamond4`}></div>
+          <img src="/grid.png" alt="Grid" className="collab-grid-image" />
 
+          <Header title={"OUR COLLABS"} />
+        </div>
+      </div>
       {/* Content Section (Original "Our Collaborations" text and shapes) */}
       <div
         ref={contentRef}

@@ -2,7 +2,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import DecorativeLeaves from '../components/DecorativeLeaves';
-
+import Header from '../components/grid'
 const About = () => {
   return (
     <>
@@ -10,13 +10,16 @@ const About = () => {
       <DecorativeLeaves />
       
       {/* Main content area */}
-      <div className="about-page-main">
+      <div className="">
         {/* Heading Section */}
         <div className="about-heading-section">
-          <img src="/grid.png" alt="Grid" className="about-grid-image" />
-          <h1 className="about-title">ABOUT US</h1>
-          <img src="/star.png" alt="Star" className="about-star-left" />
-          <img src="/star.png" alt="Star" className="about-star-right" />
+      <div className="teamContainer">
+                        <div className={`diamondDecoration diamond1`}></div>
+        <div className={`diamondDecoration diamond2`}></div>
+        <div className={`diamondDecoration diamond3`}></div>
+        <div className={`diamondDecoration diamond4`}></div>
+                <Header title={"ABOUT US"} />
+              </div>
         </div>
         
         {/* Content Section: Circle Image and Text */}

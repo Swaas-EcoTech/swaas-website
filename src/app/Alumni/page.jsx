@@ -46,15 +46,16 @@ const Gallery = () => {
         // backgroundImage: `url(${'/screen.png'})`,
       }}
     >
-      <div className="gallery-content">
+      <div className="">
         {/* Title section */}
-        <section className="gallery-title-section">
-          <DiamondIcon />
-          <div className="gallery-title-container">
-            {/* <h1 className="gallery-title">Originals</h1> */}
-            <Header title={"ORIGINALS"}/>
-          </div>
-          <DiamondIcon />
+        <section className="">
+       <div className="teamContainer">
+                        <div className={`diamondDecoration diamond1`}></div>
+        <div className={`diamondDecoration diamond2`}></div>
+        <div className={`diamondDecoration diamond3`}></div>
+        <div className={`diamondDecoration diamond4`}></div>
+                <Header title={"THE ORIGINALS"} />
+              </div>
         </section>
 
         <DecorativeLeaves />

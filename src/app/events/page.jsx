@@ -22,7 +22,7 @@ const Events = () => {
           <div className={`diamondDecoration diamond4`}></div>
 
           <header className={`teamHeader`}>
-            <h1>Our Events</h1>
+            <h1>OUR EVENTS</h1>
           </header>
 
           <nav className={`categoryNav`}>
