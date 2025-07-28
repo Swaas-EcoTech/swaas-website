@@ -566,8 +566,16 @@ const Collab = () => {
             Facilis dicta a unde nesciunt. Lorem ipsum dolor, sit amet
             consectetur adipisicing elit. Commodi ea, vero voluptatum similique
             corrupti eum minima voluptatem quis ipsa expedita pariatur, dicta
-            exercitationem doloremque debitis autem. Sint veniam quibusdam
-            maxime.
+            exercitationem doloremque debitis autem. Sint veniam quibusdam Lorem
+            Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since
+            the 1500s... Lorem ipsum, dolor sit amet consectetur adipisicing
+            elit. Odit esse, ipsa, perspiciatis itaque quia dicta eveniet in
+            adipisci repellat placeat at, eaque nisi ut assumenda! Facilis dicta
+            a unde nesciunt. Lorem ipsum dolor, sit amet consectetur adipisicing
+            elit. Commodi ea, vero voluptatum similique corrupti eum minima
+            voluptatem quis ipsa expedita pariatur, dicta exercitationem
+            doloremque debitis autem. Sint veniam quibusdam maxime.
           </p>
         </div>
 
@@ -595,7 +603,8 @@ const Collab = () => {
               className="animate-scaleIn floating"
               style={{
                 position: "absolute",
-                backgroundImage: `url(/images/photo${num}.jpg)`, // different image per shape
+                // backgroundImage: `url(/images/photo${num}.jpg)`, // different image per shape
+                backgroundImage: `url(/Events/tech_battle.png)`, // different image per shape
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 borderRadius: "80px",

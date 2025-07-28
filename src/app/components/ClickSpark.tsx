@@ -1,4 +1,15 @@
-import { useRef, useEffect, useCallback } from "react";
+import { useRef, useEffect, useCallback, ReactNode } from "react";
+
+interface ClickSparkProps {
+  sparkColor?: string;
+  sparkSize?: number;
+  sparkRadius?: number;
+  sparkCount?: number;
+  duration?: number;
+  easing?: string;
+  extraScale?: number;
+  children?: ReactNode;
+}
 
 const ClickSpark = ({
   sparkColor = "#fff",
@@ -9,10 +20,15 @@ const ClickSpark = ({
   easing = "ease-out",
   extraScale = 1.0,
   children
-}) => {
-  const canvasRef = useRef(null);
-  const sparksRef = useRef([]);     
-  const startTimeRef = useRef(null); 
+}: ClickSparkProps) => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const sparksRef = useRef<Array<{
+    x: number;
+    y: number;
+    angle: number;
+    startTime: number;
+  }>>([]);     
+  const startTimeRef = useRef<number | null>(null); 
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -21,7 +37,7 @@ const ClickSpark = ({
     const parent = canvas.parentElement;
     if (!parent) return;
 
-    let resizeTimeout;
+    let resizeTimeout: NodeJS.Timeout;
 
     const resizeCanvas = () => {
       const { width, height } = parent.getBoundingClientRect();
@@ -48,7 +64,7 @@ const ClickSpark = ({
   }, []);
 
   const easeFunc = useCallback(
-    (t) => {
+    (t: number): number => {
       switch (easing) {
         case "linear":
           return t;
@@ -67,10 +83,11 @@ const ClickSpark = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext("2d");
+    if (!ctx) return;
 
-    let animationId;
+    let animationId: number;
 
-    const draw = (timestamp) => {
+    const draw = (timestamp: number) => {
       if (!startTimeRef.current) {
         startTimeRef.current = timestamp; 
       }
@@ -121,7 +138,7 @@ const ClickSpark = ({
     extraScale,
   ]);
 
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const rect = canvas.getBoundingClientRect();
