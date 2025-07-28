@@ -2830,6 +2830,94 @@ nav ul li a.active {
   animation: moveAndRotateLeaves 5s ease-in-out infinite;
 }
 
+.noEventsMessage {
+  text-align: center;
+  padding: 50px 20px;
+  color: #333;
+  font-size: 2.2em;
+  margin-top: 80px;
+  overflow: hidden;
+  white-space: normal;
+  width: auto;
+  font-family: 'Georgia', serif;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  opacity: 1;
+}
+
+.noEventsMessage.animate {
+  white-space: nowrap;
+  width: 0;
+  border-right: .08em solid #555;
+  animation:
+    typing 3.5s steps(40, end) forwards,
+    blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #555; }
+}
+
+.noEventsMessage p {
+  font-size: 0.7em;
+  color: #666;
+  line-height: 1.6;
+  margin-top: 25px;
+  opacity: 1;
+  font-family: 'Arial', sans-serif;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.noEventsMessage.animate p {
+  opacity: 0;
+  animation: fadeIn 1s forwards 3.5s;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .noEventsMessage {
+    font-size: 1.8em;
+    padding: 40px 15px;
+    margin-top: 60px;
+  }
+
+  .noEventsMessage.animate {
+    white-space: normal;
+    width: auto;
+    border-right: none;
+    animation: none;
+  }
+
+  .noEventsMessage p {
+    font-size: 0.8em;
+    margin-top: 15px;
+    opacity: 1;
+    animation: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .noEventsMessage {
+    font-size: 1.4em;
+    padding: 30px 10px;
+    margin-top: 40px;
+  }
+
+  .noEventsMessage p {
+    font-size: 0.75em;
+  }
+}
 .leafBottomLeft {
   position: fixed;
   top: 290px;

@@ -1,338 +1,597 @@
-// src/components/ProjectModal.js
-import { useState, useEffect, useCallback } from 'react';
+"use client"
 
-const ProjectModal = ({ isOpen, onClose, title, description, images = [] }) => {
-  // State to manage the currently displayed image index in the slider
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+import { useState, useEffect, useCallback, useRef } from "react"
 
-  // Memoized callback for moving to the next image
+const ProjectModal = ({ isOpen, onClose, title, description, images = [], instagramLink, date, month, year }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isImageLoading, setIsImageLoading] = useState(false)
+  const [imageLoadError, setImageLoadError] = useState(false)
+  const [isClosing, setIsClosing] = useState(false)
+  const modalRef = useRef(null)
+
+  // Enhanced close function with animation
+  const handleClose = useCallback(() => {
+    setIsClosing(true)
+    setTimeout(() => {
+      setIsClosing(false)
+      onClose()
+    }, 200)
+  }, [onClose])
+
+  // Navigation functions
   const nextImage = useCallback(() => {
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
-  }, [images.length]);
+    if (images.length <= 1) return
+    setIsImageLoading(true)
+    setImageLoadError(false)
+    setCurrentImageIndex((prev) => (prev + 1) % images.length)
+  }, [images.length])
 
-  // Memoized callback for moving to the previous image
   const prevImage = useCallback(() => {
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-  }, [images.length]);
+    if (images.length <= 1) return
+    setIsImageLoading(true)
+    setImageLoadError(false)
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
+  }, [images.length])
 
-  // Effect to handle keyboard navigation (left/right arrows) and close with Escape key
+  // Keyboard navigation
   useEffect(() => {
-    // Only attach listener if modal is currently open
-    if (!isOpen) return;
+    if (!isOpen) return
 
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        onClose(); // Close modal on Escape key press
-      } else if (event.key === 'ArrowRight') {
-        if (images.length > 0) nextImage(); // Navigate next if images exist
-      } else if (event.key === 'ArrowLeft') {
-        if (images.length > 0) prevImage(); // Navigate previous if images exist
+      switch (event.key) {
+        case "Escape":
+          handleClose()
+          break
+        case "ArrowRight":
+          nextImage()
+          break
+        case "ArrowLeft":
+          prevImage()
+          break
+        default:
+          break
       }
-    };
-
-    // Add event listener to the window
-    window.addEventListener('keydown', handleKeyDown);
-    // Cleanup function to remove event listener when component unmounts or isOpen changes
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isOpen, nextImage, prevImage, onClose, images.length]); // Dependencies for useEffect
-
-  // Effect to reset currentImageIndex if the images array changes (e.g., different event selected)
-  useEffect(() => {
-    if (images.length > 0 && currentImageIndex >= images.length) {
-      setCurrentImageIndex(0); // Reset to first image if current index is out of bounds
-    } else if (images.length === 0 && currentImageIndex !== 0) {
-      setCurrentImageIndex(0); // If no images, reset index to 0
     }
-  }, [images.length, currentImageIndex]);
 
-  // If the modal is not open, render nothing
-  if (!isOpen) return null;
+    document.addEventListener("keydown", handleKeyDown)
+    return () => document.removeEventListener("keydown", handleKeyDown)
+  }, [isOpen, handleClose, nextImage, prevImage])
 
-  // --- INLINE STYLES FOR AESTHETICS & RESPONSIVENESS ---
+  // Reset image index when images change
+  useEffect(() => {
+    setCurrentImageIndex(0)
+    setImageLoadError(false)
+  }, [images])
 
-  const modalOverlayStyle = {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0, 0, 0, 0.8)', // Darker, more immersive overlay
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: 1000,
-    padding: '16px',
-    backdropFilter: 'blur(8px)', // Stronger blur for a modern feel
-  };
+  // Handle image load events
+  const handleImageLoad = () => {
+    setIsImageLoading(false)
+    setImageLoadError(false)
+  }
 
-  const modalContentStyle = {
-    backgroundColor: '#f9f9f9', // Soft off-white for content background
-    borderRadius: '16px', // More pronounced rounded corners
-    maxWidth: '95%', // Responsive max width
-    width: '900px', // Preferred width on larger screens
-    maxHeight: '95vh', // Responsive max height
-    overflowY: 'auto', // Allows content to scroll if it overflows vertically
-    boxShadow: '0 20px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(0, 0, 0, 0.1)', // Deeper, more refined shadow
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column', // Stack header, slider, and description vertically
-    fontFamily: '"Inter", sans-serif', // Using Inter for a clean, modern look
-  };
+  const handleImageError = () => {
+    setIsImageLoading(false)
+    setImageLoadError(true)
+  }
 
-  const headerStyle = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    padding: '24px 30px', // Increased padding
-    borderBottom: '1px solid #e5e5e5', // Lighter, subtle border
-    backgroundColor: '#f0f0f0', // Slightly darker header background
-    borderTopLeftRadius: '16px', // Match content border-radius
-    borderTopRightRadius: '16px',
-    flexShrink: 0, // Prevent header from shrinking
-  };
-
-  const titleStyle = {
-    fontSize: '2.2rem', // Larger, more impactful title
-    fontWeight: '700',
-    color: '#34495e', // Darker, professional text color
-    margin: 0,
-    flexGrow: 1,
-    paddingRight: '20px',
-  };
-
-  const closeButtonStyle = {
-    padding: '12px 16px', // Larger clickable area for the close button
-    border: 'none',
-    background: 'none',
-    borderRadius: '50%',
-    cursor: 'pointer',
-    fontSize: '2.5rem', // Larger 'x' for better visibility
-    lineHeight: '1',
-    color: '#7f8c8d', // Muted grey
-    transition: 'all 0.3s ease-in-out', // Smooth transition for hover effects
-    display: 'flex', // Center the 'x'
-    alignItems: 'center',
-    justifyContent: 'center',
-    outline: 'none', // Remove default focus outline
-  };
-
-  const sliderContainerStyle = {
-    position: 'relative',
-    // Responsive height: minimum 250px, 50% of viewport height, max 500px
-    minHeight: images.length > 0 ? 'clamp(250px, 50vh, 500px)' : '0',
-    backgroundColor: '#e9ecef', // Light grey background for image area
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexShrink: 0, // Prevent slider from shrinking
-    overflow: 'hidden', // Crucial for image containment
-  };
-
-  const imageContainerStyle = {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden', // Ensures image doesn't overflow its container
-  };
-
-  const imageStyle = {
-    maxWidth: '100%',
-    maxHeight: '100%',
-    objectFit: 'contain', // Ensures entire image is visible without cropping/stretching
-    transition: 'opacity 0.5s ease-in-out', // Smooth fade transition for images
-  };
-
-  const navButtonStyle = {
-    position: 'absolute',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    // Gradient background for Eco-Tech theme
-    background: 'linear-gradient(135deg, #556b2f 0%, #6b8e3d 100%)', // Dark green to lighter green
-    color: 'white',
-    border: 'none',
-    borderRadius: '50%',
-    padding: '15px', // Larger circular buttons
-    cursor: 'pointer',
-    boxShadow: '0 6px 15px rgba(0, 0, 0, 0.3)', // More prominent shadow for depth
-    transition: 'all 0.3s ease-in-out', // Smooth transition for hover effects
-    fontSize: '2.8rem', // Larger arrow icons
-    lineHeight: '1',
-    zIndex: 10, // Ensure buttons are above the image
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    outline: 'none', // Remove default focus outline
-  };
-
-  // SVG for the left arrow
-  const LeftArrowSVG = () => (
-    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="15 18 9 12 15 6"></polyline>
-    </svg>
-  );
-
-  // SVG for the right arrow
-  const RightArrowSVG = () => (
-    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <polyline points="9 18 15 12 9 6"></polyline>
-    </svg>
-  );
-
-  const indicatorsStyle = {
-    position: 'absolute',
-    bottom: '20px', // Slightly higher from the bottom
-    left: '50%',
-    transform: 'translateX(-50%)',
-    display: 'flex',
-    gap: '12px', // Increased gap between indicators
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Semi-transparent dark background for dots
-    borderRadius: '20px', // More rounded pill shape
-    padding: '8px 16px', // Padding around dots
-    zIndex: 10,
-  };
-
-  const indicatorStyle = (isActive) => ({
-    width: '12px', // Larger dots
-    height: '12px',
-    borderRadius: '50%',
-    border: 'none',
-    backgroundColor: isActive ? '#8fbc8f' : 'rgba(255, 255, 255, 0.6)', // SWAAS green for active, translucent white for inactive
-    cursor: 'pointer',
-    transition: 'all 0.3s ease-in-out',
-    outline: 'none',
-  });
-
-  const descriptionStyle = {
-    padding: '30px', // Increased padding for description
-    flexGrow: 1,
-    overflowY: 'auto',
-    WebkitOverflowScrolling: 'touch',
-    backgroundColor: '#ffffff', // Clean white for description background
-    borderBottomLeftRadius: '16px', // Match content border-radius
-    borderBottomRightRadius: '16px',
-  };
-
-  const descriptionTextStyle = {
-    color: '#555', // Softer black for text
-    lineHeight: '1.8', // Increased line height for readability
-    fontSize: '1.1rem', // Slightly larger font size
-    margin: 0,
-    whiteSpace: 'pre-wrap',
-  };
+  if (!isOpen) return null
 
   return (
-    <div
-      style={modalOverlayStyle}
-      onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="modal-title"
-      tabIndex={-1}
-      // onKeyDown is handled by the useEffect for global keydown events
-    >
-      <div
-        style={modalContentStyle}
-        onClick={(e) => e.stopPropagation()}
-        role="document"
-      >
-        {/* Header Section */}
-        <div style={headerStyle}>
-          <h2 id="modal-title" style={titleStyle}>{title}</h2>
-          <button
-            onClick={onClose}
-            style={closeButtonStyle}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.backgroundColor = '#e0e0e0';
-              e.currentTarget.style.color = '#34495e';
-              e.currentTarget.style.transform = 'rotate(90deg)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
-              e.currentTarget.style.color = '#7f8c8d';
-              e.currentTarget.style.transform = 'rotate(0deg)';
-            }}
-            aria-label="Close modal"
-          >
-            &times;
-          </button>
-        </div>
+    <>
+      <style jsx>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
+        .modal-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.85);
+          backdrop-filter: blur(20px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 9999;
+          padding: 20px;
+          animation: ${isClosing ? "fadeOut" : "fadeIn"} 0.2s ease-out;
+        }
 
-        {/* Image Slider Section - Only renders if there are images */}
-        {images.length > 0 && (
-          <div style={sliderContainerStyle}>
-            <div style={imageContainerStyle}>
+        .modal-container {
+          background: #ffffff;
+          border-radius: 20px;
+          max-width: 90vw;
+          width: 900px;
+          max-height: 90vh;
+          overflow: hidden;
+          box-shadow: 
+            0 25px 50px rgba(0, 0, 0, 0.25),
+            0 0 0 1px rgba(255, 255, 255, 0.05);
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          animation: ${isClosing ? "scaleOut" : "scaleIn"} 0.2s ease-out;
+          transform-origin: center;
+        }
+
+        .image-section {
+          position: relative;
+          width: 100%;
+          height: 70vh;
+          min-height: 400px;
+          max-height: 600px;
+          background: #f8f9fa;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          overflow: hidden;
+          border-radius: 20px 20px 0 0;
+        }
+
+        .main-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: all 0.3s ease;
+          opacity: ${isImageLoading ? "0.7" : "1"};
+        }
+
+        .image-overlay {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+          padding: 40px 30px 30px;
+          color: white;
+        }
+
+        .overlay-title {
+          font-size: 2rem;
+          font-weight: 700;
+          margin: 0 0 8px 0;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+          line-height: 1.2;
+        }
+
+        .overlay-subtitle {
+          font-size: 0.95rem;
+          font-weight: 400;
+          margin: 0;
+          opacity: 0.9;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+        }
+
+        .close-button {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          background: rgba(0, 0, 0, 0.5);
+          border: none;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          color: white;
+          font-size: 20px;
+          font-weight: 300;
+          transition: all 0.2s ease;
+          backdrop-filter: blur(10px);
+          z-index: 10;
+        }
+
+        .close-button:hover {
+          background: rgba(0, 0, 0, 0.7);
+          transform: scale(1.1);
+        }
+
+        .nav-button {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          background: rgba(255, 255, 255, 0.9);
+          border: none;
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          color: #333;
+          font-size: 18px;
+          z-index: 10;
+          transition: all 0.2s ease;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          opacity: 0;
+          visibility: hidden;
+        }
+
+        .image-section:hover .nav-button {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        .nav-button:hover {
+          background: white;
+          transform: translateY(-50%) scale(1.1);
+          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-button.prev {
+          left: 20px;
+        }
+
+        .nav-button.next {
+          right: 20px;
+        }
+
+        .nav-arrow {
+          width: 20px;
+          height: 20px;
+          stroke: currentColor;
+          stroke-width: 2;
+          stroke-linecap: round;
+          stroke-linejoin: round;
+          fill: none;
+        }
+
+        .indicators {
+          position: absolute;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 8px;
+          z-index: 10;
+        }
+
+        .indicator {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          border: none;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          background: rgba(255, 255, 255, 0.5);
+        }
+
+        .indicator.active {
+          background: white;
+          transform: scale(1.2);
+        }
+
+        .indicator:hover:not(.active) {
+          background: rgba(255, 255, 255, 0.8);
+        }
+
+        .content-section {
+          padding: 30px;
+          background: white;
+          border-radius: 0 0 20px 20px;
+          max-height: 40vh;
+          overflow-y: auto;
+        }
+
+        .description {
+          color: #374151;
+          line-height: 1.7;
+          font-size: 1rem;
+          margin: 0 0 25px 0;
+          font-weight: 400;
+        }
+
+        .meta-info {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 15px;
+          margin-bottom: 20px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid #e5e7eb;
+        }
+
+        .date-info {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          color: #6b7280;
+          font-size: 0.9rem;
+          font-weight: 500;
+        }
+
+        .instagram-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          /* Updated Instagram gradient for better visibility and common association */
+          background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+          color: white;
+          text-decoration: none;
+          padding: 10px 20px;
+          border-radius: 25px;
+          font-weight: 600;
+          font-size: 0.9rem;
+          transition: all 0.2s ease;
+          /* Stronger, more vibrant shadow */
+          box-shadow: 0 6px 20px rgba(189, 45, 140, 0.4);
+          text-shadow: 0 1px 2px rgba(0,0,0,0.2); /* Subtle text shadow for pop */
+        }
+
+        .instagram-link:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 8px 25px rgba(189, 45, 140, 0.6); /* Even stronger hover shadow */
+        }
+
+        .loading-spinner {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 40px;
+          height: 40px;
+          border: 3px solid rgba(255, 255, 255, 0.3);
+          border-top: 3px solid white;
+          border-radius: 50%;
+          animation: spin 1s linear infinite;
+        }
+
+        .error-message {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          color: white;
+          font-size: 1rem;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+          from { opacity: 1; }
+          to { opacity: 0; }
+        }
+
+        @keyframes scaleIn {
+          from { 
+            opacity: 0; 
+            transform: scale(0.9); 
+          }
+          to { 
+            opacity: 1; 
+            transform: scale(1); 
+          }
+        }
+
+        @keyframes scaleOut {
+          from { 
+            opacity: 1; 
+            transform: scale(1); 
+          }
+          to { 
+            opacity: 0; 
+            transform: scale(0.9); 
+          }
+        }
+
+        @keyframes spin {
+          0% { transform: translate(-50%, -50%) rotate(0deg); }
+          100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+          .modal-overlay {
+            padding: 10px;
+          }
+          
+          .modal-container {
+            width: 95vw;
+            max-height: 95vh;
+            border-radius: 16px;
+          }
+          
+          .image-section {
+            height: 60vh;
+            min-height: 300px;
+            border-radius: 16px 16px 0 0;
+          }
+          
+          .overlay-title {
+            font-size: 1.5rem;
+          }
+          
+          .overlay-subtitle {
+            font-size: 0.85rem;
+          }
+          
+          .image-overlay {
+            padding: 30px 20px 20px;
+          }
+          
+          .close-button {
+            top: 15px;
+            right: 15px;
+            width: 36px;
+            height: 36px;
+            font-size: 18px;
+          }
+          
+          .nav-button {
+            width: 44px;
+            height: 44px;
+            opacity: 1;
+            visibility: visible;
+          }
+          
+          .nav-button.prev {
+            left: 15px;
+          }
+          
+          .nav-button.next {
+            right: 15px;
+          }
+          
+          .content-section {
+            padding: 20px;
+            max-height: 35vh;
+            border-radius: 0 0 16px 16px;
+          }
+          
+          .description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+          }
+          
+          .meta-info {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+          }
+          
+          .instagram-link {
+            align-self: stretch;
+            justify-content: center;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .image-section {
+            height: 50vh;
+            min-height: 250px;
+          }
+          
+          .overlay-title {
+            font-size: 1.25rem;
+          }
+          
+          .content-section {
+            padding: 15px;
+          }
+          
+          .nav-button {
+            width: 40px;
+            height: 40px;
+          }
+          
+          .nav-button.prev {
+            left: 10px;
+          }
+          
+          .nav-button.next {
+            right: 10px;
+          }
+        }
+      `}</style>
+
+      <div
+        className="modal-overlay"
+        onClick={handleClose}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <div ref={modalRef} className="modal-container" onClick={(e) => e.stopPropagation()} role="document">
+          {/* Image Section */}
+          <div className="image-section">
+            {isImageLoading && <div className="loading-spinner"></div>}
+            {imageLoadError ? (
+              <div className="error-message">
+                <div>🌱</div>
+                <div>Image could not be loaded</div>
+              </div>
+            ) : (
               <img
-                key={currentImageIndex} // Key ensures React re-mounts/re-renders, enabling transition
-                src={images[currentImageIndex]}
+                src={images[currentImageIndex] || "/placeholder.svg"}
                 alt={`${title} - Image ${currentImageIndex + 1}`}
-                style={imageStyle}
-                onError={(e) => {
-                  e.target.src = 'https://via.placeholder.com/600x400?text=Image+Load+Error'; // Larger fallback
-                  console.error("Image failed to load:", images[currentImageIndex]);
-                }}
+                className="main-image"
+                onLoad={handleImageLoad}
+                onError={handleImageError}
               />
+            )}
+
+            {/* Image Overlay with Title */}
+            <div className="image-overlay">
+              <h2 id="modal-title" className="overlay-title">
+                {title}
+              </h2>
+              {(date || month || year) && (
+                <p className="overlay-subtitle">
+                  {date} {month} {year} • SWAAS GTBIT
+                </p>
+              )}
             </div>
 
-            {/* Navigation Arrows - Only renders if there's more than one image */}
+            {/* Close Button */}
+            <button className="close-button" onClick={handleClose} aria-label="Close modal">
+              ×
+            </button>
+
+            {/* Navigation Arrows */}
             {images.length > 1 && (
               <>
-                <button
-                  onClick={prevImage}
-                  style={{ ...navButtonStyle, left: '20px' }} // Adjusted position
-                  onMouseEnter={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #6b8e3d 0%, #556b2f 100%)'; e.currentTarget.style.transform = 'translateY(-50%) translateX(-5px) scale(1.05)'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #556b2f 0%, #6b8e3d 100%)'; e.currentTarget.style.transform = 'translateY(-50%) translateX(0) scale(1)'; }}
-                  aria-label="Previous image"
-                >
-                  <LeftArrowSVG />
+                <button className="nav-button prev" onClick={prevImage} aria-label="Previous image">
+                  <svg className="nav-arrow" viewBox="0 0 24 24">
+                    <polyline points="15,18 9,12 15,6"></polyline>
+                  </svg>
                 </button>
-                <button
-                  onClick={nextImage}
-                  style={{ ...navButtonStyle, right: '20px' }} // Adjusted position
-                  onMouseEnter={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #6b8e3d 0%, #556b2f 100%)'; e.currentTarget.style.transform = 'translateY(-50%) translateX(5px) scale(1.05)'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = 'linear-gradient(135deg, #556b2f 0%, #6b8e3d 100%)'; e.currentTarget.style.transform = 'translateY(-50%) translateX(0) scale(1)'; }}
-                  aria-label="Next image"
-                >
-                  <RightArrowSVG />
+                <button className="nav-button next" onClick={nextImage} aria-label="Next image">
+                  <svg className="nav-arrow" viewBox="0 0 24 24">
+                    <polyline points="9,18 15,12 9,6"></polyline>
+                  </svg>
                 </button>
+
+                {/* Indicators */}
+                <div className="indicators">
+                  {images.map((_, index) => (
+                    <button
+                      key={index}
+                      className={`indicator ${index === currentImageIndex ? "active" : ""}`}
+                      onClick={() => {
+                        setIsImageLoading(true)
+                        setCurrentImageIndex(index)
+                      }}
+                      aria-label={`Go to image ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </>
             )}
+          </div>
 
-            {/* Image Indicators (dots) - Only renders if there's more than one image */}
-            {images.length > 1 && (
-              <div style={indicatorsStyle}>
-                {images.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentImageIndex(index)}
-                    style={indicatorStyle(index === currentImageIndex)}
-                    onMouseEnter={(e) => {
-                      if (index !== currentImageIndex) e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
-                      e.currentTarget.style.transform = 'scale(1.2)'; // More pronounced scale
-                    }}
-                    onMouseLeave={(e) => {
-                      if (index !== currentImageIndex) e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.6)';
-                      e.currentTarget.style.transform = 'scale(1)';
-                    }}
-                    aria-label={`Go to image ${index + 1}`}
-                    aria-current={index === currentImageIndex ? 'true' : 'false'}
-                  />
-                ))}
+          {/* Content Section */}
+          <div className="content-section">
+            {(date || month || year || instagramLink) && (
+              <div className="meta-info">
+                {(date || month || year) && (
+                  <div className="date-info">
+                    📅 {date} {month} {year}
+                  </div>
+                )}
+                {instagramLink && (
+                  <a className="instagram-link" href={instagramLink} target="_blank" rel="noopener noreferrer">
+                    📸 View on Instagram
+                  </a>
+                )}
               </div>
             )}
-          </div>
-        )}
 
-        {/* Description Section */}
-        <div style={descriptionStyle}>
-          <p style={descriptionTextStyle}>{description}</p>
+            <p className="description">{description}</p>
+          </div>
         </div>
       </div>
-    </div>
-  );
-};
+    </>
+  )
+}
 
-export default ProjectModal;
+export default ProjectModal

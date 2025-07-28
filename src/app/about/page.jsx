@@ -44,27 +44,6 @@ const About = () => {
     <br /> During the pandemic, our Covigo Project became a lifeline for many, reflecting our spirit of compassion and action. Through initiatives like Donate A Book and Save Soil, we create awareness and inspire change. <br /> SWAAS isn't just a society – it's a family of innovators, dreamers, and doers, daring to lead sustainability efforts with grit and heart. <br /> Join us and help shape a greener, brighter future – one idea, one action at a time!
   </p>
 </div>
-
-      
-      <div className="about-container1">
-        {/* <BottomDecorations/> */}
-        {/* <div className="design-left">
-          <img
-            src="/design.png"
-            alt="Left design"
-            className="design-left"
-          />
-        </div>
-        <div className="design-right">
-          <img
-            src="/design.png"
-            alt="Right design"
-            className="design-right"
-          />
-        </div> */}
-      </div>
-
-      <style jsx>{``}</style>
     </>
   );
 };
