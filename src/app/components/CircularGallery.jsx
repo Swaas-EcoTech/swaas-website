@@ -368,7 +368,7 @@ class App {
       { image: `/HK.jpg`, text: "Harjot Kaur" },
       { image: `/PS.jpg`, text: "Prabhsurat Singh" },
       { image: `/I.png`, text: "Ishwardeep Singh" },
-      { image: `/JKb.jpg`, text: "Jagrit Khurana" },
+      { image: `/Jakrit.jpeg`, text: "Jagrit Khurana" },
       { image: `/HK.jpg`, text: "Harjot Kaur" },
       { image: `/N.jpg`, text: "Neeraj Gandhi" },
     ];

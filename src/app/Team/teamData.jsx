@@ -24,7 +24,7 @@ const teamData = {
       { name: "Manya", img: '/Team/Manya.jpeg', description: "Effortlessly magnetic and endlessly familiar, Manya is Swaas’s loudest echo. A natural connector and relentless hype-machine, she ensures every event isn’t just heard—it’s felt." },
     ],
     Convener: [
-      { name: "Mrs.Manpreet kaur", img: '/Team/ManpreetKaur.png', description: "A perfectionist with an eye for soul, Gurpratit weaves identity into every frame. She protects Swaas’s visual soul—crafting designs that don’t just look right, but feel like us." },
+      { name: "Mrs.Manpreet kaur", img: '/Team/ManpreetKaur.png', description: "Dr. Manpreet Kaur is a dedicated educator and compassionate mentor who leads SWAAS with a vision to nurture holistic development among students. With her insightful guidance and unwavering support, she encourages the team to create meaningful initiatives that promote social awareness, well-being, and community service. Her approachable nature, combined with strong leadership skills, inspires everyone to work with sincerity and purpose, making SWAAS a space of learning, growth, and positive impact." },
     ]
 };
 

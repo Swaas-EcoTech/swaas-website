@@ -95,9 +95,8 @@ const Collab = () => {
         overflow: "hidden",
       }}
     >
-      <style>
-        {`
-          @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Grey+Qo&family=Inika:wght@400;700&family=Noto+Music&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&display=swap");
+      <style jsx>{`
+        @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Grey+Qo&family=Inika:wght@400;700&family=Noto+Music&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&family=Russo+One&display=swap");
 
           @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -287,7 +286,141 @@ const Collab = () => {
             background: linear-gradient(135deg, #f0f8f0 0%, #e8f5e8 50%, #d0e8d0 100%);
             z-index: -1;
           }
+          .collab-heading-section {
+            position: relative;
+            text-align: center;
+            padding-top: 80px;
+            }
 
+          .collab-grid-image {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            z-index: 1;
+            opacity: 0.5;
+          }
+
+          .collab-title {
+            position: relative;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #000;
+            z-index: 2;
+            background: white;
+            border: 1px solid #000;
+            padding: 10px 40px;
+            border-radius: 30px;
+            display: inline-block;
+            font-family: "Inika", serif;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin: 0;
+          }
+
+          .collab-star-left {
+            position: absolute;
+            top: 50%;
+            left: 15%;
+            width: 85px;
+            height: auto;
+            z-index: 3;
+            transform: translateY(-50%) rotate(87deg);
+          }
+
+          .collab-star-right {
+            position: absolute;
+            top: 50%;
+            right: 15%;
+            width: 85px;
+            height: auto;
+            z-index: 3;
+            transform: translateY(-50%) rotate(267deg);
+          }
+
+          @media (max-width: 1024px) {
+            .collab-heading-section {
+              padding-top: 60px;
+            }
+
+            .collab-title {
+              font-size: 2.2rem;
+              padding: 8px 30px;
+            }
+
+            .collab-star-left, .collab-star-right {
+              width: 70px;
+              left: 5%;
+              right: 5%;
+            }
+          }
+
+          @media (max-width: 768px) {
+            .collab-heading-section {
+              padding-top: 20px;
+            }
+
+            .collab-title {
+              font-size: 1.8rem;
+
+            }
+
+            .collab-star-left, .collab-star-right {
+              width: 50px;
+              left: 2%;
+              right: 2%;
+            }
+          }
+
+          @media (max-width: 480px) {
+            .collab-heading-section {
+              margin-top: 55px;
+            }
+
+            .collab-grid-image {
+              max-width: 300px;
+            }
+
+            .collab-title {
+              font-size: clamp(1.2rem, 6vw, 1.6rem);
+              padding: 5px 20px;
+              white-space: normal;
+            }
+
+            .collab-star-left, .collab-star-right {
+              width: clamp(30px, 8vw, 40px);
+              left: 5%;
+              right: 5%;
+            }
+          }
+
+          @media (max-width: 410px) {
+            .collab-title {
+              font-size: clamp(1.2rem, 5vw, 1.5rem);
+            }
+
+            .collab-grid-image {
+              width: 70%;
+            }
+
+            .collab-star-left, .collab-star-right {
+              width: clamp(30px, 8vw, 40px);
+            }
+          }
+
+          @media (max-width: 320px) {
+            .collab-title {
+              font-size: clamp(1rem, 4.5vw, 1.2rem);
+            }
+
+            .collab-star-left, .collab-star-right {
+              width: clamp(25px, 7vw, 30px);
+            }
+          }
+
+          /* --- Existing Responsive Styles for Collab Page Content --- */
           @media (max-width: 768px) {
             .photo-grid {
               grid-template-columns: 1fr;
@@ -309,7 +442,6 @@ const Collab = () => {
         `}
       </style>
 
-      {/* Navbar Component */}
       <DecorativeLeaves />
       <Navbar />
 
@@ -321,7 +453,13 @@ const Collab = () => {
         }}
       ></div>
 
-      {/* Content Section */}
+      {/* Collab Page Heading Section */}
+      <div className="collab-heading-section">
+        <img src="/grid.png" alt="Grid" className="collab-grid-image" />
+        <h1 className="collab-title">Our Collabs</h1> {/* Changed title text */}
+      </div>
+
+      {/* Content Section (Original "Our Collaborations" text and shapes) */}
       <div
         ref={contentRef}
         style={{
@@ -340,7 +478,7 @@ const Collab = () => {
           className={isVisible["text-content"] ? "animate-slideInLeft" : ""}
           style={{
             width: windowWidth <= 992 ? "100%" : "60%",
-            padding: "2rem",
+            padding: "1rem",
             opacity: isVisible["text-content"] ? 1 : 0,
           }}
         >
