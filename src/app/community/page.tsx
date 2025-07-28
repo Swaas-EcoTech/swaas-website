@@ -477,7 +477,7 @@ export default function Community() {
                 <h1>SWAAS Community 🌱</h1>
                 <p className="profile-subtitle">The Social Workers and Awakeners Society</p>
                 <p className="profile-description">
-                  Eco-Technical Society of GTBIT • Established 2009
+                  Eco-Technical Society of GTBIT • Established 2005
                   <br />
                   Breathing life into environmental conservation & community empowerment 🌍
                 </p>
@@ -489,7 +489,7 @@ export default function Community() {
                     <strong>1k+</strong> members
                   </span>
                   <span>
-                    <strong>150+</strong> trees planted
+                    <strong>500+</strong> trees planted
                   </span>
                 </div>
               </div>
