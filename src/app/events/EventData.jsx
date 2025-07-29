@@ -1,20 +1,173 @@
-
 const eventsData = {
   "Past Events": [
     {
-      date: "17th - 21st",
+      date: "21st",
+      month: "April",
+      year: "2025",
+      title: "Mindsync Ideathon 2025",
+      description:
+        "On April 21, 2025, SWAAS – The EcoTech Society of GTBIT, Delhi, hosted Mindsync, an inter-college ideathon focused on innovation and environmental awareness. Supported by sponsors like Unstop, BTECHNOTES.in, interviewbuddy, and .xyz, the event featured a prize pool exceeding ₹10,000, along with exclusive swags and certificates. The competition began with an online round where teams submitted ideas across five themes: Social Impact, Sustainability, Healthcare, Ed-tech, and Blockchain & Cybersecurity. Top teams advanced to the on-campus finale, presenting their solutions to a live audience and a panel of esteemed judges — Dr. Manpreet Kaur, Dr. Amandeep Kaur, and Dr. Aashish Bhardwaj. Winners: 1st Prize: Team Shakti 2nd Prize: Team Neurocode 3rd Prize: Team Siri Consolation Prize: Team Pulp Function. The finale featured engaging presentations, expert feedback, and a prize distribution ceremony. Judges were honored with potted plants, and participants enjoyed refreshments and recognition for their contributions. Mindsync 2025 celebrated innovation, collaboration, and sustainability, leaving a meaningful impact on all involved.",
+      imageUrl: "/Events/mindsync_ideathon.jpg",
+      projectImages: [
+        "/Events/mindsync_ideathon.jpg",
+        "/Events/9id.jpeg",
+        "/Events/1id.jpeg",
+        "/Events/2id.jpeg",
+        "/Events/3id.jpeg",
+        "/Events/4id.jpeg",
+        "/Events/5id.jpeg",
+        "/Events/6id.jpeg",
+        "/Events/7id.jpeg",
+        "/Events/8id.jpeg",
+        "/Events/10id.jpeg",
+        "/Events/11id.jpeg",
+        "/Events/12id.jpeg",
+        "/Events/13id.jpeg",
+        "/Events/14id.jpeg",
+        "/Events/15id.jpeg",
+      ],
+      instagramLink:
+        "https://www.instagram.com/p/DI4NQFETngT/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    },
+    {
+      date: "21st",
+      month: "April",
+      year: "2025",
+      title: "BottleForChange – Bisleri Cleanliness Drive",
+      description:
+        "On 21st April 2025, SWAAS collaborated with Bisleri for the BottleForChange initiative, promoting cleanliness and plastic segregation on campus. Students participated in collecting plastic waste and raising awareness about responsible disposal and recycling, fostering environmental responsibility and sustainability.",
+      imageUrl: "/Events/BottleForChange.jpg",
+      projectImages: [
+        "/Events/BottleForChange.jpg",
+        "/Events/1bs.jpeg",
+        "/Events/2bs.jpeg",
+        "/Events/3bs.jpeg",
+        "/Events/4bs.jpeg",
+        "/Events/5bs.jpeg",
+        "/Events/6bs.jpeg",
+        "/Events/7bs.jpeg",
+        "/Events/8bs.jpeg",
+        "/Events/9bs.jpeg",
+      ],
+      instagramLink:
+        "https://www.instagram.com/p/DIv6hRizWN6/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA== ",
+    },
+    {
+      date: "2nd",
+      month: "April",
+      year: "2025",
+      title: "The Ultimate Tech Battle – Tech Quiz",
+      description:
+        "SWAAS, in collaboration with FFT, hosted 'The Ultimate Tech Battle', a thrilling quiz competition celebrating technology and sustainability. Participants competed for the title of TECH WIZARD, winning cash prizes, medals, and subscriptions. The event was fun-filled and intellectually stimulating, with refreshments for attendees.",
+      imageUrl: "/Events/tech_battle.png",
+      projectImages: [
+        "/Events/tech_battle.png",
+        "/Events/1tw.jpeg",
+        "/Events/2tw.jpeg",
+        "/Events/3tw.jpeg",
+        "/Events/4tw.jpeg",
+        "/Events/5tw.jpeg",
+        "/Events/6tw.jpeg",
+        "/Events/7tw.jpeg",
+        "/Events/8tw.jpeg",
+      ],
+      instagramLink:
+        "https://www.instagram.com/p/DH_YfA8T74A/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    },
+    {
+      date: "8th",
+      month: "March",
+      year: "2025",
+      title: "International Women’s Day",
+      description:
+        "The college came alive with energy and enthusiasm as it celebrated International Women’s Day with a heartfelt and empowering event. The celebration began with an inspiring address by Director Dr. Rominder Kaur Randhawa, who was honored with a handmade bouquet by SWAAS Convener Dr. Manpreet Kaur Bagga and Student President Yogita. Teachers were also presented with flowers and bracelets as gestures of appreciation. The event featured a soulful Shabad and Kirtan performance by Divine Circle society, followed by a touching solo song by a faculty member. Interactive segments like a questionnaire round kept the audience engaged, while games such as movie dialogue challenges and the newspaper dance brought smiles and laughter. Guests enjoyed delightful refreshments, adding warmth and flavor to the celebration. Musical performances by Gsharp, the college’s musical society, enchanted the audience and set the mood for a lively DJ session, where everyone danced with joy. The day beautifully celebrated womanhood, unity, and empowerment, leaving everyone inspired and uplifted.",
+      imageUrl: "/Events/women_day_2025.jpeg", // Ensure this image exists
+      projectImages: [
+        "/Events/women_day_2025.jpeg",
+        "/Events/1wd.jpeg",
+        "/Events/2wd.jpeg",
+        "/Events/10wd.jpeg",
+        "/Events/11wd.jpeg",
+        "/Events/12wd.jpeg",
+        "/Events/13wd.jpeg",
+        "/Events/14wd.jpeg",
+        "/Events/15wd.jpeg",
+        "/Events/16wd.jpeg",
+        "/Events/3wd.jpeg",
+        "/Events/4wd.jpeg",
+        "/Events/6wd.jpeg",
+        "/Events/8wd.jpeg",
+        "/Events/9wd.jpeg",
+      ],
+      instagramLink:
+        "https://www.instagram.com/p/DHMDYP0zQ0K/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    },
+    {
+      date: "7th",
+      month: "March",
+      year: "2025",
+      title: "Spreading Smiles",
+      description:
+        "As part of the “Spreading Smiles” initiative, SWAAS organized a heartwarming event on 7th March near the slum area adjacent to GTBIT college. The team came together with a simple goal — to bring moments of joy and happiness to the little kids in the neighborhood. We distributed colorful balloons, filling the area with laughter, excitement, and smiling faces. But the event was about more than just giving away balloons — it was about connecting with the kids and making them feel seen, valued, and cherished. Our volunteers spent time engaging with them, sharing playful moments, and creating an atmosphere of warmth and belonging. This initiative reminded us all that even the smallest gestures can have a big impact, spreading smiles and making a difference in the lives of others.",
+      imageUrl: "/Events/spreadingSmiles.png",
+      projectImages: [
+        "/Events/spreadingSmiles.png",
+        "/Events/1ss.jpeg",
+        "/Events/2ss.jpeg",
+        "/Events/3ss.jpeg",
+        "/Events/4ss.jpeg",
+        "/Events/5ss.jpeg",
+        "/Events/6ss.jpeg",
+      ],
+      instagramLink:
+        "https://www.instagram.com/p/DG58VJQMZeJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    },
+    {
+      date: "28th",
       month: "February",
       year: "2025",
-      title: "Donation Drive 2025",
+      title: "National Science Day – Tarang 2025",
       description:
-        "SWAAS, in collaboration with the Robin Hood Army, conducted the Donation Drive 2025 from 17th to 21st February, aiming to spread warmth and support to those in need. Donation boxes were placed across the campus at Main Gate, Lab Block, Canteen, Under the Bridge, and Mother Dairy, collecting generous contributions of clothes, books, toys, and daily essentials. As part of the initiative, SWAAS volunteers personally distributed these donated items to underprivileged children, bringing smiles and comfort to their lives. The team also organized a food drive, sharing freshly prepared meals and spending quality time teaching and interacting with children in the park. The drive was a heartfelt effort to give back to society, and a shining example of how small acts of kindness can create a big impact. Together, we made a difference—one donation, one meal, one smile at a time.",
-      imageUrl: "/Events/donationdrive1.jpeg", // Path relative to public folder
+        "SWAAS proudly volunteered for Tarang'25, the vibrant National Science Day celebration held on 28th February at our college. This year’s Tarang showcased an array of events celebrating scientific temper, creativity, and innovation among students. Among the various events, SWAAS members enthusiastically contributed to Pretty Petals, a unique competition that combined science with aesthetics, where participants created stunning floral arrangements inspired by scientific concepts and nature’s symmetry. Our volunteers ensured smooth coordination – from registrations to material management and guiding participants throughout the event. Volunteering at Tarang was a fulfilling experience for our team, strengthening our commitment to supporting opportunities that foster curiosity, learning, and teamwork on campus. Events like these remind us of the importance of scientific celebrations in shaping inspired, aware, and progressive youth.",
+      imageUrl: "/Events/tarang2025.jpg",
+      projectImages: [
+        "/Events/tarang2025.jpg",
+        "Events/1ta.jpeg",
+        "Events/2ta.jpeg",
+        "Events/3ta.jpeg",
+        "Events/4ta.jpeg",
+        "Events/5ta.jpeg",
+        "Events/6ta.jpeg",
+        "Events/7ta.jpeg",
+        "Events/8ta.jpeg",
+        "Events/9ta.jpeg",
+        "Events/10ta.jpeg",
+        "Events/11ta.jpeg",
+        "Events/12ta.jpeg",
+      ],
       instagramLink:
-        "https://www.instagram.com/reel/DGbAWo5TVWm/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      projectImages: [ 
-        "/Events/donationdrive1.jpeg",
-        "/Events/donationdrive1.jpeg", 
-        "/Events/donationdrive1.jpeg", 
+        "https://www.instagram.com/p/DGqkz1tzabJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    },
+    {
+      date: "22nd",
+      month: "February",
+      year: "2025",
+      title: "Farewell to Seniors",
+      description:
+        "SWAAS on 22nd February bid a heartfelt farewell to its senior core team, with an evening filled with joy, laughter, and cherished memories. The event featured fun games, cake cutting, and lively moments, celebrating the incredible contributions of the outgoing team. It was a perfect blend of gratitude and celebration, as juniors came together to express their appreciation, sending off their seniors with smiles, laughter, and love. The farewell marked not just an end, but the celebration of a journey filled with dedication, leadership, and unforgettable bonds.",
+      imageUrl: "/Events/farewellSeniors2025.jpeg",
+      instagramLink:
+        "https://www.instagram.com/p/DGX5ruhMcif/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      projectImages: [
+        "/Events/farewellSeniors2025.jpeg",
+        "/Events/1fw.jpeg",
+        "/Events/2fw.jpeg",
+        "/Events/3fw.jpeg",
+        "/Events/4fw.jpeg",
+        "/Events/5fw.jpeg",
+        "/Events/6fw.jpeg",
+        "/Events/7fw.jpeg",
+        "/Events/8fw.jpeg",
       ],
     },
     {
@@ -27,85 +180,54 @@ const eventsData = {
       imageUrl: "/Events/git.jpeg",
       instagramLink:
         "https://www.instagram.com/p/DGcrHolxErN/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      projectImages: ["/Events/git.jpeg", "/Events/git.jpeg"], // Added a placeholder
+      projectImages: [
+        "/Events/git.jpeg",
+        "/Events/1git.jpeg",
+        "/Events/2git.jpeg",
+        "/Events/3git.jpeg",
+      ],
     },
     {
-      date: "22nd",
+      date: "17th - 21st",
       month: "February",
       year: "2025",
-      title: "Farewell to Seniors",
+      title: "Donation Drive 2025",
       description:
-        "SWAAS on 22nd February bid a heartfelt farewell to its senior core team, with an evening filled with joy, laughter, and cherished memories. The event featured fun games, cake cutting, and lively moments, celebrating the incredible contributions of the outgoing team. It was a perfect blend of gratitude and celebration, as juniors came together to express their appreciation, sending off their seniors with smiles, laughter, and love. The farewell marked not just an end, but the celebration of a journey filled with dedication, leadership, and unforgettable bonds.",
-      imageUrl: "/Events/farewellSeniors2025.jpeg",
+        "SWAAS, in collaboration with the Robin Hood Army, conducted the Donation Drive 2025 from 17th to 21st February, aiming to spread warmth and support to those in need. Donation boxes were placed across the campus at Main Gate, Lab Block, Canteen, Under the Bridge, and Mother Dairy, collecting generous contributions of clothes, books, toys, and daily essentials. As part of the initiative, SWAAS volunteers personally distributed these donated items to underprivileged children, bringing smiles and comfort to their lives. The team also organized a food drive, sharing freshly prepared meals and spending quality time teaching and interacting with children in the park. The drive was a heartfelt effort to give back to society, and a shining example of how small acts of kindness can create a big impact. Together, we made a difference—one donation, one meal, one smile at a time.",
+      imageUrl: "/Events/donationdrive1.jpeg", // Path relative to public folder
       instagramLink:
-        "https://www.instagram.com/p/DGX5ruhMcif/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
-      projectImages: ["/Events/farewellSeniors2025.jpeg"],
+        "https://www.instagram.com/reel/DGbAWo5TVWm/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      projectImages: [
+        "/Events/donationdrive1.jpeg",
+        "/Events/5do.jpeg",
+        "/Events/6do.jpeg",
+        "/Events/7do.jpeg",
+        "/Events/8do.jpeg",
+        "/Events/9do.jpeg",
+        "/Events/10do.jpeg",
+        "/Events/11do.jpeg",
+        "/Events/12do.jpeg",
+        "/Events/13do.jpeg",
+        "/Events/14do.jpeg",
+        "/Events/15do.jpeg",
+        "/Events/1do.jpeg",
+        "/Events/2do.jpeg",
+        "/Events/3do.jpeg",
+        "/Events/4do.jpeg",
+      ],
     },
     {
-      date: "28th",
-      month: "February",
-      year: "2025",
-      title: "National Science Day – Tarang 2025",
-      description:
-      "SWAAS proudly volunteered for Tarang'25, the vibrant National Science Day celebration held on 28th February at our college. This year’s Tarang showcased an array of events celebrating scientific temper, creativity, and innovation among students. Among the various events, SWAAS members enthusiastically contributed to Pretty Petals, a unique competition that combined science with aesthetics, where participants created stunning floral arrangements inspired by scientific concepts and nature’s symmetry. Our volunteers ensured smooth coordination – from registrations to material management and guiding participants throughout the event. Volunteering at Tarang was a fulfilling experience for our team, strengthening our commitment to supporting opportunities that foster curiosity, learning, and teamwork on campus. Events like these remind us of the importance of scientific celebrations in shaping inspired, aware, and progressive youth.",
-      imageUrl: "/Events/tarang2025.jpg", 
-      projectImages: ["/Events/tarang2025.jpg"],
-      instagramLink: "https://www.instagram.com/p/DGqkz1tzabJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-      date: "7th",
-      month: "March",
-      year: "2025",
-      title: "Spreading Smiles",
-      description:
-        "As part of the “Spreading Smiles” initiative, SWAAS organized a heartwarming event on 7th March near the slum area adjacent to GTBIT college. The team came together with a simple goal — to bring moments of joy and happiness to the little kids in the neighborhood. We distributed colorful balloons, filling the area with laughter, excitement, and smiling faces. But the event was about more than just giving away balloons — it was about connecting with the kids and making them feel seen, valued, and cherished. Our volunteers spent time engaging with them, sharing playful moments, and creating an atmosphere of warmth and belonging. This initiative reminded us all that even the smallest gestures can have a big impact, spreading smiles and making a difference in the lives of others.",
-      imageUrl: "/Events/spreadingSmiles.png",
-      projectImages: ["/Events/spreadingSmiles.png"],
-      instagramLink:"https://www.instagram.com/p/DG58VJQMZeJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-      date: "8th",
-      month: "March",
-      year: "2025",
-      title: "International Women’s Day",
-      description: "The college came alive with energy and enthusiasm as it celebrated International Women’s Day with a heartfelt and empowering event. The celebration began with an inspiring address by Director Dr. Rominder Kaur Randhawa, who was honored with a handmade bouquet by SWAAS Convener Dr. Manpreet Kaur Bagga and Student President Yogita. Teachers were also presented with flowers and bracelets as gestures of appreciation. The event featured a soulful Shabad and Kirtan performance by Divine Circle society, followed by a touching solo song by a faculty member. Interactive segments like a questionnaire round kept the audience engaged, while games such as movie dialogue challenges and the newspaper dance brought smiles and laughter. Guests enjoyed delightful refreshments, adding warmth and flavor to the celebration. Musical performances by Gsharp, the college’s musical society, enchanted the audience and set the mood for a lively DJ session, where everyone danced with joy. The day beautifully celebrated womanhood, unity, and empowerment, leaving everyone inspired and uplifted."
-      ,imageUrl: "/Events/women_day_2025.jpeg", // Ensure this image exists
-      projectImages: ["/Events/women_day_2025.jpeg"],
-      instagramLink: "https://www.instagram.com/p/DHMDYP0zQ0K/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-      date: "21st",
-      month: "April",
-      year: "2025",
-      title: "BottleForChange – Bisleri Cleanliness Drive",
-      description:
-        "On 21st April 2025, SWAAS collaborated with Bisleri for the BottleForChange initiative, promoting cleanliness and plastic segregation on campus. Students participated in collecting plastic waste and raising awareness about responsible disposal and recycling, fostering environmental responsibility and sustainability.",
-      imageUrl: "/Events/BottleForChange.jpg",
-      projectImages: ["/Events/BottleForChange.jpg"],
-      instagramLink: "https://www.instagram.com/p/DIv6hRizWN6/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA== ",
-    },
-    {
-      date: "21st",
-      month: "April",
-      year: "2025",
-      title: "Mindsync Ideathon 2025",
-      description:
-      "On April 21, 2025, SWAAS – The EcoTech Society of GTBIT, Delhi, hosted Mindsync, an inter-college ideathon focused on innovation and environmental awareness. Supported by sponsors like Unstop, BTECHNOTES.in, interviewbuddy, and .xyz, the event featured a prize pool exceeding ₹10,000, along with exclusive swags and certificates. The competition began with an online round where teams submitted ideas across five themes: Social Impact, Sustainability, Healthcare, Ed-tech, and Blockchain & Cybersecurity. Top teams advanced to the on-campus finale, presenting their solutions to a live audience and a panel of esteemed judges — Dr. Manpreet Kaur, Dr. Amandeep Kaur, and Dr. Aashish Bhardwaj. Winners: 1st Prize: Team Shakti 2nd Prize: Team Neurocode 3rd Prize: Team Siri Consolation Prize: Team Pulp Function. The finale featured engaging presentations, expert feedback, and a prize distribution ceremony. Judges were honored with potted plants, and participants enjoyed refreshments and recognition for their contributions. Mindsync 2025 celebrated innovation, collaboration, and sustainability, leaving a meaningful impact on all involved."
-      ,imageUrl: "/Events/mindsync_ideathon.jpg",
-      projectImages: ["/Events/mindsync_ideathon.jpg"],
-      instagramLink: "https://www.instagram.com/p/DI4NQFETngT/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
-    {
-      date: "",
-      month: "April",
-      year: "2025",
-      title: "The Ultimate Tech Battle – Tech Quiz",
-      description:
-        "SWAAS, in collaboration with FFT, hosted 'The Ultimate Tech Battle', a thrilling quiz competition celebrating technology and sustainability. Participants competed for the title of TECH WIZARD, winning cash prizes, medals, and subscriptions. The event was fun-filled and intellectually stimulating, with refreshments for attendees.",
-      imageUrl: "/Events/tech_battle.png", 
-      projectImages: ["/Events/tech_battle.png"],
-      instagramLink: "https://www.instagram.com/p/DH_YfA8T74A/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    },
+  date: "25th",
+  month: "October",
+  year: "2024",
+  title: "Festive Fusion",
+  description: "SWAAS, the eco-tech society of GTBIT, hosted Festive Fusion a grand celebration blending the joyous spirits of Navratri, Diwali, and Bandi Chhor Diwas. The evening opened with Swartaal by G# Society, whose soulful fusion of classical and contemporary music set the festive tone. Epicture’s Pixel-e-Pyaar beautifully captured the vibrant moments of the night. A symbolic diya-lighting ceremony by the college management brought a sense of unity and reflection. Electrifying performances by Ashke (Bhangra), Flamingo (GTB4CEC), and SWAAS filled the atmosphere with rhythm and energy. The celebration concluded with an enthusiastic community dandiya session, where students and faculty danced together in festive harmony. Festive Fusion was more than an event—it was a vibrant expression of culture, tradition, and togetherness.",
+  imageUrl: "/Events/ff.jpeg",
+  instagramLink: "https://www.instagram.com/p/DB1EhnYsVu0/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+  projectImages: [
+        "/Events/ff11.jpg",
+  ]
+},
   ],
   "Upcoming Events": [
     // {
@@ -129,6 +251,69 @@ const eventsData = {
     //   // projectImages: ["/Events/lorem_ipsum2.jpeg"],
     // },
   ],
+  "Signature Events":[
+    {
+  date: "25th",
+  month: "October",
+  year: "2024",
+  title: "Festive Fusion",
+  description: "SWAAS, the eco-tech society of GTBIT, hosted Festive Fusion a grand celebration blending the joyous spirits of Navratri, Diwali, and Bandi Chhor Diwas. The evening opened with Swartaal by G# Society, whose soulful fusion of classical and contemporary music set the festive tone. Epicture’s Pixel-e-Pyaar beautifully captured the vibrant moments of the night. A symbolic diya-lighting ceremony by the college management brought a sense of unity and reflection. Electrifying performances by Ashke (Bhangra), Flamingo (GTB4CEC), and SWAAS filled the atmosphere with rhythm and energy. The celebration concluded with an enthusiastic community dandiya session, where students and faculty danced together in festive harmony. Festive Fusion was more than an event—it was a vibrant expression of culture, tradition, and togetherness.",
+  imageUrl: "/Events/ff.jpeg",
+  instagramLink: "https://www.instagram.com/p/DB1EhnYsVu0/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    projectImages: [
+        "/Events/ff11.jpg",
+  ]
+},
+        {
+      date: "17th - 21st",
+      month: "February",
+      year: "2025",
+      title: "Donation Drive 2025",
+      description:
+        "SWAAS, in collaboration with the Robin Hood Army, conducted the Donation Drive 2025 from 17th to 21st February, aiming to spread warmth and support to those in need. Donation boxes were placed across the campus at Main Gate, Lab Block, Canteen, Under the Bridge, and Mother Dairy, collecting generous contributions of clothes, books, toys, and daily essentials. As part of the initiative, SWAAS volunteers personally distributed these donated items to underprivileged children, bringing smiles and comfort to their lives. The team also organized a food drive, sharing freshly prepared meals and spending quality time teaching and interacting with children in the park. The drive was a heartfelt effort to give back to society, and a shining example of how small acts of kindness can create a big impact. Together, we made a difference—one donation, one meal, one smile at a time.",
+      imageUrl: "/Events/donationdrive1.jpeg", // Path relative to public folder
+      instagramLink:
+        "https://www.instagram.com/reel/DGbAWo5TVWm/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      projectImages: [
+        "/Events/donationdrive1.jpeg",
+        "/Events/5do.jpeg",
+        "/Events/6do.jpeg",
+        "/Events/7do.jpeg",
+        "/Events/8do.jpeg",
+        "/Events/9do.jpeg",
+        "/Events/10do.jpeg",
+        "/Events/11do.jpeg",
+        "/Events/12do.jpeg",
+        "/Events/13do.jpeg",
+        "/Events/14do.jpeg",
+        "/Events/15do.jpeg",
+        "/Events/1do.jpeg",
+        "/Events/2do.jpeg",
+        "/Events/3do.jpeg",
+        "/Events/4do.jpeg",
+      ],
+    },
+        {
+      date: "7th",
+      month: "March",
+      year: "2025",
+      title: "Spreading Smiles",
+      description:
+        "As part of the “Spreading Smiles” initiative, SWAAS organized a heartwarming event on 7th March near the slum area adjacent to GTBIT college. The team came together with a simple goal — to bring moments of joy and happiness to the little kids in the neighborhood. We distributed colorful balloons, filling the area with laughter, excitement, and smiling faces. But the event was about more than just giving away balloons — it was about connecting with the kids and making them feel seen, valued, and cherished. Our volunteers spent time engaging with them, sharing playful moments, and creating an atmosphere of warmth and belonging. This initiative reminded us all that even the smallest gestures can have a big impact, spreading smiles and making a difference in the lives of others.",
+      imageUrl: "/Events/spreadingSmiles.png",
+      projectImages: [
+        "/Events/spreadingSmiles.png",
+        "/Events/1ss.jpeg",
+        "/Events/2ss.jpeg",
+        "/Events/3ss.jpeg",
+        "/Events/4ss.jpeg",
+        "/Events/5ss.jpeg",
+        "/Events/6ss.jpeg",
+      ],
+      instagramLink:
+        "https://www.instagram.com/p/DG58VJQMZeJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    },
+  ]
 };
 
 export default eventsData;
