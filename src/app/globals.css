@@ -2802,6 +2802,18 @@ nav ul li a.active {
   opacity: 0.8;
 }
 
+
+.instagram{
+  color: #146d18;
+  font-weight: bold;
+  text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.instagram:hover {
+  opacity: 0.8;
+}
+
 .leafDecoration {
   position: relative;
   z-index: -1;

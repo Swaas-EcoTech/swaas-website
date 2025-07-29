@@ -3,12 +3,18 @@ import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import DecorativeLeaves from "../components/DecorativeLeaves";
 import Header from "../components/grid";
+import ProjectModal from "../components/EventModal"; 
+
 const Collab = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState({});
   const [windowWidth, setWindowWidth] = useState(1200);
   const contentRef = useRef(null);
   const shapesRef = useRef(null);
+
+  // State for modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,35 +61,64 @@ const Collab = () => {
   const photos = [
     {
       id: 1,
-      src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1000",
-      alt: "Collaboration 1",
+      src: "/collabs/photo8.jpeg",
+      alt: "Donation Drive 2025",
+      description:
+        "SWAAS, in collaboration with the Robin Hood Army, organized Donation Drive 2025 to support underprivileged communities. Donation boxes were set up at multiple campus locations including the Main Gate, Lab Block, Canteen, Under the Bridge, and Mother Dairy. Students and faculty contributed generously by donating clothes, books, toys, and daily essentials.",
+      impact:
+        "SWAAS volunteers personally distributed donations to children in need, conducted a food drive with freshly prepared meals, and engaged in teaching and playful interactions in local parks. The initiative fostered community bonding and highlighted the impact of collective compassion.",
+      date: "17th, 21st February 2025",
+      collaborators: "Robin Hood Army",
+      images: ["/collabs/dd3.jpeg","/collabs/photo8.jpeg", "/collabs/dd2.jpeg","/collabs/dd4.jpeg"],
+      instagramLink: "https://www.instagram.com/p/DGTFa0pzJl9/?img_index=1",
     },
     {
       id: 2,
-      src: "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=1000",
-      alt: "Collaboration 2",
+      src: "/collabs/photo2.jpeg",
+      alt: "The Ultimate Tech Battle",
+      description:
+        "SWAAS, in collaboration with FFT, organized The Ultimate Tech Battle a high-energy quiz competition combining technology and sustainability. Participants competed for the title of TECH WIZARD, showcasing exceptional technical knowledge and eco-conscious thinking.",
+      collaborators: "FFT",
+      impact:
+        "The event celebrated innovation and intellect, offering cash prizes, medals, e certificates, and exclusive subscriptions. With active participation and enthusiastic engagement, the quiz fostered a fun, competitive, and educational atmosphere that highlighted the importance of sustainable technology.",
+      images: ["/collabs/photo2.jpeg", "/collabs/tt1.jpeg","/collabs/tt2.jpeg","/collabs/tt3.jpeg"],
+      instagramLink: "https://www.instagram.com/p/DH_YfA8T74A/?img_index=1",
     },
     {
       id: 3,
-      src: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?q=80&w=1000",
-      alt: "Collaboration 3",
-    },
-    {
-      id: 4,
-      src: "https://images.unsplash.com/photo-1556761175-b413da4baf72?q=80&w=1000",
-      alt: "Collaboration 4",
-    },
-    {
-      id: 5,
-      src: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000",
-      alt: "Collaboration 5",
-    },
-    {
-      id: 6,
-      src: "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1000",
-      alt: "Collaboration 6",
+      src: "/collabs/photo6.jpeg",
+      alt: "Climate Ideation Case Competition",
+      description:
+        "SWAAS collaborated with AIESEC Delhi IIT as the official promotional partner for the Climate Change Ideation Case Competition held at IIT Delhi. The initiative aimed to empower youth to address real-world sustainability challenges through innovative ideas and expert engagement.",
+      impact:
+        "SWAAS amplified the competitions reach through targeted social media campaigns. The event connected participants with professionals from UNDP, Log9, and the Government of India. Winners were awarded certificates, vouchers, and recognition from AIESEC and IIT Delhi. This partnership strengthened SWAAS’s role in advancing youth-driven environmental leadership.",
+      collaborators: "AIESEC Delhi IIT, IIT Delhi",
+      // images: ["/collabs/photo6.jpeg", "/collabs/photo8.jpeg"],
+      instagramLink:"https://www.instagram.com/stories/highlights/17893051218037030/",
     },
   ];
+
+  // Function to truncate text
+  const truncateText = (text, wordLimit) => {
+    if (!text) return "";
+    const words = text.split(" ");
+    if (words.length <= wordLimit) {
+      return text;
+    }
+    return words.slice(0, wordLimit).join(" ") + "...";
+  };
+
+  // Function to open modal
+  const openModal = (photo) => {
+    setSelectedPhoto(photo);
+    setIsModalOpen(true);
+  };
+
+  // Function to close modal
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedPhoto(null);
+  };
 
   return (
     <div
@@ -205,7 +240,7 @@ const Collab = () => {
           }
 
           .animate-slideInRight {
-            animation: slideInRight 0.8s ease-out forwards;
+            animation: slideInRight 0.5s ease-out forwards;
           }
 
           .animate-scaleIn {
@@ -239,8 +274,8 @@ const Collab = () => {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            padding: 2rem;
-            max-width: 1200px;
+            padding: 4rem;
+            max-width: 1500px;
             margin: 0 auto;
           }
 
@@ -250,7 +285,7 @@ const Collab = () => {
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            cursor: pointer;
+            /* No cursor: pointer here, as only the button should be clickable for modal */
           }
 
           .photo-card:hover {
@@ -277,13 +312,36 @@ const Collab = () => {
             background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
             color: white;
             padding: 1rem;
-            transform: translateY(100%);
+            transform: translateY(0); /* Keep overlay visible for text and button */
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+          }
+          
+          .photo-overlay h3,
+          .photo-overlay p {
+            margin: 0 0 0.5rem 0; /* Add some space below text */
           }
 
-          .photo-card:hover .photo-overlay {
-            transform: translateY(0);
+          .view-more-button {
+            background-color: rgba(94, 120, 90, 0.9);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            cursor: pointer;
+            font-family: "Inika", serif;
+            font-size: 0.9rem;
+            align-self: flex-end; /* Align button to the right within the flex container */
+            margin-top: 10px; /* Space between description and button */
+            transition: background-color 0.3s ease;
           }
+
+          .view-more-button:hover {
+            background-color: rgba(94, 120, 90, 1);
+          }
+
 
           .scroll-indicator {
             position: absolute;
@@ -310,8 +368,7 @@ const Collab = () => {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 120%;
+            height: 10%;
             background: linear-gradient(
               135deg,
               #f0f8f0 0%,
@@ -510,8 +567,7 @@ const Collab = () => {
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "space-around",
-          padding: "4rem 2rem",
-          minHeight: "100vh",
+          // minHeight: "100vh",
           position: "relative",
         }}
       >
@@ -592,7 +648,7 @@ const Collab = () => {
             justifyContent: "center",
             alignItems: "center",
             position: "relative",
-            minHeight: "400px",
+            minHeight: "450px",
             opacity: isVisible.shapes ? 1 : 0,
           }}
         >
@@ -603,13 +659,12 @@ const Collab = () => {
               className="animate-scaleIn floating"
               style={{
                 position: "absolute",
-                // backgroundImage: `url(/images/photo${num}.jpg)`, // different image per shape
-                backgroundImage: `url(/Events/tech_battle.png)`, // different image per shape
+                backgroundImage: `url(/collabs/photo${num}.jpeg)`, // different image per shape
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 borderRadius: "80px",
-                animationDelay: `${index * 0.1}s`,
-                animationDuration: `${4 + index * 0.5}s`,
+                animationDelay: `${index * 0.01}s`,
+                animationDuration: `${4 + index * 0.05}s`,
                 ...getShapeStyle(num, windowWidth),
               }}
             ></div>
@@ -620,7 +675,6 @@ const Collab = () => {
       {/* Photo Gallery Section */}
       <div
         style={{
-          padding: "4rem 0",
           position: "relative",
         }}
       >
@@ -675,18 +729,39 @@ const Collab = () => {
             >
               <img src={photo.src} alt={photo.alt} />
               <div className="photo-overlay">
-                <h3 style={{ margin: "0 0 0.5rem 0", fontSize: "1.25rem" }}>
+                {/* <h3 style={{ margin: "0 0 0.5rem 0", fontSize: "1.25rem" }}>
                   {photo.alt}
-                </h3>
-                <p style={{ margin: 0, opacity: 0.9 }}>
-                  Amazing collaboration project showcasing innovation and
-                  creativity.
-                </p>
+                </h3> */}
+                {/* <p style={{ margin: "0", opacity: 0.9, fontSize: "0.9rem" }}>
+                  {truncateText(photo.description, 20)}
+                </p> */}
+                <button
+                  className="view-more-button"
+                  onClick={() => openModal(photo)}
+                >
+                  View More
+                </button>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {selectedPhoto && (
+        <ProjectModal
+          isOpen={isModalOpen}
+          onClose={closeModal}
+          title={selectedPhoto.alt}
+          description={selectedPhoto.impact || selectedPhoto.description} // Use impact if available, otherwise description
+          images={selectedPhoto.images || [selectedPhoto.src]} // Pass all related images, or just the main one
+          date={selectedPhoto.date}
+          collaborators={selectedPhoto.collaborators} 
+          instagramLink={selectedPhoto.instagramLink}
+          // Assuming date is in "DDth Month YYYY" format,
+          // you might need to parse it for separate month/year props if your modal expects them.
+          // For now, passing the full date string to 'date' prop should work if modal handles it.
+        />
+      )}
     </div>
   );
 };
@@ -719,7 +794,7 @@ const getShapeStyle = (num, screenWidth) => {
       width: isMobile ? "150px" : "200px",
       height: isMobile ? "180px" : "250px",
       top: "25%",
-      left: "0%",
+      left: "-5%",
     },
     5: {
       width: isMobile ? "150px" : "200px",
@@ -742,8 +817,8 @@ const getShapeStyle = (num, screenWidth) => {
     8: {
       width: isMobile ? "200px" : "300px",
       height: isMobile ? "150px" : "200px",
-      top: "0%",
-      left: "35%",
+      top: "5%",
+      left: "25%",
     },
   };
 

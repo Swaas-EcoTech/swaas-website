@@ -1,86 +1,97 @@
-"use client"
+"use client";
 
-import { useState, useEffect, useCallback, useRef } from "react"
+import { useState, useEffect, useCallback, useRef } from "react";
 
-const ProjectModal = ({ isOpen, onClose, title, description, images = [], instagramLink, date, month, year }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [isImageLoading, setIsImageLoading] = useState(false)
-  const [imageLoadError, setImageLoadError] = useState(false)
-  const [isClosing, setIsClosing] = useState(false)
-  const modalRef = useRef(null)
+const ProjectModal = ({
+  isOpen,
+  onClose,
+  title,
+  description,
+  collaborators,
+  images = [],
+  instagramLink,
+  date,
+  month,
+  year,
+}) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isImageLoading, setIsImageLoading] = useState(false);
+  const [imageLoadError, setImageLoadError] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  const modalRef = useRef(null);
 
   // Enhanced close function with animation
   const handleClose = useCallback(() => {
-    setIsClosing(true)
+    setIsClosing(true);
     setTimeout(() => {
-      setIsClosing(false)
-      onClose()
-    }, 200)
-  }, [onClose])
+      setIsClosing(false);
+      onClose();
+    }, 200);
+  }, [onClose]);
 
   // Navigation functions
   const nextImage = useCallback(() => {
-    if (images.length <= 1) return
-    setIsImageLoading(true)
-    setImageLoadError(false)
-    setCurrentImageIndex((prev) => (prev + 1) % images.length)
-  }, [images.length])
+    if (images.length <= 1) return;
+    setIsImageLoading(true);
+    setImageLoadError(false);
+    setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  }, [images.length]);
 
   const prevImage = useCallback(() => {
-    if (images.length <= 1) return
-    setIsImageLoading(true)
-    setImageLoadError(false)
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length)
-  }, [images.length])
+    if (images.length <= 1) return;
+    setIsImageLoading(true);
+    setImageLoadError(false);
+    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  }, [images.length]);
 
   // Keyboard navigation
   useEffect(() => {
-    if (!isOpen) return
+    if (!isOpen) return;
 
     const handleKeyDown = (event) => {
       switch (event.key) {
         case "Escape":
-          handleClose()
-          break
+          handleClose();
+          break;
         case "ArrowRight":
-          nextImage()
-          break
+          nextImage();
+          break;
         case "ArrowLeft":
-          prevImage()
-          break
+          prevImage();
+          break;
         default:
-          break
+          break;
       }
-    }
+    };
 
-    document.addEventListener("keydown", handleKeyDown)
-    return () => document.removeEventListener("keydown", handleKeyDown)
-  }, [isOpen, handleClose, nextImage, prevImage])
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, handleClose, nextImage, prevImage]);
 
   // Reset image index when images change
   useEffect(() => {
-    setCurrentImageIndex(0)
-    setImageLoadError(false)
-  }, [images])
+    setCurrentImageIndex(0);
+    setImageLoadError(false);
+  }, [images]);
 
   // Handle image load events
   const handleImageLoad = () => {
-    setIsImageLoading(false)
-    setImageLoadError(false)
-  }
+    setIsImageLoading(false);
+    setImageLoadError(false);
+  };
 
   const handleImageError = () => {
-    setIsImageLoading(false)
-    setImageLoadError(true)
-  }
+    setIsImageLoading(false);
+    setImageLoadError(true);
+  };
 
-  if (!isOpen) return null
+  if (!isOpen) return null;
 
   return (
     <>
       <style jsx>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-        
+        @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
         .modal-overlay {
           position: fixed;
           top: 0;
@@ -104,13 +115,12 @@ const ProjectModal = ({ isOpen, onClose, title, description, images = [], instag
           width: 900px;
           max-height: 90vh;
           overflow: hidden;
-          box-shadow: 
-            0 25px 50px rgba(0, 0, 0, 0.25),
+          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25),
             0 0 0 1px rgba(255, 255, 255, 0.05);
           position: relative;
           display: flex;
           flex-direction: column;
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
           animation: ${isClosing ? "scaleOut" : "scaleIn"} 0.2s ease-out;
           transform-origin: center;
         }
@@ -306,28 +316,6 @@ const ProjectModal = ({ isOpen, onClose, title, description, images = [], instag
           font-weight: 500;
         }
 
-        .instagram-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-          /* Updated Instagram gradient for better visibility and common association */
-          background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-          color: white;
-          text-decoration: none;
-          padding: 10px 20px;
-          border-radius: 25px;
-          font-weight: 600;
-          font-size: 0.9rem;
-          transition: all 0.2s ease;
-          /* Stronger, more vibrant shadow */
-          box-shadow: 0 6px 20px rgba(189, 45, 140, 0.4);
-          text-shadow: 0 1px 2px rgba(0,0,0,0.2); /* Subtle text shadow for pop */
-        }
-
-        .instagram-link:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 25px rgba(189, 45, 140, 0.6); /* Even stronger hover shadow */
-        }
 
         .loading-spinner {
           position: absolute;
@@ -353,40 +341,52 @@ const ProjectModal = ({ isOpen, onClose, title, description, images = [], instag
         }
 
         @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
 
         @keyframes fadeOut {
-          from { opacity: 1; }
-          to { opacity: 0; }
+          from {
+            opacity: 1;
+          }
+          to {
+            opacity: 0;
+          }
         }
 
         @keyframes scaleIn {
-          from { 
-            opacity: 0; 
-            transform: scale(0.9); 
+          from {
+            opacity: 0;
+            transform: scale(0.9);
           }
-          to { 
-            opacity: 1; 
-            transform: scale(1); 
+          to {
+            opacity: 1;
+            transform: scale(1);
           }
         }
 
         @keyframes scaleOut {
-          from { 
-            opacity: 1; 
-            transform: scale(1); 
+          from {
+            opacity: 1;
+            transform: scale(1);
           }
-          to { 
-            opacity: 0; 
-            transform: scale(0.9); 
+          to {
+            opacity: 0;
+            transform: scale(0.9);
           }
         }
 
         @keyframes spin {
-          0% { transform: translate(-50%, -50%) rotate(0deg); }
-          100% { transform: translate(-50%, -50%) rotate(360deg); }
+          0% {
+            transform: translate(-50%, -50%) rotate(0deg);
+          }
+          100% {
+            transform: translate(-50%, -50%) rotate(360deg);
+          }
         }
 
         /* Mobile Responsive */
@@ -394,31 +394,31 @@ const ProjectModal = ({ isOpen, onClose, title, description, images = [], instag
           .modal-overlay {
             padding: 10px;
           }
-          
+
           .modal-container {
             width: 95vw;
             max-height: 95vh;
             border-radius: 16px;
           }
-          
+
           .image-section {
             height: 60vh;
             min-height: 300px;
             border-radius: 16px 16px 0 0;
           }
-          
+
           .overlay-title {
             font-size: 1.5rem;
           }
-          
+
           .overlay-subtitle {
             font-size: 0.85rem;
           }
-          
+
           .image-overlay {
             padding: 30px 20px 20px;
           }
-          
+
           .close-button {
             top: 15px;
             right: 15px;
@@ -426,68 +426,76 @@ const ProjectModal = ({ isOpen, onClose, title, description, images = [], instag
             height: 36px;
             font-size: 18px;
           }
-          
+
           .nav-button {
             width: 44px;
             height: 44px;
             opacity: 1;
             visibility: visible;
           }
-          
+
           .nav-button.prev {
             left: 15px;
           }
-          
+
           .nav-button.next {
             right: 15px;
           }
-          
+
           .content-section {
             padding: 20px;
             max-height: 35vh;
             border-radius: 0 0 16px 16px;
           }
-          
+
           .description {
             font-size: 0.95rem;
             line-height: 1.6;
           }
-          
+
           .meta-info {
             flex-direction: column;
             align-items: flex-start;
             gap: 12px;
           }
-          
-          .instagram-link {
-            align-self: stretch;
-            justify-content: center;
-          }
-        }
-
         @media (max-width: 480px) {
           .image-section {
             height: 50vh;
             min-height: 250px;
           }
-          
+
           .overlay-title {
             font-size: 1.25rem;
           }
-          
+
           .content-section {
             padding: 15px;
           }
-          
+          .collaborators-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #6b7280; /* Or a color that fits your design */
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+          }
+
+          /* Add this if you want it responsive like the date-info */
+          @media (max-width: 768px) {
+            .collaborators-info {
+              /* Adjust as needed for mobile */
+            }
+          }
           .nav-button {
             width: 40px;
             height: 40px;
           }
-          
+
           .nav-button.prev {
             left: 10px;
           }
-          
+
           .nav-button.next {
             right: 10px;
           }
@@ -501,7 +509,12 @@ const ProjectModal = ({ isOpen, onClose, title, description, images = [], instag
         aria-modal="true"
         aria-labelledby="modal-title"
       >
-        <div ref={modalRef} className="modal-container" onClick={(e) => e.stopPropagation()} role="document">
+        <div
+          ref={modalRef}
+          className="modal-container"
+          onClick={(e) => e.stopPropagation()}
+          role="document"
+        >
           {/* Image Section */}
           <div className="image-section">
             {isImageLoading && <div className="loading-spinner"></div>}
@@ -533,19 +546,31 @@ const ProjectModal = ({ isOpen, onClose, title, description, images = [], instag
             </div>
 
             {/* Close Button */}
-            <button className="close-button" onClick={handleClose} aria-label="Close modal">
+            <button
+              className="close-button"
+              onClick={handleClose}
+              aria-label="Close modal"
+            >
               ×
             </button>
 
             {/* Navigation Arrows */}
             {images.length > 1 && (
               <>
-                <button className="nav-button prev" onClick={prevImage} aria-label="Previous image">
+                <button
+                  className="nav-button prev"
+                  onClick={prevImage}
+                  aria-label="Previous image"
+                >
                   <svg className="nav-arrow" viewBox="0 0 24 24">
                     <polyline points="15,18 9,12 15,6"></polyline>
                   </svg>
                 </button>
-                <button className="nav-button next" onClick={nextImage} aria-label="Next image">
+                <button
+                  className="nav-button next"
+                  onClick={nextImage}
+                  aria-label="Next image"
+                >
                   <svg className="nav-arrow" viewBox="0 0 24 24">
                     <polyline points="9,18 15,12 9,6"></polyline>
                   </svg>
@@ -556,10 +581,12 @@ const ProjectModal = ({ isOpen, onClose, title, description, images = [], instag
                   {images.map((_, index) => (
                     <button
                       key={index}
-                      className={`indicator ${index === currentImageIndex ? "active" : ""}`}
+                      className={`indicator ${
+                        index === currentImageIndex ? "active" : ""
+                      }`}
                       onClick={() => {
-                        setIsImageLoading(true)
-                        setCurrentImageIndex(index)
+                        setIsImageLoading(true);
+                        setCurrentImageIndex(index);
                       }}
                       aria-label={`Go to image ${index + 1}`}
                     />
@@ -568,30 +595,35 @@ const ProjectModal = ({ isOpen, onClose, title, description, images = [], instag
               </>
             )}
           </div>
-
-          {/* Content Section */}
           <div className="content-section">
-            {(date || month || year || instagramLink) && (
+            {(date || month || year || instagramLink || collaborators) && (
               <div className="meta-info">
-                {(date || month || year) && (
-                  <div className="date-info">
-                    📅 {date} {month} {year}
+                {collaborators && (
+                  <div className="collaborators-info">
+                    Collaborators: {collaborators}
                   </div>
                 )}
+
                 {instagramLink && (
-                  <a className="instagram-link" href={instagramLink} target="_blank" rel="noopener noreferrer">
-                    📸 View on Instagram
+                  <a
+                    className="instagram"
+                    href={instagramLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    🌱 View on Instagram
                   </a>
                 )}
               </div>
             )}
 
-            <p className="description">{description}</p>
+            {/* Always show description */}
+            {description && <p className="description">{description}</p>}
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ProjectModal
+export default ProjectModal;
