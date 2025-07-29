@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import ClientLayout from "./components/ClientLayout"; // Add this import
+import ClientLayout from "./components/ClientLayout";
 
-// Import Lora
+// Import and configure Lora (✅ no export!)
 import { Lora } from 'next/font/google';
 
-// Configure Lora font
-export const lora = Lora({
+const lora = Lora({
   subsets: ['latin'],
-  weight: ['400', '700'], // Make sure you're importing the weights you plan to use (e.g., 700 for bold titles)
+  weight: ['400', '700'],
   display: 'swap',
-  variable: '--font-lora', // This defines the CSS variable name
+  variable: '--font-lora',
 });
 
 const geistSans = Geist({
@@ -35,7 +34,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={lora.variable}> {/* Add lora.variable here */}
+    <html lang="en" className={lora.variable}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ClientLayout>
           {children}
