@@ -215,25 +215,87 @@ body {
   outline: none; /* Remove any outline */
 }
 
+/* Styles for H1: Fade-In with Subtle Scale */
 .Home h1 {
   text-align: center;
+  font-family: var(--font-lora), serif;
   font-size: 65px;
-  margin-bottom: -20px;
   color: #ffffff;
-  margin-bottom: -22px;
   margin-top: 10px;
-  border: none; /* Remove any border from h1 */
-  outline: none; /* Remove any outline from h1 */
-  /* text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; */
+  margin-bottom: -12px; /* Keeping your specified margins */
+  border: none;
+  outline: none;
+  opacity: 0; /* Start invisible */
+  transform: translateY(20px) scale(0.95); /* Start slightly below and smaller */
+  animation: headerFadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* Smooth ease-out curve */
+  animation-delay: 0.3s; /* Delay for h1 */
 }
 
+/* Styles for H2: Typewriter Effect (NO CURSOR) */
 .Home h2 {
   text-align: center;
   font-size: 30px;
+  text-transform: capitalize;
   color: #ffffff;
+  font-family: var(--font-lora), serif;
   border: none; /* Remove any border from h2 */
   outline: none; /* Remove any outline from h2 */
-  /* text-shadow: 4px 4px 8px #858585; */
+  width: 0%; /* Start with 0 width to hide text */
+  overflow: hidden; /* Hide overflowing text */
+  white-space: nowrap; /* Prevent text from wrapping */
+  margin: 0 auto; /* Center the block for text reveal */
+  /* REMOVED: border-right: 0.15em solid orange; <-- This creates the cursor */
+  animation: typing 3.5s steps(40, end) forwards; /* Only typing animation */
+  animation-delay: 1.3s; /* Start after h1 animation is well underway */
+  max-width: fit-content; /* Ensure width animation works with text length */
+}
+
+
+/* Keyframes for H1's Fade-In animation */
+@keyframes headerFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Keyframes for H2's Typewriter animation */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; } /* Reveal text by expanding width */
+}
+
+/* REMOVED: Keyframes for Blinking Caret */
+/* @keyframes blink-caret { ... } */
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .Home h1 {
+    font-size: 45px;
+    margin-bottom: -10px;
+  }
+  .Home h2 {
+    font-size: 24px;
+    animation: typing 3s steps(30, end) forwards; /* Adjusted duration for mobile */
+    animation-delay: 1.1s; /* Adjusted delay for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .Home h1 {
+    font-size: 35px;
+    margin-bottom: -5px;
+  }
+  .Home h2 {
+    font-size: 20px;
+    animation: typing 2.5s steps(25, end) forwards; /* Adjusted duration for mobile */
+    animation-delay: 0.9s; /* Adjusted delay for mobile */
+  }
 }
 
 .image-text-wrapper {
@@ -462,7 +524,6 @@ body {
   .hometext1 {
     background-color: #ddc75a;
     color: aliceblue;
-    padding: 1px;
     text-align: center;
   }
   .hometext1 p {
@@ -541,7 +602,6 @@ body {
   .hometext1 {
     background-color: #ddc75a;
     color: aliceblue;
-    padding: 10px;
     text-align: center;
   }
   .hometext1 p {
