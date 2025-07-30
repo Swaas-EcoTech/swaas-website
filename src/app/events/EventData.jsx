@@ -40,7 +40,6 @@ const eventsData = {
       projectImages: [
         "/Events/BottleForChange.jpg",
         "/Events/1bs.jpeg",
-        "/Events/2bs.jpeg",
         "/Events/3bs.jpeg",
         "/Events/4bs.jpeg",
         "/Events/5bs.jpeg",
@@ -226,6 +225,21 @@ const eventsData = {
   instagramLink: "https://www.instagram.com/p/DB1EhnYsVu0/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
   projectImages: [
         "/Events/ff11.jpg",
+        "/Events/2ff.jpg",
+        "/Events/3ff.jpg",
+        "/Events/4ff.jpg",
+        "/Events/5ff.jpg",
+        "/Events/6ff.jpg",
+        "/Events/7ff.jpg",
+        "/Events/8ff.jpg",
+        "/Events/9ff.jpg",
+        "/Events/10ff.jpg",
+        "/Events/11ff.jpg",
+        "/Events/12ff.jpg",
+        "/Events/13ff.jpg",
+        "/Events/14ff.jpg",
+        "/Events/15ff.jpg",
+        "/Events/16ff.jpg",
   ]
 },
   ],
@@ -262,6 +276,21 @@ const eventsData = {
   instagramLink: "https://www.instagram.com/p/DB1EhnYsVu0/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     projectImages: [
         "/Events/ff11.jpg",
+        "/Events/2ff.jpg",
+        "/Events/3ff.jpg",
+        "/Events/4ff.jpg",
+        "/Events/5ff.jpg",
+        "/Events/6ff.jpg",
+        "/Events/7ff.jpg",
+        "/Events/8ff.jpg",
+        "/Events/9ff.jpg",
+        "/Events/10ff.jpg",
+        "/Events/11ff.jpg",
+        "/Events/12ff.jpg",
+        "/Events/13ff.jpg",
+        "/Events/14ff.jpg",
+        "/Events/15ff.jpg",
+        "/Events/16ff.jpg",
   ]
 },
         {
@@ -312,6 +341,34 @@ const eventsData = {
       ],
       instagramLink:
         "https://www.instagram.com/p/DG58VJQMZeJ/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+    },
+    {
+      date: "8th",
+      month: "March",
+      year: "2025",
+      title: "International Women’s Day",
+      description:
+        "The college came alive with energy and enthusiasm as it celebrated International Women’s Day with a heartfelt and empowering event. The celebration began with an inspiring address by Director Dr. Rominder Kaur Randhawa, who was honored with a handmade bouquet by SWAAS Convener Dr. Manpreet Kaur Bagga and Student President Yogita. Teachers were also presented with flowers and bracelets as gestures of appreciation. The event featured a soulful Shabad and Kirtan performance by Divine Circle society, followed by a touching solo song by a faculty member. Interactive segments like a questionnaire round kept the audience engaged, while games such as movie dialogue challenges and the newspaper dance brought smiles and laughter. Guests enjoyed delightful refreshments, adding warmth and flavor to the celebration. Musical performances by Gsharp, the college’s musical society, enchanted the audience and set the mood for a lively DJ session, where everyone danced with joy. The day beautifully celebrated womanhood, unity, and empowerment, leaving everyone inspired and uplifted.",
+      imageUrl: "/Events/women_day_2025.jpeg", // Ensure this image exists
+      projectImages: [
+        "/Events/women_day_2025.jpeg",
+        "/Events/1wd.jpeg",
+        "/Events/2wd.jpeg",
+        "/Events/10wd.jpeg",
+        "/Events/11wd.jpeg",
+        "/Events/12wd.jpeg",
+        "/Events/13wd.jpeg",
+        "/Events/14wd.jpeg",
+        "/Events/15wd.jpeg",
+        "/Events/16wd.jpeg",
+        "/Events/3wd.jpeg",
+        "/Events/4wd.jpeg",
+        "/Events/6wd.jpeg",
+        "/Events/8wd.jpeg",
+        "/Events/9wd.jpeg",
+      ],
+      instagramLink:
+        "https://www.instagram.com/p/DHMDYP0zQ0K/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
     },
   ]
 };

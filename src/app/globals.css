@@ -3144,6 +3144,7 @@ nav ul li a.active {
   width: 100%;
   max-width: 250px;
   margin: 0 auto;
+  height: 350px;
 }
 
 /* Shadow background offset slightly behind the card */
@@ -3180,8 +3181,8 @@ nav ul li a.active {
 /* Image inside the team card */
 .teamImage {
   width: 100%;
-  height: auto; /* ✅ Maintains aspect ratio */
-  object-fit: cover;
+  height: auto; 
+  object-fit: contain;
   border-radius: 10px;
   display: block; /* Removes default inline spacing */
   max-width: 100%; /* Prevents overflow */
@@ -3209,17 +3210,20 @@ nav ul li a.active {
 }
 
 .memberName {
-  background-color: #84aa80;
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  right: 0;
+  background-color: #b4c79d;
   padding: 0.75rem;
   font-family: "Inika", serif;
   text-align: center;
   border-radius: 9px;
-  margin-bottom: 0.5rem;
   font-weight: 600;
   width: 100%;
   box-sizing: border-box;
   word-wrap: break-word;
-  margin-block-start: 1rem;
+  font-size: 1rem;
 }
 
 .memberDescription {
@@ -3356,12 +3360,13 @@ nav ul li a.active {
   z-index: -1;
 }
 
-.flipCard {
+.flipCard{
   background-color: transparent;
-  width: 100%;
+  width: auto;
   height: 100%;
   perspective: 1000px;
   position: relative;
+  object-fit: cover;
 }
 
 .flipCardInner {
@@ -3377,7 +3382,7 @@ nav ul li a.active {
   transform: rotateY(180deg);
 }
 
-.flipCardFront,
+
 .flipCardBack {
   position: absolute;
   width: 100%;
@@ -3385,13 +3390,78 @@ nav ul li a.active {
   backface-visibility: hidden;
   border-radius: 7px;
 }
-
+.image-container{
+  object-fit: cover;
+}
+/* Container for the front of the card */
 .flipCardFront {
-  background-color: #d9d9d9;
-  padding: 1rem;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 7px;
+  padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
+}
+.flipCardFront img{
+  border-radius: 7px;
+  object-fit:contain;
+}
+/* Ensure teamImage still has these properties, as it's the <img> itself */
+.teamImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 7px;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+/* --- FIXES FOR TEAM CARD IMAGE FIT (Add this section to the END of globals.css) --- */
+
+/* Ensure all elements within the card have their heights properly defined */
+.teamCardContainer {
+    /* Your existing height: 400px is good. Adding !important just in case for debugging,
+       but usually not needed if this is the only fixed height set. */
+    height: 400px !important;
 }
 
+.flipCard {
+    /* Ensure flipCard takes full height of its container */
+    height: 100% !important;
+}
+
+.flipCardInner {
+    /* Ensure flipCardInner takes full height of its container */
+    height: 100% !important;
+}
+
+.flipCardFront {
+    /* This is critical: ensure the front of the card takes full height */
+    height: 100% !important;
+    /* Also ensure it's positioned correctly relative to its parent (flipCardInner) */
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    /* Reset padding as it can affect height calculation with box-sizing: border-box */
+    padding: 0 !important; /* Remove padding here if it's causing issues with image fit */
+}
+
+.teamImage {
+    /* The image itself must fill its parent (flipCardFront) */
+    width: 100% !important;
+    height: 100% !important; /* This is the key for the image to fill the height */
+    object-fit: cover !important; /* This is the key for cropping and maintaining aspect ratio */
+    display: block !important; /* Prevents extra space below the image */
+    border-radius: 10px !important; /* Keep your desired border-radius */
+    margin: 0 !important; /* Remove any margin that might push it out */
+    padding: 0 !important; /* Remove any padding that might shrink its content area */
+}
+
+/* --- END FIXES FOR TEAM CARD IMAGE FIT --- */
+/* Back of the card - no changes needed here */
 .flipCardBack {
   background-color: #84aa80;
   color: white;
@@ -3401,21 +3471,23 @@ nav ul li a.active {
   justify-content: center;
   padding: 1.5rem;
   box-sizing: border-box;
+  border-radius: 10px;
 }
 
+/* The image itself */
 .teamImage {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 1rem;
+  height: 100%; /* ✅ Stretches image to fill the container's height */
+  object-fit: contain; /* ✅ Prevents image distortion, crops to fit */
+  display: block; 
 }
-
 .memberName {
-  position: absolute; /* Position it relative to its parent */
-  bottom: -100px; /* Adjust this to control the vertical placement */
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
   background-color: #b4c79d;
-  padding: 1rem;
+  padding: 0.75rem;
   font-family: "Inika", serif;
   text-align: center;
   border-radius: 9px;
@@ -3423,6 +3495,7 @@ nav ul li a.active {
   width: 100%;
   box-sizing: border-box;
   word-wrap: break-word;
+  font-size: 1rem;
 }
 
 .memberDescription {
@@ -3442,35 +3515,103 @@ nav ul li a.active {
   transform: none;
   box-shadow: none;
 }
+/* TEAM CARD RESPONSIVE FIXES */
+@media (max-width: 1024px) {
+  .teamCardContainer {
+    max-width: 220px;
+    height: 350px;
+  }
+  
+  .memberName {
+    bottom: -45px;
+    font-size: 0.95rem;
+    padding: 0.7rem;
+  }
+}
 
 @media (max-width: 768px) {
+  .flipCard{
+    height: 100%;
+  }
+  .teamGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    width: 90%;
+  }
+  
   .teamCardContainer {
+    max-width: 200px;
     height: 300px;
   }
-  .teamImage {
-    height: 150px;
-  }
+  
   .memberName {
-    font-size: 1rem;
-  }
-  .memberDescription {
-    font-size: 0.85rem;
+    bottom: -40px;
+    font-size: 0.9rem;
+    padding: 0.6rem;
   }
 }
 
 @media (max-width: 480px) {
+  .teamGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    width: 95%;
+  }
+    .flipCard{
+    height: 100%;
+  }
+  
   .teamCardContainer {
+    max-width: 280px;
     height: 280px;
+    margin: 0 auto;
   }
-  .teamImage {
-    height: 130px;
-  }
+  
   .memberName {
+    bottom: -30px;
     font-size: 0.9rem;
     padding: 0.5rem;
   }
-  .memberDescription {
-    font-size: 0.1rem;
+}
+/* MOBILE CARD SPACING FIX */
+@media (max-width: 480px) {
+  .flipCard {
+    height: 100% !important;
+  }
+  
+  .flipCardFront {
+    height: 100% !important;
+  }
+  
+  .flipCardInner {
+    height: 280px !important;
+  }
+  
+  .teamImage {
+    height: 100% !important;
+    border-radius: 7px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .teamCardContainer {
+    height: 260px;
+  }
+  
+  .flipCard,
+  .flipCardFront,
+  .flipCardInner {
+    height: 100% !important;
+  }
+  
+  .teamImage {
+    height: 100% !important;
+  }
+  
+  .memberName {
+    bottom: -25px;
+    font-size: 0.85rem;
+    padding: 0.4rem;
   }
 }
 
@@ -3755,4 +3896,5 @@ nav ul li a.active {
   .page-background {
     display: none !important;
   }
+  
 }

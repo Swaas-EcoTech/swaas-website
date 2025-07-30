@@ -781,7 +781,7 @@ const getShapeStyle = (num, screenWidth) => {
     2: {
       width: isMobile ? "200px" : "300px",
       height: isMobile ? "150px" : "200px",
-      top: "65%",
+      top: "58%",
       left: "20%",
     },
     3: {
