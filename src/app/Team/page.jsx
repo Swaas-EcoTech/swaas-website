@@ -59,6 +59,21 @@ const Team = () => {
                         <p className={`team-memberDescription`}>
                           {member.description}
                         </p>
+                        {/* --- NEW LINKEDIN ICON --- */}
+                        {member.linkedInLink && (
+                          <a
+                            href={member.linkedInLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="linkedin-icon"
+                            onClick={(e) => e.stopPropagation()} // Prevents card from flipping back on click
+                          >
+                            <img
+                              src="/linkedinlogott.webp"
+                              alt={`LinkedIn profile of ${member.name}`}
+                            />
+                          </a>
+                        )}
                       </div>
                     </div>
                     <p className={`team-memberName`}>{member.name}</p>
@@ -106,13 +121,10 @@ const Team = () => {
 
         /* --- STYLES FOR MOBILE / TABLET --- */
         @media (max-width: 768px) {
-          /* Default mobile layout for other teams (scrolling row) */
           .team-grid {
              grid-auto-columns: 240px;
              gap: 2rem;
           }
-
-          /* SPECIAL OVERRIDE: Revert to wrapping grid for Core team on mobile */
           .team-grid.core-layout {
             display: grid;
             grid-auto-flow: row;
@@ -122,21 +134,17 @@ const Team = () => {
         }
 
         @media (max-width: 480px) {
-          /* Default mobile layout for other teams (scrolling row) */
           .team-grid {
              grid-auto-columns: 220px;
              gap: 1.5rem;
           }
-
-          /* SPECIAL OVERRIDE: Revert to stacked layout for Core team on small mobile */
           .team-grid.core-layout {
              grid-template-columns: 1fr;
-             /* The 'max-width' property was removed from here to fix the spacing */
              gap: 4rem;
           }
         }
 
-        /* --- CARD STYLES (Unchanged) --- */
+        /* --- CARD STYLES --- */
         .team-cardContainer {
           position: relative;
           height: 400px;
@@ -233,6 +241,31 @@ const Team = () => {
           font-family: "Inika", serif;
           text-align: center;
         }
+        
+        /* --- NEW STYLES FOR LINKEDIN ICON --- */
+        .linkedin-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent circle */
+          margin-top: 1rem; /* Space between description and icon */
+          transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .linkedin-icon:hover {
+          background-color: rgba(255, 255, 255, 0.4);
+          transform: scale(1.1);
+        }
+
+        .linkedin-icon img {
+          width: 24px; /* Adjust size of logo inside the circle */
+          height: 24px;
+          object-fit: contain;
+        }
+
       `}</style>
     </>
   );

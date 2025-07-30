@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import DecorativeLeaves from "../components/DecorativeLeaves";
 import Header from "../components/grid";
-import ProjectModal from "../components/EventModal"; 
+import ProjectModal from "../components/EventModal";
 
 const Collab = () => {
   const [scrollY, setScrollY] = useState(0);
@@ -69,7 +69,12 @@ const Collab = () => {
         "SWAAS volunteers personally distributed donations to children in need, conducted a food drive with freshly prepared meals, and engaged in teaching and playful interactions in local parks. The initiative fostered community bonding and highlighted the impact of collective compassion.",
       date: "17th, 21st February 2025",
       collaborators: "Robin Hood Army",
-      images: ["/collabs/dd3.jpeg","/collabs/photo8.jpeg", "/collabs/dd2.jpeg","/collabs/dd4.jpeg"],
+      images: [
+        "/collabs/dd3.jpeg",
+        "/collabs/photo8.jpeg",
+        "/collabs/dd2.jpeg",
+        "/collabs/dd4.jpeg",
+      ],
       instagramLink: "https://www.instagram.com/p/DGTFa0pzJl9/?img_index=1",
     },
     {
@@ -81,7 +86,12 @@ const Collab = () => {
       collaborators: "FFT",
       impact:
         "The event celebrated innovation and intellect, offering cash prizes, medals, e certificates, and exclusive subscriptions. With active participation and enthusiastic engagement, the quiz fostered a fun, competitive, and educational atmosphere that highlighted the importance of sustainable technology.",
-      images: ["/collabs/photo2.jpeg", "/collabs/tt1.jpeg","/collabs/tt2.jpeg","/collabs/tt3.jpeg"],
+      images: [
+        "/collabs/photo2.jpeg",
+        "/collabs/tt1.jpeg",
+        "/collabs/tt2.jpeg",
+        "/collabs/tt3.jpeg",
+      ],
       instagramLink: "https://www.instagram.com/p/DH_YfA8T74A/?img_index=1",
     },
     {
@@ -94,7 +104,8 @@ const Collab = () => {
         "SWAAS amplified the competitions reach through targeted social media campaigns. The event connected participants with professionals from UNDP, Log9, and the Government of India. Winners were awarded certificates, vouchers, and recognition from AIESEC and IIT Delhi. This partnership strengthened SWAAS’s role in advancing youth-driven environmental leadership.",
       collaborators: "AIESEC Delhi IIT, IIT Delhi",
       // images: ["/collabs/photo6.jpeg", "/collabs/photo8.jpeg"],
-      instagramLink:"https://www.instagram.com/stories/highlights/17893051218037030/",
+      instagramLink:
+        "https://www.instagram.com/stories/highlights/17893051218037030/",
     },
   ];
 
@@ -312,13 +323,15 @@ const Collab = () => {
             background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
             color: white;
             padding: 1rem;
-            transform: translateY(0); /* Keep overlay visible for text and button */
+            transform: translateY(
+              0
+            ); /* Keep overlay visible for text and button */
             transition: transform 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
           }
-          
+
           .photo-overlay h3,
           .photo-overlay p {
             margin: 0 0 0.5rem 0; /* Add some space below text */
@@ -341,7 +354,6 @@ const Collab = () => {
           .view-more-button:hover {
             background-color: rgba(94, 120, 90, 1);
           }
-
 
           .scroll-indicator {
             position: absolute;
@@ -614,24 +626,16 @@ const Collab = () => {
               textAlign: "justify",
             }}
           >
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s... Lorem ipsum, dolor sit amet consectetur
-            adipisicing elit. Odit esse, ipsa, perspiciatis itaque quia dicta
-            eveniet in adipisci repellat placeat at, eaque nisi ut assumenda!
-            Facilis dicta a unde nesciunt. Lorem ipsum dolor, sit amet
-            consectetur adipisicing elit. Commodi ea, vero voluptatum similique
-            corrupti eum minima voluptatem quis ipsa expedita pariatur, dicta
-            exercitationem doloremque debitis autem. Sint veniam quibusdam Lorem
-            Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since
-            the 1500s... Lorem ipsum, dolor sit amet consectetur adipisicing
-            elit. Odit esse, ipsa, perspiciatis itaque quia dicta eveniet in
-            adipisci repellat placeat at, eaque nisi ut assumenda! Facilis dicta
-            a unde nesciunt. Lorem ipsum dolor, sit amet consectetur adipisicing
-            elit. Commodi ea, vero voluptatum similique corrupti eum minima
-            voluptatem quis ipsa expedita pariatur, dicta exercitationem
-            doloremque debitis autem. Sint veniam quibusdam maxime.
+            At SWAAS, collaborations play a pivotal role in amplifying our
+            impact and broadening our reach. By partnering with like-minded
+            organizations, student bodies, and professional networks, we aim to
+            drive meaningful change across health, sustainability, and social
+            equity initiatives. These collaborations allow us to pool resources,
+            share expertise, and create opportunities for students to engage in
+            real-world problem-solving. Whether it's organizing donation drives,
+            hosting competitions, or promoting climate action, our collaborative
+            efforts reflect SWAASs commitment to community empowerment,
+            innovation, and inclusive growth.
           </p>
         </div>
 
@@ -755,7 +759,7 @@ const Collab = () => {
           description={selectedPhoto.impact || selectedPhoto.description} // Use impact if available, otherwise description
           images={selectedPhoto.images || [selectedPhoto.src]} // Pass all related images, or just the main one
           date={selectedPhoto.date}
-          collaborators={selectedPhoto.collaborators} 
+          collaborators={selectedPhoto.collaborators}
           instagramLink={selectedPhoto.instagramLink}
           // Assuming date is in "DDth Month YYYY" format,
           // you might need to parse it for separate month/year props if your modal expects them.
