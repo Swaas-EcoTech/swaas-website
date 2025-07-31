@@ -1,3 +1,5 @@
+// File Path: src/app/api/aqi/route.ts
+
 import { NextResponse } from 'next/server';
 
 export async function GET() {
@@ -7,14 +9,10 @@ export async function GET() {
     return NextResponse.json({ error: 'API token is missing' }, { status: 500 });
   }
 
-  // The URL uses 'here' to automatically detect location.
   const url = `https://api.waqi.info/feed/here/?token=${token}`;
 
   try {
-    const response = await fetch(url, {
-      // This tells Next.js to cache the result for 1 hour.
-      next: { revalidate: 3600 }, 
-    });
+    const response = await fetch(url, { next: { revalidate: 3600 } });
 
     if (!response.ok) {
       const errorData = await response.json();
@@ -27,9 +25,15 @@ export async function GET() {
       throw new Error(data.data || 'API returned an error');
     }
 
-    return NextResponse.json(data.data); // Return the 'data' object from the response
+    return NextResponse.json(data.data);
 
   } catch (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+    // === THIS IS THE FIX ===
+    // We first check if the error is a standard Error object
+    if (error instanceof Error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+    // Fallback for other types of errors
+    return NextResponse.json({ error: 'An unknown error occurred' }, { status: 500 });
   }
 }
