@@ -2,6 +2,7 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import DecorativeLeaves from "./components/DecorativeLeaves";
+import AQIDashboard from './components/AQIDashboard'
 
 const Home = () => {
   return (
@@ -53,7 +54,7 @@ const Home = () => {
             <img src="/homeimage1.png" alt="Home Image 1" />
           </div>
           <div className="hometext1">
-            <p>Where ecology meets technology.</p>
+            <AQIDashboard/>
           </div>
           <div className="homeimage2">
             <img src="/homeimage2.png" alt="Home Image 2" />
@@ -74,7 +75,18 @@ const Home = () => {
         </div>
       </div>
       
-      <style jsx>{``}</style>
+      {/* This CSS now correctly centers the dashboard inside its container */}
+      <style jsx>{`
+        .hometext1 {
+          display: flex; /* This is required for centering */
+          align-items: center;
+          justify-content: center;
+          width: 25%;
+          height: 190px;
+          padding: 0.5rem; /* Add some padding so the component doesn't touch the edges */
+          box-sizing: border-box;
+        }
+      `}</style>
       </div>
   );
 };

@@ -374,7 +374,7 @@ body {
 }
 
 .hometext1 {
-  background-color: #ddc75a;
+  background-color: #ffff;
   color: black;
   display: flex;
   justify-content: center;
@@ -522,7 +522,7 @@ body {
     max-width: 40%;
   }
   .hometext1 {
-    background-color: #ddc75a;
+    background-color: #ffffff;
     color: aliceblue;
     text-align: center;
   }
@@ -600,7 +600,7 @@ body {
     max-width: 90%;
   }
   .hometext1 {
-    background-color: #ddc75a;
+    background-color: #ffffff;
     color: aliceblue;
     text-align: center;
   }
