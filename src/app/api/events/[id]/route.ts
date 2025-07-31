@@ -6,19 +6,21 @@ import mongoose from 'mongoose';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     await dbConnect();
     
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    const { id } = await context.params;
+    
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json(
         { error: 'Invalid event ID' },
         { status: 400 }
       );
     }
 
-    const event = await Event.findById(params.id).lean();
+    const event = await Event.findById(id).lean();
     
     if (!event) {
       return NextResponse.json(
@@ -40,7 +42,7 @@ export async function GET(
 // PUT /api/events/[id] - Update event
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     const cookieStore = await cookies();
@@ -53,7 +55,9 @@ export async function PUT(
 
     await dbConnect();
     
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    const { id } = await context.params;
+    
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json(
         { error: 'Invalid event ID' },
         { status: 400 }
@@ -80,7 +84,7 @@ export async function PUT(
     };
 
     const updatedEvent = await Event.findByIdAndUpdate(
-      params.id,
+      id,
       updateData, // Use the explicit updateData object
       { 
         new: true, 
@@ -122,7 +126,7 @@ export async function PUT(
 // DELETE /api/events/[id] - Delete event
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
     const cookieStore = await cookies();
@@ -135,14 +139,16 @@ export async function DELETE(
 
     await dbConnect();
     
-    if (!mongoose.Types.ObjectId.isValid(params.id)) {
+    const { id } = await context.params;
+    
+    if (!mongoose.Types.ObjectId.isValid(id)) {
       return NextResponse.json(
         { error: 'Invalid event ID' },
         { status: 400 }
       );
     }
 
-    const deletedEvent = await Event.findByIdAndDelete(params.id);
+    const deletedEvent = await Event.findByIdAndDelete(id);
 
     if (!deletedEvent) {
       return NextResponse.json(
