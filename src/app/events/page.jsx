@@ -1,22 +1,35 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import axios from 'axios';
-import eventsData from './EventData.jsx'; 
-import EventCard from '../components/EventsCard.jsx';
-import Navbar from '../components/Navbar.jsx';
-import { useRouter } from "next/navigation"
-import DecorativeLeaves from '../components/DecorativeLeaves.jsx';
-import "../globals.css"
+import { useState, useEffect } from "react";
+import axios from "axios";
+import eventsData from "./EventData.jsx";
+import EventCard from "../components/EventsCard.jsx";
+import Navbar from "../components/Navbar.jsx";
+import { useRouter } from "next/navigation";
+import DecorativeLeaves from "../components/DecorativeLeaves.jsx";
+import "../globals.css";
 
 const Events = () => {
   const [events, setEvents] = useState(eventsData);
   const [selectedCategory, setSelectedCategory] = useState("Past Events");
   const [loading, setLoading] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
   // Helper map to convert month names to numbers for sorting
-  const monthsMap = { "January": 0, "February": 1, "March": 2, "April": 3, "May": 4, "June": 5, "July": 6, "August": 7, "September": 8, "October": 9, "November": 10, "December": 11 };
-  
+  const monthsMap = {
+    January: 0,
+    February: 1,
+    March: 2,
+    April: 3,
+    May: 4,
+    June: 5,
+    July: 6,
+    August: 7,
+    September: 8,
+    October: 9,
+    November: 10,
+    December: 11,
+  };
+
   // Helper function to parse event dates for reliable sorting
   const parseEventDate = (event) => {
     const day = parseInt(event.date, 10);
@@ -30,7 +43,9 @@ const Events = () => {
     const sortedInitialData = { ...eventsData };
     for (const category in sortedInitialData) {
       if (Array.isArray(sortedInitialData[category])) {
-        sortedInitialData[category].sort((a, b) => parseEventDate(b) - parseEventDate(a));
+        sortedInitialData[category].sort(
+          (a, b) => parseEventDate(b) - parseEventDate(a)
+        );
       }
     }
     setEvents(sortedInitialData);
@@ -47,9 +62,9 @@ const Events = () => {
         // Merge dynamic data, avoiding duplicates
         for (const category in dynamicData) {
           if (dynamicData.hasOwnProperty(category)) {
-            dynamicData[category].forEach(dynamicEvent => {
+            dynamicData[category].forEach((dynamicEvent) => {
               const isDuplicate = mergedData[category].some(
-                staticEvent => staticEvent.title === dynamicEvent.title
+                (staticEvent) => staticEvent.title === dynamicEvent.title
               );
               if (!isDuplicate) {
                 mergedData[category].push(dynamicEvent);
@@ -57,18 +72,22 @@ const Events = () => {
             });
           }
         }
-        
+
         // Re-sort each category after merging to ensure correct order
         for (const category in mergedData) {
-            if (Array.isArray(mergedData[category])) {
-                mergedData[category].sort((a, b) => parseEventDate(b) - parseEventDate(a));
-            }
+          if (Array.isArray(mergedData[category])) {
+            mergedData[category].sort(
+              (a, b) => parseEventDate(b) - parseEventDate(a)
+            );
+          }
         }
 
         setEvents(mergedData);
-
       } catch (err) {
-        console.error("Failed to fetch dynamic events, showing static data only.", err);
+        console.error(
+          "Failed to fetch dynamic events, showing static data only.",
+          err
+        );
       } finally {
         setLoading(false);
       }
@@ -79,8 +98,8 @@ const Events = () => {
 
   const currentEvents = events[selectedCategory] || [];
   const goToAdmin = () => {
-    router.push("/admin")
-  }
+    router.push("/admin");
+  };
   return (
     <div>
       <Navbar />
@@ -100,7 +119,9 @@ const Events = () => {
             {Object.keys(events).map((eventType) => (
               <button
                 key={eventType}
-                className={`categoryButton ${selectedCategory === eventType ? 'active' : ''}`}
+                className={`categoryButton ${
+                  selectedCategory === eventType ? "active" : ""
+                }`}
                 onClick={() => setSelectedCategory(eventType)}
               >
                 {eventType}
@@ -109,7 +130,11 @@ const Events = () => {
           </nav>
 
           <div className={`eventsContainer`}>
-            {loading && <div className="loadingMessage">Updating...</div>}
+            {loading && (
+              <div className="loaderContainer">
+                <div className="loader"></div>
+              </div>
+            )}{" "}
             {currentEvents.length > 0 ? (
               currentEvents.map((event, index) => (
                 <EventCard
@@ -134,6 +159,6 @@ const Events = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Events;
