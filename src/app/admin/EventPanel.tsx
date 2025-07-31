@@ -255,9 +255,9 @@ export default function EventsPanel() {
         </div>
         <div className="header-actions">
           <button onClick={() => { setShowCreateForm(!showCreateForm); if (editingEvent) cancelEdit(); }} className="create-button" disabled={loading}>
-            <span className="create-icon">+</span>{showCreateForm ? 'Cancel' : 'Create Event'}
+            <span className="create-icon"></span>{showCreateForm ? 'Cancel' : 'Create Event'}
           </button>
-          <button onClick={handleLogout} className="logout-button"><span className="logout-icon">🚪</span>Logout</button>
+          <button onClick={handleLogout} className="logout-button"><span className="logout-icon"></span>Logout</button>
         </div>
       </header>
 

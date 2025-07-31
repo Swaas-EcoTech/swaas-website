@@ -3,19 +3,17 @@ import dbConnect from '@/lib/mongodb';
 import Event from '@/models/Event';
 import { cookies } from 'next/headers';
 
-// GET /api/events - Fetch all events
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     await dbConnect();
     
-    // Group events by category for the frontend
     const events = await Event.find({}).sort({ createdAt: -1 }).lean();
     
     const groupedEvents = {
       'Past Events': [],
       'Upcoming Events': [],
       'Signature Events': []
-    } as Record<string, typeof events>; // Use a record type for safety
+    } as Record<string, typeof events>;
     
     events.forEach(event => {
       // Ensure the category exists before pushing
@@ -27,7 +25,6 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(groupedEvents);
   } catch (error) {
     console.error('Error fetching events:', error);
-    // ✅ Fix: Check if error is an instance of Error before accessing message
     const errorMessage = error instanceof Error ? error.message : 'Failed to fetch events';
     return NextResponse.json(
       { error: errorMessage },
@@ -65,10 +62,9 @@ export async function POST(request: NextRequest) {
     const savedEvent = await newEvent.save();
     return NextResponse.json({ message: 'Event created successfully', event: savedEvent }, { status: 201 });
 
-  } catch (error) { // ✅ Fix: Removed ": any" from catch block
+  } catch (error) {
     console.error('Error creating event:', error);
     
-    // Handle Mongoose validation errors specifically
     if (error && typeof error === 'object' && 'name' in error && error.name === 'ValidationError' && 'errors' in error) {
       const errorMessages = Object.values(error.errors as Record<string, { message: string }>).map(err => err.message);
       return NextResponse.json(
