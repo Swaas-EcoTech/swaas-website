@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React from "react";
 import Navbar from "./components/Navbar";
 import DecorativeLeaves from "./components/DecorativeLeaves";
@@ -74,7 +74,6 @@ const Home = () => {
         </div>
       </div>
       
-
       <style jsx>{``}</style>
       </div>
   );

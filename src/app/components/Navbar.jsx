@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import Head from "next/head";
 import { Shadow } from "ogl";
 import { useRouter } from "next/navigation"
+import { preloadGalleryImages } from "../gallery/galleryData";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -82,6 +83,7 @@ function Navbar() {
             <Link
               href="/gallery"
               className={pathname === "/gallery" ? "active" : ""}
+              onMouseEnter={preloadGalleryImages} 
             >
               Gallery
             </Link>
