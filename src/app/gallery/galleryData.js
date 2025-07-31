@@ -1,4 +1,4 @@
-export const items = [
+const items = [
   {
     id: "341",
     img: "/Gallery/341s.jpg",
@@ -12,19 +12,24 @@ export const items = [
     url: "https://www.instagram.com/swaas.gtbit/",
     height: 720,
   },
-  
   {
     id: "467",
     img: "/Gallery/467s.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
-    height: 456,
+    height: 656,
   },
-  
   {
     id: "367",
     img: "/Gallery/367s.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
     height: 625,
+  },
+  {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v3.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
   },
   {
     id: "33",
@@ -60,7 +65,7 @@ export const items = [
     id: "155",
     img: "/Gallery/155s.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
-    height: 255,
+    height: 855,
   },
   {
     id: "42",
@@ -84,7 +89,7 @@ export const items = [
     id: "343",
     img: "/Gallery/343s.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
-    height: 507,
+    height: 707,
   },
   {
     id: "270",
@@ -103,6 +108,13 @@ export const items = [
     img: "/Gallery/153s.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
     height: 499,
+  },
+  {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v4.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
   },
   {
     id: "17",
@@ -138,7 +150,7 @@ export const items = [
     id: "32",
     img: "/Gallery/32.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
-    height: 459,
+    height: 759,
   },
   {
     id: "1",
@@ -157,6 +169,13 @@ export const items = [
     img: "/Gallery/18.JPG",
     url: "https://www.instagram.com/swaas.gtbit/",
     height: 879,
+  },
+  {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v10.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
   },
   {
     id: "235",
@@ -183,6 +202,13 @@ export const items = [
     height: 752,
   },
   {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v7.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
+  },
+  {
     id: "40",
     img: "/Gallery/40.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
@@ -198,7 +224,7 @@ export const items = [
     id: "100",
     img: "/Gallery/100s.JPG",
     url: "https://www.instagram.com/swaas.gtbit/",
-    height: 332,
+    height: 732,
   },
   {
     id: "337",
@@ -210,13 +236,20 @@ export const items = [
     id: "471",
     img: "/Gallery/471s.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
-    height: 501,
+    height: 701,
+  },
+  {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v22.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
   },
   {
     id: "52",
     img: "/Gallery/52.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
-    height: 259,
+    height: 759,
   },
   {
     id: "308",
@@ -228,7 +261,7 @@ export const items = [
     id: "35",
     img: "/Gallery/35.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
-    height: 536,
+    height: 636,
   },
   {
     id: "71",
@@ -246,15 +279,22 @@ export const items = [
     id: "307",
     img: "/Gallery/307s.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
-    height: 327,
+    height: 627,
+  },
+  {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v18.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
   },
   {
     id: "339",
     img: "/Gallery/339s.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
-    height: 307,
+    height: 707,
   },
-    {
+  {
     id: "vid",
     type: "video",
     src: "/Gallery/video/v2.mp4",
@@ -266,6 +306,13 @@ export const items = [
     img: "/Gallery/464s.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
     height: 543,
+  },
+  {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v23.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
   },
   {
     id: "112",
@@ -283,7 +330,7 @@ export const items = [
     id: "50",
     img: "/Gallery/50.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
-    height: 558,
+    height: 858,
   },
   {
     id: "233",
@@ -292,16 +339,37 @@ export const items = [
     height: 352,
   },
   {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v21.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
+  },
+  {
     id: "195",
     img: "/Gallery/195s.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
     height: 462,
   },
   {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v11.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
+  },
+  {
     id: "39",
     img: "/Gallery/39.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
     height: 485,
+  },
+  {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v24.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
   },
   {
     id: "236",
@@ -322,10 +390,24 @@ export const items = [
     height: 522,
   },
   {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v12.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
+  },
+  {
     id: "79",
     img: "/Gallery/79s.JPG",
     url: "https://www.instagram.com/swaas.gtbit/",
     height: 453,
+  },
+  {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v8.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
   },
   {
     id: "36",
@@ -388,6 +470,13 @@ export const items = [
     height: 443,
   },
   {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v5.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
+  },
+  {
     id: "7",
     img: "/Gallery/7.JPG",
     url: "https://www.instagram.com/swaas.gtbit/",
@@ -400,6 +489,13 @@ export const items = [
     height: 503,
   },
   {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v6.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
+  },
+  {
     id: "4",
     img: "/Gallery/4.JPG",
     url: "https://www.instagram.com/swaas.gtbit/",
@@ -410,6 +506,13 @@ export const items = [
     img: "/Gallery/90s.JPG",
     url: "https://www.instagram.com/swaas.gtbit/",
     height: 413,
+  },
+  {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v16.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
   },
   {
     id: "272",
@@ -442,6 +545,13 @@ export const items = [
     height: 278,
   },
   {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v13.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
+  },
+  {
     id: "9",
     img: "/Gallery/9.JPG",
     url: "https://www.instagram.com/swaas.gtbit/",
@@ -452,6 +562,13 @@ export const items = [
     img: "/Gallery/126s.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
     height: 873,
+  },
+  {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v20.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
   },
   {
     id: "105",
@@ -466,16 +583,37 @@ export const items = [
     height: 411,
   },
   {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v17.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
+  },
+  {
     id: "154",
     img: "/Gallery/154s.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
-    height: 400,
+    height: 800,
+  },
+  {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v15.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
   },
   {
     id: "340",
     img: "/Gallery/340s.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
     height: 281,
+  },
+  {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v9.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
   },
   {
     id: "51",
@@ -514,6 +652,13 @@ export const items = [
     height: 583,
   },
   {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v25.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
+  },
+  {
     id: "104",
     img: "/Gallery/104s.JPG",
     url: "https://www.instagram.com/swaas.gtbit/",
@@ -523,7 +668,14 @@ export const items = [
     id: "21",
     img: "/Gallery/21.JPG",
     url: "https://www.instagram.com/swaas.gtbit/",
-    height: 373,
+    height: 873,
+  },
+  {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v26.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
   },
   {
     id: "269",
@@ -535,13 +687,20 @@ export const items = [
     id: "77",
     img: "/Gallery/77s.JPG",
     url: "https://www.instagram.com/swaas.gtbit/",
-    height: 489,
+    height: 589,
   },
   {
     id: "312",
     img: "/Gallery/312s.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
     height: 425,
+  },
+  {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v14.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
   },
   {
     id: "142",
@@ -562,6 +721,13 @@ export const items = [
     height: 812,
   },
   {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v19.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 720,
+  },
+  {
     id: "44",
     img: "/Gallery/44.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
@@ -574,12 +740,49 @@ export const items = [
     height: 750,
   },
   {
+    id: "vid",
+    type: "video",
+    src: "/Gallery/video/v27.mp4",
+    url: "https://www.instagram.com/swaas.gtbit/",
+    height: 820,
+  },
+  {
     id: "88",
     img: "/Gallery/88s.JPG",
     url: "https://www.instagram.com/swaas.gtbit/",
     height: 548,
   },
 ];
+
+/**
+ * Shuffles an array in place using the Fisher-Yates (aka Knuth) algorithm.
+ * @param {Array} array The array to shuffle.
+ */
+function shuffle(array) {
+  let currentIndex = array.length;
+  let randomIndex;
+
+  // While there remain elements to shuffle.
+  while (currentIndex !== 0) {
+    // Pick a remaining element.
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex],
+      array[currentIndex],
+    ];
+  }
+
+  return array;
+}
+
+// Shuffle the items array.
+shuffle(items);
+
+// Export the shuffled array.
+export { items };
 let hasPreloaded = false;
 
 export const preloadGalleryImages = () => {
