@@ -5,16 +5,32 @@ import { useRouter } from "next/navigation";
 import "./EventPanel.css";
 import Navbar from "../components/Navbar";
 
+// Define the Event interface
+interface Event {
+  _id: string;
+  date: string;
+  month: string;
+  year: string;
+  title: string;
+  description: string;
+  imageUrl: string;
+  projectImages?: string[];
+  instagramLink?: string;
+  category: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
 export default function EventsPanel() {
   const [events, setEvents] = useState({
-    'Past Events': [],
-    'Upcoming Events': [],
-    'Signature Events': []
+    'Past Events': [] as Event[],
+    'Upcoming Events': [] as Event[],
+    'Signature Events': [] as Event[]
   });
   const [loading, setLoading] = useState(false);
-  const [editingEvent, setEditingEvent] = useState(null);
+  const [editingEvent, setEditingEvent] = useState<Event | null>(null);
   const [showCreateForm, setShowCreateForm] = useState(false);
-  const [deleteLoading, setDeleteLoading] = useState(null);
+  const [deleteLoading, setDeleteLoading] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState('Past Events');
   const [imageUploading, setImageUploading] = useState(false);
   
@@ -25,7 +41,7 @@ export default function EventsPanel() {
     title: "",
     description: "",
     imageUrl: "",
-    projectImages: [],
+    projectImages: [] as string[],
     instagramLink: "",
     category: "Upcoming Events"
   });
@@ -33,10 +49,10 @@ export default function EventsPanel() {
   const router = useRouter();
 
   // Helper map to convert month names to numbers for sorting
-  const monthsMap = { "January": 0, "February": 1, "March": 2, "April": 3, "May": 4, "June": 5, "July": 6, "August": 7, "September": 8, "October": 9, "November": 10, "December": 11 };
+  const monthsMap: { [key: string]: number } = { "January": 0, "February": 1, "March": 2, "April": 3, "May": 4, "June": 5, "July": 6, "August": 7, "September": 8, "October": 9, "November": 10, "December": 11 };
 
   // Helper function to parse event dates for reliable sorting
-  const parseEventDate = (event) => {
+  const parseEventDate = (event: Event) => {
     const day = parseInt(event.date, 10);
     const month = monthsMap[event.month];
     const year = parseInt(event.year, 10);
@@ -56,7 +72,7 @@ export default function EventsPanel() {
       // ✅ Sort each category by date (newest first) after fetching
       for (const category in fetchedData) {
         if (Array.isArray(fetchedData[category])) {
-          fetchedData[category].sort((a, b) => parseEventDate(b) - parseEventDate(a));
+          fetchedData[category].sort((a: Event, b: Event) => parseEventDate(b).getTime() - parseEventDate(a).getTime());
         }
       }
 
@@ -84,7 +100,7 @@ export default function EventsPanel() {
     });
   };
 
-  const handleImageUpload = async (file, isMainImage = true) => {
+  const handleImageUpload = async (file: File, isMainImage = true) => {
     if (!file) return "";
 
     setImageUploading(true);
@@ -121,14 +137,14 @@ export default function EventsPanel() {
     return "";
   };
 
-  const removeProjectImage = (indexToRemove) => {
+  const removeProjectImage = (indexToRemove: number) => {
     setEventForm(prev => ({
       ...prev,
       projectImages: prev.projectImages.filter((_, index) => index !== indexToRemove)
     }));
   };
 
-  const validateForm = (form) => {
+  const validateForm = (form: typeof eventForm) => {
     return form.date.trim() &&
            form.month.trim() &&
            form.year.trim() &&
@@ -150,7 +166,7 @@ export default function EventsPanel() {
       resetForm();
       alert("Event created successfully!");
     } catch (err) {
-      const errorMsg = err.response?.data?.error || "Failed to create event";
+      const errorMsg = (err as any).response?.data?.error || "Failed to create event";
       alert(errorMsg);
       console.error(err);
     } finally {
@@ -158,7 +174,7 @@ export default function EventsPanel() {
     }
   };
 
-  const startEdit = (event) => {
+  const startEdit = (event: Event) => {
     setEditingEvent(event);
     setShowCreateForm(false);
     setEventForm({
@@ -194,7 +210,7 @@ export default function EventsPanel() {
       cancelEdit();
       alert("Event updated successfully!");
     } catch (err) {
-      const errorMsg = err.response?.data?.error || "Failed to update event";
+      const errorMsg = (err as any).response?.data?.error || "Failed to update event";
       alert(errorMsg);
       console.error(err);
     } finally {
@@ -202,7 +218,7 @@ export default function EventsPanel() {
     }
   };
 
-  const deleteEvent = async (id) => {
+  const deleteEvent = async (id: string) => {
     if (!confirm("Are you sure you want to delete this event? This action cannot be undone.")) {
       return;
     }
@@ -230,7 +246,7 @@ export default function EventsPanel() {
     }
   };
 
-  const truncateContent = (content, maxLength = 200) => {
+  const truncateContent = (content: string, maxLength = 200) => {
     if (!content) return '';
     if (content.length <= maxLength) return content;
     return content.substring(0, maxLength) + "...";
@@ -241,7 +257,7 @@ export default function EventsPanel() {
     "July", "August", "September", "October", "November", "December"
   ];
 
-  const currentEvents = events[selectedCategory] || [];
+  const currentEvents = events[selectedCategory as keyof typeof events] || [];
 
   return (
     <div className="events-panel">
@@ -300,7 +316,7 @@ export default function EventsPanel() {
       )}
 
       <div className="category-nav">
-        {Object.keys(events).map((category) => (<button key={category} className={`category-button ${selectedCategory === category ? 'active' : ''}`} onClick={() => setSelectedCategory(category)}>{category} ({events[category].length})</button>))}
+        {Object.keys(events).map((category) => (<button key={category} className={`category-button ${selectedCategory === category ? 'active' : ''}`} onClick={() => setSelectedCategory(category)}>{category} ({events[category as keyof typeof events].length})</button>))}
       </div>
 
       <main className="events-grid">
