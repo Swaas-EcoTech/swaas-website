@@ -5,11 +5,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Head from "next/head";
 import { Shadow } from "ogl";
+import { useRouter } from "next/navigation"
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
+  const goToHome = () => {
+    router.push("/");
+  };
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
@@ -25,7 +30,7 @@ function Navbar() {
       </Head> */}
 
       <nav className="navbar" style={{ backgroundColor }}>
-        <div className="navbar-logo">
+        <div className="navbar-logo" onClick={goToHome}>
           <img
             src={pathname === "/" ? "/logoHome.png" : "/logo-swaas.jpg"}
             alt="Logo"
