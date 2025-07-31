@@ -77,11 +77,9 @@ export default function EventsPanel() {
       }
 
       setEvents(fetchedData);
-      console.log("Fetched and sorted events:", fetchedData);
-
     } catch (err) {
       console.error("Failed to fetch events", err);
-      alert("Could not fetch events. Please check your connection or API.");
+      alert("Could not fetch events.");
     } finally {
         setLoading(false);
     }
@@ -115,7 +113,7 @@ export default function EventsPanel() {
       } else { throw new Error(data.error?.message || 'Cloudinary upload failed'); }
     } catch (error) {
       console.error('Error uploading image:', error);
-      alert('Failed to upload image. Please check console for details.');
+      alert('Failed to upload image.');
     } finally {
       setImageUploading(false);
     }
@@ -125,7 +123,26 @@ export default function EventsPanel() {
   const removeProjectImage = (indexToRemove: number) => { setEventForm(prev => ({ ...prev, projectImages: prev.projectImages.filter((_, index) => index !== indexToRemove) })); };
   const validateForm = (form: typeof eventForm) => form.date.trim() && form.month.trim() && form.year.trim() && form.title.trim() && form.description.trim() && form.imageUrl.trim();
 
-  // The 'createEvent' function was removed from here because it was unused and broke the build.
+  // ✅ RE-ADDED: The createEvent function needed for the form.
+  const createEvent = async () => {
+    if (!validateForm(eventForm)) {
+      alert("Please fill in all required fields (*).");
+      return;
+    }
+    setLoading(true);
+    try {
+      await axios.post("/api/events", eventForm, { withCredentials: true });
+      await fetchEvents();
+      setShowCreateForm(false);
+      resetForm();
+      alert("Event created successfully!");
+    } catch (err) {
+      alert("Failed to create event.");
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const startEdit = (event: Event) => {
     setEditingEvent(event);
@@ -177,7 +194,8 @@ export default function EventsPanel() {
     return content.substring(0, maxLength) + "...";
   };
   
-  // The 'months' array was removed from here because it was unused and broke the build.
+  // ✅ RE-ADDED: The 'months' array needed for the form dropdown.
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const currentEvents = events[selectedCategory as keyof typeof events] || [];
 
   return (
@@ -190,17 +208,48 @@ export default function EventsPanel() {
           <p className="header-subtitle">Create and manage events for SWAAS - The EcoTech Society</p>
         </div>
         <div className="header-actions">
-          <button onClick={() => { setShowCreateForm(!showCreateForm); if (editingEvent) cancelEdit(); }} className="create-button">
+          <button onClick={() => { setShowCreateForm(!showCreateForm); if (editingEvent) cancelEdit(); resetForm(); }} className="create-button">
             {showCreateForm ? 'Cancel' : 'Create Event'}
           </button>
           <button onClick={handleLogout} className="logout-button">Logout</button>
         </div>
       </header>
       
+      {/* ✅ NEW: This is the full, working create form. */}
       {showCreateForm && (
         <div className="create-form-container">
-            {/* You would need to implement the create form here, with a button that calls a createEvent function. */}
-            <p style={{textAlign: "center"}}>Create form goes here.</p>
+          <div className="edit-form"> {/* Reusing styles from edit-form */}
+            <h2 className="editing-header">Create New Event</h2>
+            <div className="form-grid">
+              <div className="form-group"><label>Date *</label><input type="text" value={eventForm.date} onChange={(e) => setEventForm({...eventForm, date: e.target.value})} placeholder="e.g., 21, 15" className="form-input"/></div>
+              <div className="form-group"><label>Month *</label><select value={eventForm.month} onChange={(e) => setEventForm({...eventForm, month: e.target.value})} className="form-input"><option value="">Select Month</option>{months.map(month => (<option key={month} value={month}>{month}</option>))}</select></div>
+              <div className="form-group"><label>Year *</label><input type="number" value={eventForm.year} onChange={(e) => setEventForm({...eventForm, year: e.target.value})} className="form-input" min="2020" max="2030"/></div>
+              <div className="form-group"><label>Category *</label><select value={eventForm.category} onChange={(e) => setEventForm({...eventForm, category: e.target.value})} className="form-input"><option value="Upcoming Events">Upcoming Events</option><option value="Past Events">Past Events</option><option value="Signature Events">Signature Events</option></select></div>
+            </div>
+            <div className="form-group"><label>Event Title *</label><input type="text" value={eventForm.title} onChange={(e) => setEventForm({...eventForm, title: e.target.value})} placeholder="Enter event title" className="form-input" maxLength={200}/></div>
+            <div className="form-group"><label>Description *</label><textarea value={eventForm.description} onChange={(e) => setEventForm({...eventForm, description: e.target.value})} placeholder="Describe the event..." className="form-textarea" rows={6}/></div>
+            <div className="form-group"><label>Main Event Image *</label>
+                <div className="image-upload-section">
+                    <input type="file" accept="image/*" onChange={(e) => {const file = e.target.files?.[0]; if (file) handleImageUpload(file, true);}} className="file-input" disabled={imageUploading}/>
+                    {imageUploading && <p className="upload-status">Uploading...</p>}
+                    {eventForm.imageUrl && (<div className="image-preview edit-image-preview"><img src={eventForm.imageUrl} alt="Main event" /></div>)}
+                </div>
+            </div>
+            <div className="form-group"><label>Project Images (Gallery)</label>
+                <div className="image-upload-section">
+                    <input type="file" accept="image/*" multiple onChange={(e) => {const files = Array.from(e.target.files || []); files.forEach(file => handleImageUpload(file, false));}} className="file-input" disabled={imageUploading}/>
+                    <div className="project-images-preview">
+                        {eventForm.projectImages.map((img, index) => (<div key={index} className="project-image-item"><img src={img} alt={`Project ${index + 1}`} /><button type="button" onClick={() => removeProjectImage(index)} className="remove-image-btn">×</button></div>))}
+                    </div>
+                </div>
+            </div>
+            <div className="form-group"><label>Instagram Link</label><input type="url" value={eventForm.instagramLink} onChange={(e) => setEventForm({...eventForm, instagramLink: e.target.value})} placeholder="https://instagram.com/..." className="form-input"/></div>
+
+            <div className="form-actions">
+              <button onClick={createEvent} disabled={loading || imageUploading} className="save-button">{imageUploading ? "Uploading..." : loading ? "Creating..." : "Create Event"}</button>
+              <button onClick={() => { setShowCreateForm(false); resetForm(); }} className="cancel-button">Cancel</button>
+            </div>
+          </div>
         </div>
       )}
 
@@ -223,6 +272,7 @@ export default function EventsPanel() {
           currentEvents.map((event) => (
             <article className="event-card" key={event._id}>
               {editingEvent?._id === event._id ? (
+                // EDITING FORM
                 <form className="edit-form" onSubmit={(e) => { e.preventDefault(); saveEdit(); }}>
                   <p className="editing-header">Editing: <strong>{event.title || 'Untitled Event'}</strong></p>
                   
@@ -271,6 +321,7 @@ export default function EventsPanel() {
                   </div>
                 </form>
               ) : (
+                // DEFAULT CARD VIEW
                 <>
                   {event.imageUrl && <img src={event.imageUrl} alt={event.title || 'Event Image'} className="event-image"/>}
                   <div className="event-content">
