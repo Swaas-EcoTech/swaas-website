@@ -166,7 +166,11 @@ export default function EventsPanel() {
       resetForm();
       alert("Event created successfully!");
     } catch (err) {
-      const errorMsg = (err as any).response?.data?.error || "Failed to create event";
+      // ✅ FIXED: Replaced 'any' cast with a type-safe error check.
+      let errorMsg = "Failed to create event";
+      if (axios.isAxiosError(err) && err.response?.data?.error) {
+        errorMsg = err.response.data.error;
+      }
       alert(errorMsg);
       console.error(err);
     } finally {
@@ -210,7 +214,11 @@ export default function EventsPanel() {
       cancelEdit();
       alert("Event updated successfully!");
     } catch (err) {
-      const errorMsg = (err as any).response?.data?.error || "Failed to update event";
+      // ✅ FIXED: Replaced 'any' cast with a type-safe error check.
+      let errorMsg = "Failed to update event";
+      if (axios.isAxiosError(err) && err.response?.data?.error) {
+        errorMsg = err.response.data.error;
+      }
       alert(errorMsg);
       console.error(err);
     } finally {

@@ -7,8 +7,8 @@ import "./AdminDashboard.css";
 import Navbar from "../components/Navbar";
 
 export default function AdminDashboard() {
-  const [selectedDashboard, setSelectedDashboard] = useState(null);
-  const router = useRouter();
+const [selectedDashboard, setSelectedDashboard] = useState<string | null>(null);
+const router = useRouter();
 
   const handleLogout = async () => {
     if (confirm("Are you sure you want to logout?")) {
