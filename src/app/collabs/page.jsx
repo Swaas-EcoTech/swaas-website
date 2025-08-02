@@ -66,7 +66,7 @@ const Collab = () => {
       description:
         "SWAAS, in collaboration with the Robin Hood Army, organized Donation Drive 2025 to support underprivileged communities. Donation boxes were set up at multiple campus locations including the Main Gate, Lab Block, Canteen, Under the Bridge, and Mother Dairy. Students and faculty contributed generously by donating clothes, books, toys, and daily essentials.",
       impact:
-        "SWAAS volunteers personally distributed donations to children in need, conducted a food drive with freshly prepared meals, and engaged in teaching and playful interactions in local parks. The initiative fostered community bonding and highlighted the impact of collective compassion.",
+        "SWAAS, in collaboration with the Robin Hood Army, organized Donation Drive 2025 to support underprivileged communities. Donation boxes were set up at multiple campus locations including the Main Gate, Lab Block, Canteen, Under the Bridge, and Mother Dairy. Students and faculty contributed generously by donating clothes, books, toys, and daily essentials SWAAS volunteers personally distributed donations to children in need, conducted a food drive with freshly prepared meals, and engaged in teaching and playful interactions in local parks. The initiative fostered community bonding and highlighted the impact of collective compassion.",
       date: "17th, 21st February 2025",
       collaborators: "Robin Hood Army",
       images: [
@@ -85,7 +85,7 @@ const Collab = () => {
         "SWAAS, in collaboration with FFT, organized The Ultimate Tech Battle a high-energy quiz competition combining technology and sustainability. Participants competed for the title of TECH WIZARD, showcasing exceptional technical knowledge and eco-conscious thinking.",
       collaborators: "FFT",
       impact:
-        "The event celebrated innovation and intellect, offering cash prizes, medals, e certificates, and exclusive subscriptions. With active participation and enthusiastic engagement, the quiz fostered a fun, competitive, and educational atmosphere that highlighted the importance of sustainable technology.",
+        "SWAAS, in collaboration with FFT, organized The Ultimate Tech Battle a high-energy quiz competition combining technology and sustainability. Participants competed for the title of TECH WIZARD, showcasing exceptional technical knowledge and eco-conscious thinking The event celebrated innovation and intellect, offering cash prizes, medals, e certificates, and exclusive subscriptions. With active participation and enthusiastic engagement, the quiz fostered a fun, competitive, and educational atmosphere that highlighted the importance of sustainable technology.",
       images: [
         "/collabs/photo2.jpeg",
         "/collabs/tt1.jpeg",
@@ -96,16 +96,27 @@ const Collab = () => {
     },
     {
       id: 3,
-      src: "/collabs/photo6.jpeg",
+      src: "/collabs/iitd.png",
       alt: "Climate Ideation Case Competition",
       description:
         "SWAAS collaborated with AIESEC Delhi IIT as the official promotional partner for the Climate Change Ideation Case Competition held at IIT Delhi. The initiative aimed to empower youth to address real-world sustainability challenges through innovative ideas and expert engagement.",
       impact:
-        "SWAAS amplified the competitions reach through targeted social media campaigns. The event connected participants with professionals from UNDP, Log9, and the Government of India. Winners were awarded certificates, vouchers, and recognition from AIESEC and IIT Delhi. This partnership strengthened SWAAS’s role in advancing youth-driven environmental leadership.",
+        "SWAAS collaborated with AIESEC Delhi IIT as the official promotional partner for the Climate Change Ideation Case Competition held at IIT Delhi. The initiative aimed to empower youth to address real-world sustainability challenges through innovative ideas and expert engagement SWAAS amplified the competitions reach through targeted social media campaigns. The event connected participants with professionals from UNDP, Log9, and the Government of India. Winners were awarded certificates, vouchers, and recognition from AIESEC and IIT Delhi. This partnership strengthened SWAAS’s role in advancing youth-driven environmental leadership.",
       collaborators: "AIESEC Delhi IIT, IIT Delhi",
       // images: ["/collabs/photo6.jpeg", "/collabs/photo8.jpeg"],
       instagramLink:
         "https://www.instagram.com/stories/highlights/17893051218037030/",
+    },
+    {
+      id: 3,
+      src: "/collabs/bvp.png",
+      alt: " BVCOE's EduMinerva : Building Bridges of Innovation & Talent",
+      impact:
+        "EduVation 2.0 was a resounding success, with multiple teams from SWAAS competing in the hackathon. Three teams excelled by clearing the first round and stayed overnight to continue their coding journey. This collaboration not only highlighted the innovation and dedication of our members but also strengthened the bond between SWAAS and EduMinerva, paving the way for future partnerships and joint ventures.",
+      collaborators: "BVCOE's EduMinerva",
+      images: ["/collabs/bvp1.png", "/collabs/bvp2.png"],
+      // instagramLink:
+      // "https://www.instagram.com/stories/highlights/17893051218037030/",
     },
   ];
 
