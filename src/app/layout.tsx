@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./components/ClientLayout";
+import { Analytics } from "@vercel/analytics/next"
 
-// Import and configure Lora (✅ no export!)
 import { Lora } from 'next/font/google';
 
 const lora = Lora({
@@ -38,6 +38,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ClientLayout>
           {children}
+          <Analytics/>
         </ClientLayout>
       </body>
     </html>
