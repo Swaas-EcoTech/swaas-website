@@ -364,12 +364,12 @@ class App {
     const defaultItems = [
       { image: "/Originals/ML.jpg", text: "Mehak Lakhina" },
       { image: `/Originals/VT.jpg`, text: "Vanshika Tanwar" },
+      { image: `/Originals/PS.jpg`, text: "Prabhsurat Singh" },
       { image: `/Originals/PS1.jpg`, text: "Prableen Singh" },
       { image: `/Originals/HK.jpg`, text: "Harjot Kaur" },
-      { image: `/Originals/PS.jpg`, text: "Prabhsurat Singh" },
       { image: `/Originals/I.png`, text: "Ishwardeep Singh" },
       { image: `/Originals/Jakrit.jpeg`, text: "Jagrit Khurana" },
-      { image: `/Originals/HK.jpg`, text: "Harjot Kaur" },
+      { image: `/Originals/ds.jpeg`, text: "Devanshi Sharma" },
       { image: `/Originals/N.jpg`, text: "Neeraj Gandhi" },
     ];
     const galleryItems = items && items.length ? items : defaultItems;

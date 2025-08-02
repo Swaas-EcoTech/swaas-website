@@ -80,19 +80,19 @@ const AQIDashboard = () => {
       </div>
 
       <style jsx>{`
-        .aqi-container { background-color: #ffffff; border-radius: 12px; padding: 0.4rem; text-align: center; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; opacity: 0; animation: fadeIn 0.5s forwards; }
+        .aqi-container { background-color: #454851; border-radius: 12px; padding: 0.4rem; text-align: center; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; opacity: 0; animation: fadeIn 0.5s forwards; }
         @keyframes fadeIn { to { opacity: 1; } }
-        .loading-state, .error-state { align-items: center; justify-content: center; color: #777; font-size: 0.8rem; }
+        .loading-state, .error-state { align-items: center; justify-content: center; color: #ffffff; font-size: 0.8rem; }
         .spinner { border: 3px solid rgba(0,0,0,0.1); width: 24px; height: 24px; border-radius: 50%; border-left-color: #0070f3; animation: spin 1s ease infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
         .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; }
-        .header h6 { margin: 0; font-size: 0.8rem; color: #333; font-weight: 600; }
-        .header span { font-size: 0.7rem; color: #718096; }
+        .header h6 { margin: 0; font-size: 0.8rem; color: #ffffff; font-weight: 600; }
+        .header span { font-size: 0.7rem; color: #ffffff; }
         .aqi-display { display: flex; justify-content: space-around; align-items: center; margin-bottom: 0.75rem; }
         .aqi-level { font-size: 1.25rem; font-weight: 700; color: var(--aqi-color); }
         .aqi-value { font-size: 1.75rem; font-weight: 700; color: white; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-shadow: 1px 1px 1px rgba(0,0,0,0.2); }
         .pollutants-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; border-top: 1px solid #f0f0f0; padding-top: 0.5rem; }
-        .pollutant-item { text-align: center; font-size: 0.7rem; color: #555; }
+        .pollutant-item { text-align: center; font-size: 0.7rem; color: #ffffff; }
         .pollutant-item span { display: block; }
         .pollutant-item span:first-child { font-weight: 600; }
       `}</style>
