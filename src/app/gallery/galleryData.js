@@ -508,13 +508,6 @@ const items = [
     height: 413,
   },
   {
-    id: "vid",
-    type: "video",
-    src: "/Gallery/video/v16.mp4",
-    url: "https://www.instagram.com/swaas.gtbit/",
-    height: 720,
-  },
-  {
     id: "272",
     img: "/Gallery/272s.jpg",
     url: "https://www.instagram.com/swaas.gtbit/",
@@ -754,6 +747,7 @@ const items = [
   },
 ];
 
+
 /**
  * Shuffles an array in place using the Fisher-Yates (aka Knuth) algorithm.
  * @param {Array} array The array to shuffle.
@@ -783,20 +777,7 @@ shuffle(items);
 
 // Export the shuffled array.
 export { items };
-let hasPreloaded = false;
 
-export const preloadGalleryImages = () => {
-  // Yeh function sirf ek baar chalega
-  if (hasPreloaded) return;
-  hasPreloaded = true;
-
-  console.log("Preloading gallery images on user intent...");
-
-  // Safety check
-  if (items && items.length > 0) {
-    items.forEach((item) => {
-      const img = new Image();
-      img.src = item.img;
-    });
-  }
-};
+// Removed the preloadGalleryImages function as it's no longer needed for eager loading.
+// The `loading="lazy"` attribute is removed from the Image/video tags directly in page.jsx
+// to ensure all content loads immediately when the gallery page is visited.

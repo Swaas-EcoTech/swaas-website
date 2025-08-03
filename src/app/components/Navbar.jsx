@@ -4,9 +4,11 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Head from "next/head";
-import { Shadow } from "ogl";
+// The 'Shadow' import from 'ogl' is not used here and can be safely removed if not used elsewhere in this file.
+// import { Shadow } from "ogl";
 import { useRouter } from "next/navigation"
-import { preloadGalleryImages } from "../gallery/galleryData";
+// Removed the problematic import for preloadGalleryImages as it's no longer exported
+// import { preloadGalleryImages } from "../gallery/galleryData";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -83,7 +85,7 @@ function Navbar() {
             <Link
               href="/gallery"
               className={pathname === "/gallery" ? "active" : ""}
-              onMouseEnter={preloadGalleryImages} 
+              // Removed onMouseEnter={preloadGalleryImages} as the function is no longer exported
             >
               Gallery
             </Link>
