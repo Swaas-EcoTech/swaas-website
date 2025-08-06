@@ -61,7 +61,7 @@ const Home = () => {
                 )}
               </span>
               , Director of GTBIT, and under the convenership of Dr. Manpreet
-              Kaur, the institution has continually supported such student-led
+              Kaur Bagga, the institution has continually supported such student-led
               efforts that drive real-world impact and foster responsible
               citizenship. The name SWAAS, meaning breath in Hindi, reflects its
               mission to breathe life into causes that matter, from

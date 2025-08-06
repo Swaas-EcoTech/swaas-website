@@ -78,7 +78,7 @@ const teamData = {
   ],
   Convener: [
     {
-      name: "Dr.Manpreet kaur",
+      name: "Dr.Manpreet kaur Bagga",
       img: "/Team/ManpreetKaur.png",
       description:
         "Dr. Manpreet Kaur, a dedicated educator and mentor, leads SWAAS with a vision to foster holistic student development. Her guidance and supportive leadership inspire meaningful initiatives in social awareness, well-being, and community service, making SWAAS a space of learning and positive impact.",
