@@ -276,6 +276,28 @@ export default function EventsPanel() {
                 <form className="edit-form" onSubmit={(e) => { e.preventDefault(); saveEdit(); }}>
                   <p className="editing-header">Editing: <strong>{event.title || 'Untitled Event'}</strong></p>
                   
+                  {/* === ADDED: Date and Instagram Link fields === */}
+                  <div className="form-grid">
+                    <div className="form-group">
+                      <label>Date *</label>
+                      <input type="text" value={eventForm.date} onChange={(e) => setEventForm({ ...eventForm, date: e.target.value })} className="form-input" placeholder="e.g., 21" />
+                    </div>
+                    <div className="form-group">
+                      <label>Month *</label>
+                      <select value={eventForm.month} onChange={(e) => setEventForm({ ...eventForm, month: e.target.value })} className="form-input">
+                        <option value="">Select Month</option>
+                        {months.map(month => (
+                          <option key={month} value={month}>{month}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div className="form-group">
+                      <label>Year *</label>
+                      <input type="number" value={eventForm.year} onChange={(e) => setEventForm({ ...eventForm, year: e.target.value })} className="form-input" min="2020" max="2030" />
+                    </div>
+                  </div>
+                  {/* =========================================== */}
+                  
                   <div className="form-group"><label>Title *</label><input type="text" value={eventForm.title} onChange={(e) => setEventForm({ ...eventForm, title: e.target.value })} className="form-input" /></div>
                   <div className="form-group"><label>Description *</label><textarea value={eventForm.description} onChange={(e) => setEventForm({ ...eventForm, description: e.target.value })} className="form-textarea" rows={4} /></div>
                   <div className="form-group"><label>Category *</label>
@@ -314,6 +336,13 @@ export default function EventsPanel() {
                       }
                     </div>
                   </div>
+
+                  {/* === ADDED: Instagram Link field === */}
+                  <div className="form-group">
+                    <label>Instagram Link</label>
+                    <input type="url" value={eventForm.instagramLink} onChange={(e) => setEventForm({ ...eventForm, instagramLink: e.target.value })} className="form-input" placeholder="https://instagram.com/..." />
+                  </div>
+                  {/* ================================== */}
                   
                   <div className="form-actions">
                     <button type="submit" disabled={loading || imageUploading} className="save-button">{loading ? "Saving..." : "Save Changes"}</button>
