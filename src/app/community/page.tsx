@@ -504,18 +504,18 @@ export default function Community() {
               <div className="user-avatar">
                 <img src="/logo-swaas1.jpg" alt="Your avatar" />
               </div>
-              <button className="post-input-button" onClick={() => setShowCreateModal(true)}>
+              <button className="post-input-button" onClick={() => setShowCreateModal(false)}>
                 Start a post about your eco journey...
               </button>
             </div>
             <div className="post-actions-row">
-              <button className="post-action-btn media-btn" onClick={() => setShowCreateModal(true)}>
+              <button className="post-action-btn media-btn" onClick={() => setShowCreateModal(false)}>
                 <svg className="action-icon" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M19 7v2.99s-1.99.01-2 0V7h-3s.01-1.99 0-2h3V2h2v3h3v2h-3zm-3 4V8h-3V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8h-3zM5 19l3-4 2 3 3-4 4 5H5z" />
                 </svg>
                 Photo
               </button>
-              <button className="post-action-btn article-btn" onClick={() => setShowCreateModal(true)}>
+              <button className="post-action-btn article-btn" onClick={() => setShowCreateModal(false)}>
                 <svg className="action-icon" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h8c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
                 </svg>
