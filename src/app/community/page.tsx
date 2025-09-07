@@ -1,5 +1,5 @@
 "use client"
-import type React from "react"
+import React from "react"
 import { useEffect, useState } from "react"
 import axios from "axios"
 import "./community.css"
@@ -8,6 +8,7 @@ import Navbar from "../components/Navbar"
 import Leaf from "../components/DecorativeLeaves"
 import { useAuth } from "../contexts/AuthContext"
 import { signInWithGoogle, logOut } from "@/lib/firebase"
+
 
 interface Post {
   _id: string
@@ -18,7 +19,7 @@ interface Post {
   updatedAt: string
   userId?: string
   userEmail?: string
-  userPhotoURL?: string // Add user's profile photo URL
+  userPhotoURL?: string
 }
 
 export default function Community() {
@@ -31,6 +32,7 @@ export default function Community() {
   const [inspiredPosts, setInspiredPosts] = useState<Set<string>>(new Set())
   const [isLoadingPosts, setIsLoadingPosts] = useState(true)
   const [signingIn, setSigningIn] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false) // New state for post submission
   const router = useRouter()
 
   const goToAdmin = () => {
@@ -94,8 +96,9 @@ export default function Community() {
       return
     }
 
+    setIsSubmitting(true); // Start the submission process
+
     try {
-      // Get Firebase ID token for authentication
       const idToken = await user.getIdToken()
       
       let imageUrl = ""
@@ -110,8 +113,6 @@ export default function Community() {
         imageUrl = res.data.url
       }
 
-      // The backend now securely gets user info from the token.
-      // We only need to send the content, imageUrl, and the user's photoURL as a fallback.
       await axios.post("/api/posts", { 
         content, 
         imageUrl,
@@ -122,13 +123,19 @@ export default function Community() {
         }
       })
       
-      setContent("")
-      setImage(null)
-      setShowCreateModal(false)
-      fetchPosts()
+      // On success, wait 5 seconds before closing the modal and refreshing posts
+      setTimeout(() => {
+        setContent("")
+        setImage(null)
+        setShowCreateModal(false)
+        fetchPosts()
+        setIsSubmitting(false) // End submission process
+      }, 2000);
+
     } catch (error) {
       console.error("Error creating post:", error)
       alert("Failed to create post. Please try again.")
+      setIsSubmitting(false); // End submission process on error
     }
   }
 
@@ -413,8 +420,9 @@ export default function Community() {
                     </label>
                   </div>
                   <div className="toolbar-right">
-                    <button className="post-btn" onClick={handleSubmit} disabled={!content.trim()}>
-                      Post
+                    {/* Update button text and disabled state based on isSubmitting */}
+                    <button className="post-btn" onClick={handleSubmit} disabled={!content.trim() || isSubmitting}>
+                      {isSubmitting ? 'Posting...' : 'Post'}
                     </button>
                   </div>
                 </div>
@@ -444,4 +452,3 @@ export default function Community() {
     </div>
   )
 }
-

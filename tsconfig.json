@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/admin/AdminDashboard.jsx", "src/app/admin/EventPanel.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/admin/AdminDashboard.jsx", "src/app/admin/EventPanel.tsx", "src/app/community/page.tsx"],
   "exclude": ["node_modules"]
 }
