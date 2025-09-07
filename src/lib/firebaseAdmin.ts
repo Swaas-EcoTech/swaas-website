@@ -1,7 +1,6 @@
 import * as admin from 'firebase-admin';
 import { DecodedIdToken } from 'firebase-admin/auth';
 
-
 function initializeFirebaseAdmin() {
   if (admin.apps.length > 0) {
     return;
@@ -11,7 +10,6 @@ function initializeFirebaseAdmin() {
   const privateKey = process.env.FIREBASE_PRIVATE_KEY;
 
   if (!projectId || !clientEmail || !privateKey) {
-
     const errorMessage = `
       CRITICAL ERROR: One or more Firebase Admin credentials are missing in your .env.local file.
       Please check the following variables:
@@ -28,13 +26,17 @@ function initializeFirebaseAdmin() {
       credential: admin.credential.cert({
         projectId,
         clientEmail,
-        privateKey: privateKey.replace(/\\n/g, '\n'), 
+        privateKey: privateKey.replace(/\\n/g, '\n'),
       }),
     });
     console.log("Firebase Admin SDK initialized successfully.");
-  } catch (error: any) {
-    console.error("Firebase Admin SDK initialization failed:", error.message);
-    throw new Error(`Firebase Admin initialization failed: ${error.message}`);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      console.error("Firebase Admin SDK initialization failed:", error.message);
+      throw new Error(`Firebase Admin initialization failed: ${error.message}`);
+    }
+    console.error("Firebase Admin SDK initialization failed with unknown error:", error);
+    throw new Error("Firebase Admin initialization failed: Unknown error");
   }
 }
 
@@ -52,7 +54,7 @@ export const verifyFirebaseToken = async (token: string): Promise<DecodedIdToken
     initializeFirebaseAdmin();
     const decodedToken = await admin.auth().verifyIdToken(token);
     return decodedToken;
-  } catch (error) {
+  } catch (error: unknown) {
     console.error('Error during token verification:', error);
     return null;
   }

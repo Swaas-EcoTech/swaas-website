@@ -14,6 +14,11 @@
     "Helvetica Neue", Arial, sans-serif;
   min-height: 100vh;
 }
+.guest-avatar-icon {
+  margin-left: auto; /* pushes it to the right inside flexbox */
+  display: block;    
+  margin-top: 1px;
+}
 
 /* Header Styles */
 .community-header {
