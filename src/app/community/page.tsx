@@ -6,6 +6,8 @@ import "./community.css"
 import { useRouter } from "next/navigation"
 import Navbar from "../components/Navbar"
 import Leaf from "../components/DecorativeLeaves"
+import { useAuth } from "../contexts/AuthContext"
+import { signInWithGoogle, logOut } from "@/lib/firebase"
 
 interface Post {
   _id: string
@@ -14,10 +16,13 @@ interface Post {
   imageUrl: string
   createdAt: string
   updatedAt: string
+  userId?: string
+  userEmail?: string
+  userPhotoURL?: string // Add user's profile photo URL
 }
 
 export default function Community() {
-  const [name, setName] = useState("")
+  const { user, loading: authLoading } = useAuth()
   const [content, setContent] = useState("")
   const [image, setImage] = useState<File | null>(null)
   const [posts, setPosts] = useState<Post[]>([])
@@ -25,6 +30,7 @@ export default function Community() {
   const [showCreateModal, setShowCreateModal] = useState(false)
   const [inspiredPosts, setInspiredPosts] = useState<Set<string>>(new Set())
   const [isLoadingPosts, setIsLoadingPosts] = useState(true)
+  const [signingIn, setSigningIn] = useState(false)
   const router = useRouter()
 
   const goToAdmin = () => {
@@ -43,36 +49,86 @@ export default function Community() {
     } catch (error) {
       console.error("Error fetching posts:", error)
     } finally {
-      // Add a small delay to show the loader animation
       setTimeout(() => {
         setIsLoadingPosts(false)
       }, 1000)
     }
   }
 
+  const handleSignIn = async () => {
+    setSigningIn(true)
+    try {
+      await signInWithGoogle()
+    } catch (error) {
+      console.error('Error signing in:', error)
+      alert('Failed to sign in. Please try again.')
+    } finally {
+      setSigningIn(false)
+    }
+  }
+
+  const handleSignOut = async () => {
+    try {
+      await logOut()
+    } catch (error) {
+      console.error('Error signing out:', error)
+    }
+  }
+
+  const handleCreatePostClick = () => {
+    if (!user) {
+      handleSignIn();
+    } else {
+      setShowCreateModal(true);
+    }
+  };
+
   const handleSubmit = async () => {
-    if (!name.trim() || !content.trim()) {
-      alert("Please fill in all fields")
+    if (!user) {
+      alert("Please sign in to create a post")
+      return
+    }
+
+    if (!content.trim()) {
+      alert("Please write something before posting")
       return
     }
 
     try {
+      // Get Firebase ID token for authentication
+      const idToken = await user.getIdToken()
+      
       let imageUrl = ""
       if (image) {
         const form = new FormData()
         form.append("file", image)
-        const res = await axios.post("/api/upload", form)
+        const res = await axios.post("/api/upload", form, {
+          headers: {
+            'Authorization': `Bearer ${idToken}`
+          }
+        })
         imageUrl = res.data.url
       }
 
-      await axios.post("/api/posts", { name, content, imageUrl })
-      setName("")
+      // The backend now securely gets user info from the token.
+      // We only need to send the content, imageUrl, and the user's photoURL as a fallback.
+      await axios.post("/api/posts", { 
+        content, 
+        imageUrl,
+        userPhotoURL: user.photoURL 
+      }, {
+        headers: {
+          'Authorization': `Bearer ${idToken}`
+        }
+      })
+      
       setContent("")
       setImage(null)
       setShowCreateModal(false)
       fetchPosts()
     } catch (error) {
       console.error("Error creating post:", error)
+      alert("Failed to create post. Please try again.")
     }
   }
 
@@ -103,6 +159,14 @@ export default function Community() {
       return date.toLocaleDateString()
     }
   }
+
+  // Auth Loading Component
+  const AuthLoader = () => (
+    <div className="auth-loading">
+      <div className="loader-spinner"></div>
+      <p>Loading authentication...</p>
+    </div>
+  )
 
   // Posts Grid Loader Component
   const PostsGridLoader = () => (
@@ -152,315 +216,17 @@ export default function Community() {
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        .posts-grid-loader {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          min-height: 400px;
-          padding: 40px 20px;
-          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-          border-radius: 20px;
-          margin: 20px 0;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .loader-content {
-          text-align: center;
-          max-width: 600px;
-          width: 100%;
-        }
-
-        .community-loader-animation {
-          margin-bottom: 30px;
-          position: relative;
-          display: inline-block;
-        }
-
-        .growing-plant {
-          position: relative;
-          display: inline-block;
-          animation: gentle-sway 3s ease-in-out infinite;
-        }
-
-        .plant-pot {
-          font-size: 48px;
-          display: block;
-          animation: pot-bounce 2s ease-in-out infinite;
-        }
-
-        .plant-stem {
-          width: 4px;
-          height: 40px;
-          background: linear-gradient(to top, #8B4513, #228B22);
-          margin: -10px auto 0;
-          border-radius: 2px;
-          animation: stem-grow 2s ease-out infinite;
-          transform-origin: bottom;
-        }
-
-        .plant-leaves {
-          position: absolute;
-          top: -20px;
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          gap: 10px;
-        }
-
-        .leaf {
-          font-size: 24px;
-          display: inline-block;
-          animation: leaf-dance 2s ease-in-out infinite;
-        }
-
-        .leaf-1 {
-          animation-delay: 0s;
-        }
-
-        .leaf-2 {
-          animation-delay: 0.5s;
-        }
-
-        .leaf-3 {
-          animation-delay: 1s;
-        }
-
-        @keyframes gentle-sway {
-          0%, 100% {
-            transform: rotate(0deg);
-          }
-          25% {
-            transform: rotate(2deg);
-          }
-          75% {
-            transform: rotate(-2deg);
-          }
-        }
-
-        @keyframes pot-bounce {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-5px);
-          }
-        }
-
-        @keyframes stem-grow {
-          0% {
-            transform: scaleY(0.5);
-          }
-          50% {
-            transform: scaleY(1.2);
-          }
-          100% {
-            transform: scaleY(1);
-          }
-        }
-
-        @keyframes leaf-dance {
-          0%, 100% {
-            transform: rotate(0deg) scale(1);
-          }
-          25% {
-            transform: rotate(10deg) scale(1.1);
-          }
-          75% {
-            transform: rotate(-10deg) scale(0.9);
-          }
-        }
-
-        .loader-text {
-          margin-bottom: 25px;
-        }
-
-        .loader-text h3 {
-          font-size: 24px;
-          color: #556b2f;
-          margin-bottom: 10px;
-          font-family: 'Inika', serif;
-        }
-
-        .loader-text p {
-          font-size: 16px;
-          color: #6b8e3d;
-          font-style: italic;
-        }
-
-        .loading-dots {
-          display: flex;
-          justify-content: center;
-          gap: 8px;
-          margin-bottom: 40px;
-        }
-
-        .dot {
-          width: 12px;
-          height: 12px;
-          background: #556b2f;
-          border-radius: 50%;
-          animation: dot-bounce 1.4s ease-in-out infinite both;
-        }
-
-        .dot:nth-child(1) {
-          animation-delay: -0.32s;
-        }
-
-        .dot:nth-child(2) {
-          animation-delay: -0.16s;
-        }
-
-        @keyframes dot-bounce {
-          0%, 80%, 100% {
-            transform: scale(0);
-          }
-          40% {
-            transform: scale(1);
-          }
-        }
-
-        .skeleton-posts {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 20px;
-          width: 100%;
-          max-width: 800px;
-        }
-
-        .skeleton-post-card {
-          background: white;
-          border-radius: 15px;
-          padding: 20px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-          animation: skeleton-pulse 1.5s ease-in-out infinite alternate;
-        }
-
-        .skeleton-header {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-          margin-bottom: 15px;
-        }
-
-        .skeleton-avatar {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-          background-size: 200% 100%;
-          animation: skeleton-shimmer 1.5s infinite;
-        }
-
-        .skeleton-info {
-          flex: 1;
-        }
-
-        .skeleton-name {
-          width: 120px;
-          height: 16px;
-          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-          background-size: 200% 100%;
-          border-radius: 4px;
-          margin-bottom: 8px;
-          animation: skeleton-shimmer 1.5s infinite;
-        }
-
-        .skeleton-time {
-          width: 80px;
-          height: 12px;
-          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-          background-size: 200% 100%;
-          border-radius: 4px;
-          animation: skeleton-shimmer 1.5s infinite;
-        }
-
-        .skeleton-content {
-          margin-bottom: 15px;
-        }
-
-        .skeleton-line {
-          height: 14px;
-          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-          background-size: 200% 100%;
-          border-radius: 4px;
-          margin-bottom: 8px;
-          animation: skeleton-shimmer 1.5s infinite;
-        }
-
-        .skeleton-line.short {
-          width: 60%;
-        }
-
-        .skeleton-line.medium {
-          width: 80%;
-        }
-
-        .skeleton-image {
-          width: 100%;
-          height: 150px;
-          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-          background-size: 200% 100%;
-          border-radius: 8px;
-          animation: skeleton-shimmer 1.5s infinite;
-        }
-
-        @keyframes skeleton-pulse {
-          0% {
-            opacity: 1;
-          }
-          100% {
-            opacity: 0.7;
-          }
-        }
-
-        @keyframes skeleton-shimmer {
-          0% {
-            background-position: -200% 0;
-          }
-          100% {
-            background-position: 200% 0;
-          }
-        }
-
-        /* Mobile responsiveness */
-        @media (max-width: 768px) {
-          .posts-grid-loader {
-            padding: 30px 15px;
-            min-height: 300px;
-          }
-
-          .plant-pot {
-            font-size: 36px;
-          }
-
-          .leaf {
-            font-size: 20px;
-          }
-
-          .loader-text h3 {
-            font-size: 20px;
-          }
-
-          .loader-text p {
-            font-size: 14px;
-          }
-
-          .skeleton-posts {
-            grid-template-columns: 1fr;
-            gap: 15px;
-          }
-
-          .skeleton-post-card {
-            padding: 15px;
-          }
-        }
-      `}</style>
     </div>
   )
+
+  if (authLoading) {
+    return (
+      <div className="community-wrapper">
+        <Navbar />
+        <AuthLoader />
+      </div>
+    )
+  }
 
   return (
     <div className="community-wrapper">
@@ -494,36 +260,57 @@ export default function Community() {
                 </div>
               </div>
             </div>
+            
+            {/* User Auth Section - Simplified for logged-in users */}
+            {user ? (
+              <div className="user-auth-section">
+                <button className="sign-out-btn" style={{ marginLeft: '90px', marginTop: '20%' }} onClick={handleSignOut}>
+                  Sign Out
+                </button>
+              </div>
+            ) : (
+              <div className="auth-prompt-header">
+                <div className="guest-info">
+                  <button className="header-sign-in-btn" onClick={handleSignIn} disabled={signingIn}>
+                    {signingIn ? 'Signing in...' : 'Sign In'}
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* LinkedIn-style Post Creation */}
+        {/* Post Creation Section - Always visible, click triggers auth if not logged in */}
         <div className="post-creation-section">
-          <div className="post-creation-card">
-            <div className="post-input-row">
-              <div className="user-avatar">
-                <img src="/logo-swaas1.jpg" alt="Your avatar" />
+            <div className="post-creation-card">
+              <div className="post-input-row">
+                <div className="user-avatar">
+                  {user ? (
+                    <img src={user.photoURL || '/default-avatar.png'} alt="Your avatar" />
+                  ) : (
+                    <svg className="guest-avatar-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                  )}
+                </div>
+                <button className="post-input-button" onClick={handleCreatePostClick}>
+                  Start a post about your eco journey...
+                </button>
               </div>
-              <button className="post-input-button" onClick={() => setShowCreateModal(false)}>
-                Start a post about your eco journey...
-              </button>
-            </div>
-            <div className="post-actions-row">
-              <button className="post-action-btn media-btn" onClick={() => setShowCreateModal(false)}>
-                <svg className="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 7v2.99s-1.99.01-2 0V7h-3s.01-1.99 0-2h3V2h2v3h3v2h-3zm-3 4V8h-3V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8h-3zM5 19l3-4 2 3 3-4 4 5H5z" />
-                </svg>
-                Photo
-              </button>
-              <button className="post-action-btn article-btn" onClick={() => setShowCreateModal(false)}>
-                <svg className="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h8c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
-                </svg>
-                Write article
-              </button>
+              <div className="post-actions-row">
+                <button className="post-action-btn media-btn" onClick={handleCreatePostClick}>
+                  <svg className="action-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 7v2.99s-1.99.01-2 0V7h-3s.01-1.99 0-2h3V2h2v3h3v2h-3zm-3 4V8h-3V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8h-3zM5 19l3-4 2 3 3-4 4 5H5z" />
+                  </svg>
+                  Photo
+                </button>
+                <button className="post-action-btn article-btn" onClick={handleCreatePostClick}>
+                  <svg className="action-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h8c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                  </svg>
+                  Write article
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
         <Leaf />
 
@@ -537,7 +324,11 @@ export default function Community() {
                 <div className="post-header">
                   <div className="post-author">
                     <div className="author-avatar">
-                      <span>{post.name.charAt(0).toUpperCase()}</span>
+                      {post.userPhotoURL ? (
+                        <img src={post.userPhotoURL} alt={post.name} className="author-avatar" />
+                      ) : (
+                        <span>{post.name.charAt(0).toUpperCase()}</span>
+                      )}
                     </div>
                     <div className="author-info">
                       <h4>{post.name}</h4>
@@ -572,18 +363,18 @@ export default function Community() {
           </div>
         )}
 
-        {/* LinkedIn-style Create Post Modal */}
-        {showCreateModal && (
+        {/* Create Post Modal - Only for authenticated users */}
+        {showCreateModal && user && (
           <div className="modal-overlay">
             <div className="linkedin-modal">
               <div className="linkedin-modal-header">
                 <div className="modal-user-info">
                   <div className="modal-user-avatar">
-                    <img src="/logo-swaas1.jpg" alt="Your avatar" />
+                    <img src={user.photoURL || '/default-avatar.png'} alt="Your avatar" />
                   </div>
                   <div className="modal-user-details">
-                    <h3>SWAAS Member</h3>
-                    <p>Post to Community</p>
+                    <h3>{user.displayName}</h3>
+                    <p>Post to SWAAS Community</p>
                   </div>
                 </div>
                 <button className="modal-close-btn" onClick={() => setShowCreateModal(false)}>
@@ -593,13 +384,6 @@ export default function Community() {
                 </button>
               </div>
               <div className="linkedin-modal-body">
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="name-input"
-                />
                 <textarea
                   placeholder="What do you want to talk about?"
                   value={content}
@@ -632,7 +416,7 @@ export default function Community() {
                     </label>
                   </div>
                   <div className="toolbar-right">
-                    <button className="post-btn" onClick={handleSubmit} disabled={!name.trim() || !content.trim()}>
+                    <button className="post-btn" onClick={handleSubmit} disabled={!content.trim()}>
                       Post
                     </button>
                   </div>
@@ -663,3 +447,4 @@ export default function Community() {
     </div>
   )
 }
+
