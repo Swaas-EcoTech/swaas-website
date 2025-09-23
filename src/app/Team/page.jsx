@@ -136,7 +136,8 @@ const Team = () => {
         @media (max-width: 480px) {
           .team-grid {
              grid-auto-columns: 220px;
-             gap: 1.5rem;
+             gap: 2.5rem;
+              grid-auto-flow: row;
           }
           .team-grid.core-layout {
              grid-template-columns: 1fr;
@@ -153,12 +154,14 @@ const Team = () => {
         @media (max-width: 768px) {
           .team-cardContainer {
             height: 320px;
+            
           }
         }
 
         @media (max-width: 480px) {
            .team-cardContainer {
             height: 350px;
+            grid-auto-flow: row;
           }
         }
 

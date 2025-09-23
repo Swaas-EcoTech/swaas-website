@@ -33,11 +33,18 @@ const teamData = {
   ],
   Design: [
     {
-      name: "Gurpratit",
-      img: "/Team/Pratit.jpeg",
+      name: "Harleen Kaur",
+      img: "/Team/harleendesign.jpeg",
       description:
-        "A perfectionist with an eye for soul, Gurpratit weaves identity into every frame. She protects Swaas’s visual soul—crafting designs that don’t just look right, but feel like us.",
-      linkedInLink: "https://www.linkedin.com/in/gurpratit-kaur-saluja-911926323?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "A creative soul with a curious mind, Harleen brings ideas to life in every design. She shapes Swaas’s visual identity with care making each detail not just aesthetic, but meaningful. Always ready to learn, she grows with every frame she creates.",
+      linkedInLink: "www.linkedin.com/in/harleen-kaur-4671b4302",
+    },
+    {
+      name: "Pooja",
+      img: "/Team/pooja.jpeg",
+      description:
+        "Pooja, Graphic Designer Co-Lead at Swaas — crafting identity through creativity. She brings ideas to life with designs that inspire and connect.",
+      linkedInLink: "https://www.linkedin.com/in/pooja-bhagat0?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
   ],
   Technical: [
@@ -51,11 +58,18 @@ const teamData = {
   ],
   SocialMedia: [
     {
-      name: "Gurprajas",
-      img: "/Team/Gurprajas.jpeg",
+      name: "Tannu",
+      img: "/Team/tannuy.jpeg",
       description:
-        "Youngest in age, fierce in drive—Gurprajas is Swaas' digital storyteller. With creativity and spark, she turns ideas into impact, one post at a time.",
-      linkedInLink: "https://www.linkedin.com/in/gurprajas-kaur-saluja-495208306?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+        "Tannu, Social Media Lead at Swaas — the voice behind our digital heartbeat, weaving stories that connect and inspire. She brings creativity to every scroll, making Swaas shine online.",
+      linkedInLink: "https://www.linkedin.com/in/tannu-yadav-4b0330339?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    },
+    {
+      name: "Chinmay",
+      img: "/Team/Chinmay.jpeg",
+      description:
+        "He handles SWAAS’s social media with creativity and precision, ensuring every post reflects our spirit. His dedication and professionalism make him an invaluable part of the team.",
+      linkedInLink: "https://www.linkedin.com/in/chinmay-sachdeva-a70a29378?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
   ],
   Content: [
@@ -78,7 +92,7 @@ const teamData = {
   ],
   Convener: [
     {
-      name: "Dr.Manpreet kaur Bagga",
+      name: "Dr.Manpreet Kaur Bagga",
       img: "/Team/ManpreetKaur.png",
       description:
         "Dr. Manpreet Kaur, a dedicated educator and mentor, leads SWAAS with a vision to foster holistic student development. Her guidance and supportive leadership inspire meaningful initiatives in social awareness, well-being, and community service, making SWAAS a space of learning and positive impact.",

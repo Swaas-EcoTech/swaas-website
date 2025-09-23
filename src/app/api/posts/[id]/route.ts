@@ -1,31 +1,17 @@
 import { NextResponse } from "next/server";
 import dbConnect from "@/lib/mongodb";
 import Post from "@/models/Post";
-import { verifyFirebaseToken } from "@/lib/firebaseAdmin";
 
-const isAdminUser = (uid: string): boolean => {
-  const adminUids = process.env.FIREBASE_ADMIN_UIDS?.split(",") || [];
-  return adminUids.includes(uid);
-};
-
+// This function checks for the secret password in the request
 async function handleAdminRequest(req: Request) {
-  const authHeader = req.headers.get("authorization");
-  if (!authHeader?.startsWith("Bearer ")) {
-    return { error: "Authentication required for this action", status: 401 };
+  const secret = req.headers.get("x-admin-secret");
+
+  // It compares the secret from the frontend against the server's ADMIN_SECRET
+  if (secret !== process.env.ADMIN_SECRET) {
+    return { error: "Unauthorized: Invalid secret key", status: 403 };
   }
 
-  const token = authHeader.split("Bearer ")[1];
-  const decodedToken = await verifyFirebaseToken(token);
-
-  if (!decodedToken) {
-    return { error: "Invalid authentication token", status: 401 };
-  }
-
-  if (!isAdminUser(decodedToken.uid)) {
-    return { error: "Unauthorized: Admin privileges required", status: 403 };
-  }
-
-  return { decodedToken };
+  return { success: true };
 }
 
 export async function DELETE(req: Request, context: any) {
