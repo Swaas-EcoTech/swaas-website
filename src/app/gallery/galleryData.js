@@ -774,10 +774,4 @@ function shuffle(array) {
 
 // Shuffle the items array.
 shuffle(items);
-
-// Export the shuffled array.
 export { items };
-
-// Removed the preloadGalleryImages function as it's no longer needed for eager loading.
-// The `loading="lazy"` attribute is removed from the Image/video tags directly in page.jsx
-// to ensure all content loads immediately when the gallery page is visited.

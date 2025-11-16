@@ -1,81 +1,80 @@
-"use client"
-import React from "react"
-import { useEffect, useState } from "react"
-import axios from "axios"
-import "./community.css"
-import { useRouter } from "next/navigation"
-import Navbar from "../components/Navbar"
-import Leaf from "../components/DecorativeLeaves"
-import { useAuth } from "../contexts/AuthContext"
-import { signInWithGoogle, logOut } from "@/lib/firebase"
-
+"use client";
+import React from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "./community.css";
+import { useRouter } from "next/navigation";
+import Navbar from "../components/Navbar";
+import Leaf from "../components/DecorativeLeaves";
+import { useAuth } from "../contexts/AuthContext";
+import { signInWithGoogle, logOut } from "@/lib/firebase";
 
 interface Post {
-  _id: string
-  name: string
-  content: string
-  imageUrl: string
-  createdAt: string
-  updatedAt: string
-  userId?: string
-  userEmail?: string
-  userPhotoURL?: string
+  _id: string;
+  name: string;
+  content: string;
+  imageUrl: string;
+  createdAt: string;
+  updatedAt: string;
+  userId?: string;
+  userEmail?: string;
+  userPhotoURL?: string;
 }
 
 export default function Community() {
-  const { user, loading: authLoading } = useAuth()
-  const [content, setContent] = useState("")
-  const [image, setImage] = useState<File | null>(null)
-  const [posts, setPosts] = useState<Post[]>([])
-  const [selectedPost, setSelectedPost] = useState<Post | null>(null)
-  const [showCreateModal, setShowCreateModal] = useState(false)
-  const [inspiredPosts, setInspiredPosts] = useState<Set<string>>(new Set())
-  const [isLoadingPosts, setIsLoadingPosts] = useState(true)
-  const [signingIn, setSigningIn] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false) // New state for post submission
-  const router = useRouter()
+  const { user, loading: authLoading } = useAuth();
+  const [content, setContent] = useState("");
+  const [image, setImage] = useState<File | null>(null);
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [inspiredPosts, setInspiredPosts] = useState<Set<string>>(new Set());
+  const [isLoadingPosts, setIsLoadingPosts] = useState(true);
+  const [signingIn, setSigningIn] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false); 
+  const router = useRouter();
 
   const goToAdmin = () => {
-    router.push("/admin")
-  }
+    router.push("/admin");
+  };
 
   useEffect(() => {
-    fetchPosts()
-  }, [])
+    fetchPosts();
+  }, []);
 
   const fetchPosts = async () => {
-    setIsLoadingPosts(true)
+    setIsLoadingPosts(true);
     try {
-      const res = await axios.get("/api/posts")
-      setPosts(res.data)
+      const res = await axios.get("/api/posts");
+      setPosts(res.data);
     } catch (error) {
-      console.error("Error fetching posts:", error)
+      console.error("Error fetching posts:", error);
     } finally {
       setTimeout(() => {
-        setIsLoadingPosts(false)
-      }, 1000)
+        setIsLoadingPosts(false);
+      }, 1000);
     }
-  }
+  };
 
   const handleSignIn = async () => {
-    setSigningIn(true)
+    setSigningIn(true);
     try {
-      await signInWithGoogle()
+      await signInWithGoogle();
     } catch (error) {
-      console.error('Error signing in:', error)
-      alert('Failed to sign in. Please try again.')
+      console.error("Error signing in:", error);
+      alert("Failed to sign in. Please try again.");
     } finally {
-      setSigningIn(false)
+      setSigningIn(false);
     }
-  }
+  };
 
   const handleSignOut = async () => {
     try {
-      await logOut()
+      await logOut();
     } catch (error) {
-      console.error('Error signing out:', error)
+      console.error("Error signing out:", error);
     }
-  }
+  };
 
   const handleCreatePostClick = () => {
     if (!user) {
@@ -87,85 +86,88 @@ export default function Community() {
 
   const handleSubmit = async () => {
     if (!user) {
-      alert("Please sign in to create a post")
-      return
+      alert("Please sign in to create a post");
+      return;
     }
 
     if (!content.trim()) {
-      alert("Please write something before posting")
-      return
+      alert("Please write something before posting");
+      return;
     }
 
     setIsSubmitting(true); // Start the submission process
 
     try {
-      const idToken = await user.getIdToken()
-      
-      let imageUrl = ""
+      const idToken = await user.getIdToken();
+
+      let imageUrl = "";
       if (image) {
-        const form = new FormData()
-        form.append("file", image)
+        const form = new FormData();
+        form.append("file", image);
         const res = await axios.post("/api/upload", form, {
           headers: {
-            'Authorization': `Bearer ${idToken}`
-          }
-        })
-        imageUrl = res.data.url
+            Authorization: `Bearer ${idToken}`,
+          },
+        });
+        imageUrl = res.data.url;
       }
 
-      await axios.post("/api/posts", { 
-        content, 
-        imageUrl,
-        userPhotoURL: user.photoURL 
-      }, {
-        headers: {
-          'Authorization': `Bearer ${idToken}`
+      await axios.post(
+        "/api/posts",
+        {
+          content,
+          imageUrl,
+          userPhotoURL: user.photoURL,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${idToken}`,
+          },
         }
-      })
-      
-      // On success, wait 5 seconds before closing the modal and refreshing posts
+      );
       setTimeout(() => {
-        setContent("")
-        setImage(null)
-        setShowCreateModal(false)
-        fetchPosts()
-        setIsSubmitting(false) // End submission process
+        setContent("");
+        setImage(null);
+        setShowCreateModal(false);
+        fetchPosts();
+        setIsSubmitting(false); // End submission process
       }, 2000);
-
     } catch (error) {
-      console.error("Error creating post:", error)
-      alert("Failed to create post. Please try again.")
+      console.error("Error creating post:", error);
+      alert("Failed to create post. Please try again.");
       setIsSubmitting(false); // End submission process on error
     }
-  }
+  };
 
   const handleInspire = (postId: string, event: React.MouseEvent) => {
-    event.stopPropagation()
-    setInspiredPosts((prev) => new Set([...prev, postId]))
+    event.stopPropagation();
+    setInspiredPosts((prev) => new Set([...prev, postId]));
     setTimeout(() => {
       setInspiredPosts((prev) => {
-        const newSet = new Set(prev)
-        newSet.delete(postId)
-        return newSet
-      })
-    }, 2000)
-  }
+        const newSet = new Set(prev);
+        newSet.delete(postId);
+        return newSet;
+      });
+    }, 2000);
+  };
 
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    const now = new Date()
-    const diffInHours = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60))
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffInHours = Math.floor(
+      (now.getTime() - date.getTime()) / (1000 * 60 * 60)
+    );
 
     if (diffInHours < 1) {
-      return "Just now"
+      return "Just now";
     } else if (diffInHours < 24) {
-      return `${diffInHours}h ago`
+      return `${diffInHours}h ago`;
     } else if (diffInHours < 168) {
-      return `${Math.floor(diffInHours / 24)}d ago`
+      return `${Math.floor(diffInHours / 24)}d ago`;
     } else {
-      return date.toLocaleDateString()
+      return date.toLocaleDateString();
     }
-  }
+  };
 
   // Auth Loading Component
   const AuthLoader = () => (
@@ -173,7 +175,7 @@ export default function Community() {
       <div className="loader-spinner"></div>
       <p>Loading authentication...</p>
     </div>
-  )
+  );
 
   // Posts Grid Loader Component
   const PostsGridLoader = () => (
@@ -223,8 +225,314 @@ export default function Community() {
           ))}
         </div>
       </div>
+      <style jsx>{`
+        .posts-grid-loader {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          min-height: 400px;
+          padding: 40px 20px;
+          background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+          border-radius: 20px;
+          margin: 20px 0;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .loader-content {
+          text-align: center;
+          max-width: 600px;
+          width: 100%;
+        }
+
+        .community-loader-animation {
+          margin-bottom: 30px;
+          position: relative;
+          display: inline-block;
+        }
+
+        .growing-plant {
+          position: relative;
+          display: inline-block;
+          animation: gentle-sway 3s ease-in-out infinite;
+        }
+
+        .plant-pot {
+          font-size: 48px;
+          display: block;
+          animation: pot-bounce 2s ease-in-out infinite;
+        }
+
+        .plant-stem {
+          width: 4px;
+          height: 40px;
+          background: linear-gradient(to top, #8B4513, #228B22);
+          margin: -10px auto 0;
+          border-radius: 2px;
+          animation: stem-grow 2s ease-out infinite;
+          transform-origin: bottom;
+        }
+
+        .plant-leaves {
+          position: absolute;
+          top: -20px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 10px;
+        }
+
+        .leaf {
+          font-size: 24px;
+          display: inline-block;
+          animation: leaf-dance 2s ease-in-out infinite;
+        }
+
+        .leaf-1 {
+          animation-delay: 0s;
+        }
+
+        .leaf-2 {
+          animation-delay: 0.5s;
+        }
+
+        .leaf-3 {
+          animation-delay: 1s;
+        }
+
+        @keyframes gentle-sway {
+          0%, 100% {
+            transform: rotate(0deg);
+          }
+          25% {
+            transform: rotate(2deg);
+          }
+          75% {
+            transform: rotate(-2deg);
+          }
+        }
+
+        @keyframes pot-bounce {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-5px);
+          }
+        }
+
+        @keyframes stem-grow {
+          0% {
+            transform: scaleY(0.5);
+          }
+          50% {
+            transform: scaleY(1.2);
+          }
+          100% {
+            transform: scaleY(1);
+          }
+        }
+
+        @keyframes leaf-dance {
+          0%, 100% {
+            transform: rotate(0deg) scale(1);
+          }
+          25% {
+            transform: rotate(10deg) scale(1.1);
+          }
+          75% {
+            transform: rotate(-10deg) scale(0.9);
+          }
+        }
+
+        .loader-text {
+          margin-bottom: 25px;
+        }
+
+        .loader-text h3 {
+          font-size: 24px;
+          color: #556b2f;
+          margin-bottom: 10px;
+          font-family: 'Inika', serif;
+        }
+
+        .loader-text p {
+          font-size: 16px;
+          color: #6b8e3d;
+          font-style: italic;
+        }
+
+        .loading-dots {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          margin-bottom: 40px;
+        }
+
+        .dot {
+          width: 12px;
+          height: 12px;
+          background: #556b2f;
+          border-radius: 50%;
+          animation: dot-bounce 1.4s ease-in-out infinite both;
+        }
+
+        .dot:nth-child(1) {
+          animation-delay: -0.32s;
+        }
+
+        .dot:nth-child(2) {
+          animation-delay: -0.16s;
+        }
+
+        @keyframes dot-bounce {
+          0%, 80%, 100% {
+            transform: scale(0);
+          }
+          40% {
+            transform: scale(1);
+          }
+        }
+
+        .skeleton-posts {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 20px;
+          width: 100%;
+          max-width: 800px;
+        }
+
+        .skeleton-post-card {
+          background: white;
+          border-radius: 15px;
+          padding: 20px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          animation: skeleton-pulse 1.5s ease-in-out infinite alternate;
+        }
+
+        .skeleton-header {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 15px;
+        }
+
+        .skeleton-avatar {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+          background-size: 200% 100%;
+          animation: skeleton-shimmer 1.5s infinite;
+        }
+
+        .skeleton-info {
+          flex: 1;
+        }
+
+        .skeleton-name {
+          width: 120px;
+          height: 16px;
+          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+          background-size: 200% 100%;
+          border-radius: 4px;
+          margin-bottom: 8px;
+          animation: skeleton-shimmer 1.5s infinite;
+        }
+
+        .skeleton-time {
+          width: 80px;
+          height: 12px;
+          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+          background-size: 200% 100%;
+          border-radius: 4px;
+          animation: skeleton-shimmer 1.5s infinite;
+        }
+
+        .skeleton-content {
+          margin-bottom: 15px;
+        }
+
+        .skeleton-line {
+          height: 14px;
+          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+          background-size: 200% 100%;
+          border-radius: 4px;
+          margin-bottom: 8px;
+          animation: skeleton-shimmer 1.5s infinite;
+        }
+
+        .skeleton-line.short {
+          width: 60%;
+        }
+
+        .skeleton-line.medium {
+          width: 80%;
+        }
+
+        .skeleton-image {
+          width: 100%;
+          height: 150px;
+          background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+          background-size: 200% 100%;
+          border-radius: 8px;
+          animation: skeleton-shimmer 1.5s infinite;
+        }
+
+        @keyframes skeleton-pulse {
+          0% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 0.7;
+          }
+        }
+
+        @keyframes skeleton-shimmer {
+          0% {
+            background-position: -200% 0;
+          }
+          100% {
+            background-position: 200% 0;
+          }
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+          .posts-grid-loader {
+            padding: 30px 15px;
+            min-height: 300px;
+          }
+
+          .plant-pot {
+            font-size: 36px;
+          }
+
+          .leaf {
+            font-size: 20px;
+          }
+
+          .loader-text h3 {
+            font-size: 20px;
+          }
+
+          .loader-text p {
+            font-size: 14px;
+          }
+
+          .skeleton-posts {
+            grid-template-columns: 1fr;
+            gap: 15px;
+          }
+
+          .skeleton-post-card {
+            padding: 15px;
+          }
+        }
+      `}</style>
     </div>
-  )
+  );
 
   if (authLoading) {
     return (
@@ -232,7 +540,7 @@ export default function Community() {
         <Navbar />
         <AuthLoader />
       </div>
-    )
+    );
   }
 
   return (
@@ -244,15 +552,22 @@ export default function Community() {
           <div className="header-content">
             <div className="profile-section">
               <div className="profile-avatar">
-                <img src="/logo-swaas1.jpg" onDoubleClick={goToAdmin} alt="SWAAS" />
+                <img
+                  src="/logo-swaas1.jpg"
+                  onDoubleClick={goToAdmin}
+                  alt="SWAAS"
+                />
               </div>
               <div className="profile-info">
                 <h1>SWAAS Community 🌱</h1>
-                <p className="profile-subtitle">The Social Workers and Awakeners Society</p>
+                <p className="profile-subtitle">
+                  The Social Workers and Awakeners Society
+                </p>
                 <p className="profile-description">
                   Eco-Technical Society of GTBIT • Established 2005
                   <br />
-                  Breathing life into environmental conservation & community empowerment 🌍
+                  Breathing life into environmental conservation & community
+                  empowerment 🌍
                 </p>
                 <div className="profile-stats">
                   <span>
@@ -267,18 +582,21 @@ export default function Community() {
                 </div>
               </div>
             </div>
-            
+
             {/* User Auth Section - Simplified for logged-in users */}
             {user ? (
               <div className="user-auth-section">
-                <button className="sign-out-btn" style={{ marginLeft: '90px', marginTop: '20%' }} onClick={handleSignOut}>
+                <button
+                  className="sign-out-btn"
+                  style={{ marginLeft: "90px", marginTop: "20%" }}
+                  onClick={handleSignOut}
+                >
                   Sign Out
                 </button>
               </div>
             ) : (
               <div className="auth-prompt-header">
-                <div className="guest-info">
-                </div>
+                <div className="guest-info"></div>
               </div>
             )}
           </div>
@@ -286,35 +604,65 @@ export default function Community() {
 
         {/* Post Creation Section - Always visible, click triggers auth if not logged in */}
         <div className="post-creation-section">
-            <div className="post-creation-card">
-              <div className="post-input-row">
-                <div className="user-avatar">
-                  {user ? (
-                    <img src={user.photoURL || '/default-avatar.webp'} alt="GenZ" />
-                  ) : (
-                    <svg className="guest-avatar-icon" xmlns="http://www.w3.org/2000/svg" height="44px" viewBox="0 0 24 24" width="40px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                  )}
-                </div>
-                <button className="post-input-button" onClick={handleCreatePostClick}>
-                  Start a post about your eco journey...
-                </button>
-              </div>
-              <div className="post-actions-row">
-                <button className="post-action-btn media-btn" onClick={handleCreatePostClick}>
-                  <svg className="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M19 7v2.99s-1.99.01-2 0V7h-3s.01-1.99 0-2h3V2h2v3h3v2h-3zm-3 4V8h-3V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8h-3zM5 19l3-4 2 3 3-4 4 5H5z" />
+          <div className="post-creation-card">
+            <div className="post-input-row">
+              <div className="user-avatar">
+                {user ? (
+                  <img
+                    src={user.photoURL || "/default-avatar.webp"}
+                    alt="GenZ"
+                  />
+                ) : (
+                  <svg
+                    className="guest-avatar-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="44px"
+                    viewBox="0 0 24 24"
+                    width="40px"
+                    fill="#000000"
+                  >
+                    <path d="M0 0h24v24H0z" fill="none" />
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                   </svg>
-                  Photo
-                </button>
-                <button className="post-action-btn article-btn" onClick={handleCreatePostClick}>
-                  <svg className="action-icon" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h8c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
-                  </svg>
-                  Write article
-                </button>
+                )}
               </div>
+              <button
+                className="post-input-button"
+                onClick={handleCreatePostClick}
+              >
+                Start a post about your eco journey...
+              </button>
+            </div>
+            <div className="post-actions-row">
+              <button
+                className="post-action-btn media-btn"
+                onClick={handleCreatePostClick}
+              >
+                <svg
+                  className="action-icon"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M19 7v2.99s-1.99.01-2 0V7h-3s.01-1.99 0-2h3V2h2v3h3v2h-3zm-3 4V8h-3V5H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8h-3zM5 19l3-4 2 3 3-4 4 5H5z" />
+                </svg>
+                Photo
+              </button>
+              <button
+                className="post-action-btn article-btn"
+                onClick={handleCreatePostClick}
+              >
+                <svg
+                  className="action-icon"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                >
+                  <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 2 2h8c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                </svg>
+                Write article
+              </button>
             </div>
           </div>
+        </div>
 
         <Leaf />
 
@@ -329,7 +677,11 @@ export default function Community() {
                   <div className="post-author">
                     <div className="author-avatar">
                       {post.userPhotoURL ? (
-                        <img src={post.userPhotoURL} alt={post.name} className="author-avatar" />
+                        <img
+                          src={post.userPhotoURL}
+                          alt={post.name}
+                          className="author-avatar"
+                        />
                       ) : (
                         <span>{post.name.charAt(0).toUpperCase()}</span>
                       )}
@@ -340,7 +692,9 @@ export default function Community() {
                     </div>
                   </div>
                   <button
-                    className={`inspire-btn ${inspiredPosts.has(post._id) ? "inspired" : ""}`}
+                    className={`inspire-btn ${
+                      inspiredPosts.has(post._id) ? "inspired" : ""
+                    }`}
                     onClick={(e) => handleInspire(post._id, e)}
                   >
                     <span className="inspire-icon">🌱</span>
@@ -358,8 +712,14 @@ export default function Community() {
                   <p>{post.content}</p>
                 </div>
                 {post.imageUrl && (
-                  <div className="post-image" onClick={() => setSelectedPost(post)}>
-                    <img src={post.imageUrl || "/placeholder.svg"} alt={post.content} />
+                  <div
+                    className="post-image"
+                    onClick={() => setSelectedPost(post)}
+                  >
+                    <img
+                      src={post.imageUrl || "/placeholder.svg"}
+                      alt={post.content}
+                    />
                   </div>
                 )}
               </div>
@@ -374,14 +734,20 @@ export default function Community() {
               <div className="linkedin-modal-header">
                 <div className="modal-user-info">
                   <div className="modal-user-avatar">
-                    <img src={user.photoURL || '/default-avatar.png'} alt="Your avatar" />
+                    <img
+                      src={user.photoURL || "/default-avatar.png"}
+                      alt="Your avatar"
+                    />
                   </div>
                   <div className="modal-user-details">
                     <h3>{user.displayName}</h3>
                     <p>Post to SWAAS Community</p>
                   </div>
                 </div>
-                <button className="modal-close-btn" onClick={() => setShowCreateModal(false)}>
+                <button
+                  className="modal-close-btn"
+                  onClick={() => setShowCreateModal(false)}
+                >
                   <svg viewBox="0 0 24 24" fill="currentColor">
                     <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
                   </svg>
@@ -397,8 +763,14 @@ export default function Community() {
                 />
                 {image && (
                   <div className="image-preview">
-                    <img src={URL.createObjectURL(image) || "/placeholder.svg"} alt="Preview" />
-                    <button className="remove-image-btn" onClick={() => setImage(null)}>
+                    <img
+                      src={URL.createObjectURL(image) || "/placeholder.svg"}
+                      alt="Preview"
+                    />
+                    <button
+                      className="remove-image-btn"
+                      onClick={() => setImage(null)}
+                    >
                       ×
                     </button>
                   </div>
@@ -421,8 +793,12 @@ export default function Community() {
                   </div>
                   <div className="toolbar-right">
                     {/* Update button text and disabled state based on isSubmitting */}
-                    <button className="post-btn" onClick={handleSubmit} disabled={!content.trim() || isSubmitting}>
-                      {isSubmitting ? 'Posting...' : 'Post'}
+                    <button
+                      className="post-btn"
+                      onClick={handleSubmit}
+                      disabled={!content.trim() || isSubmitting}
+                    >
+                      {isSubmitting ? "Posting..." : "Post"}
                     </button>
                   </div>
                 </div>
@@ -434,14 +810,23 @@ export default function Community() {
         {/* Post Detail Modal */}
         {selectedPost && (
           <div className="modal-overlay" onClick={() => setSelectedPost(null)}>
-            <div className="post-detail-modal" onClick={(e) => e.stopPropagation()}>
-              <button className="close-btn" onClick={() => setSelectedPost(null)}>
+            <div
+              className="post-detail-modal"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                className="close-btn"
+                onClick={() => setSelectedPost(null)}
+              >
                 ×
               </button>
               <div className="post-detail-content">
                 {selectedPost.imageUrl && (
                   <div className="post-image-container">
-                    <img src={selectedPost.imageUrl || "/placeholder.svg"} alt={selectedPost.content} />
+                    <img
+                      src={selectedPost.imageUrl || "/placeholder.svg"}
+                      alt={selectedPost.content}
+                    />
                   </div>
                 )}
               </div>
@@ -450,5 +835,5 @@ export default function Community() {
         )}
       </div>
     </div>
-  )
+  );
 }

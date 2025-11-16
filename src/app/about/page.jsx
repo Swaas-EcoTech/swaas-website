@@ -9,7 +9,6 @@ const About = () => {
       <Navbar />
       <DecorativeLeaves />
       
-      {/* Main content area */}
       <div className="">
         {/* Heading Section */}
         <div className="about-heading-section">
