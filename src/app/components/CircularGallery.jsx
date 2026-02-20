@@ -362,6 +362,13 @@ class App {
   }
   createMedias(items, bend = 1, textColor, borderRadius, font) {
     const defaultItems = [
+      //2025-2026
+      { image: "/Originals/Yogita.jpeg", text: "Yogita" },
+      { image: "/Originals/Shreya.png", text: "Shreya Rai" },
+      { image: "/Originals/Manya.jpeg", text: "Manya" },
+      { image: "/Originals/aman.jpeg", text: "Aman" },
+      { image: "/Originals/abbasnishantdas.png", text: "Abbas Das Nishant" },
+      //2024-2025
       { image: "/Originals/ML.jpg", text: "Mehak Lakhina" },
       { image: `/Originals/VT.jpg`, text: "Vanshika Tanwar" },
       { image: `/Originals/PS.jpg`, text: "Prabhsurat Singh" },
@@ -371,6 +378,10 @@ class App {
       { image: `/Originals/Jakrit.jpeg`, text: "Jagrit Khurana" },
       { image: `/Originals/ds.jpeg`, text: "Devanshi Sharma" },
       { image: `/Originals/N.jpg`, text: "Neeraj Gandhi" },
+      //2025-2026
+      { image: "/Originals/avneet.jpeg", text: "Avneet" },
+      { image: "/Originals/karman.jpeg", text: "Karman" },
+      { image: "/Originals/Kashish.jpeg", text: "Kashish" },
     ];
     const galleryItems = items && items.length ? items : defaultItems;
     this.mediasImages = galleryItems.concat(galleryItems);
