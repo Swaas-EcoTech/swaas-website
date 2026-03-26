@@ -1,12 +1,39 @@
 "use client";
-import { useState } from "react";
-import teamData from "./teamData.jsx";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar.jsx";
 import TeamHeader from "../components/grid.jsx";
 import DecorativeLeaves from "../components/DecorativeLeaves.jsx";
+import { defaultTeamPayload } from "@/lib/teamDefaults";
 
 const Team = () => {
-  const [selectedTeam, setSelectedTeam] = useState("Core");
+  const [teamData, setTeamData] = useState(defaultTeamPayload.currentTeam);
+  const [selectedTeam, setSelectedTeam] = useState(
+    Object.keys(defaultTeamPayload.currentTeam)[0] || ""
+  );
+
+  useEffect(() => {
+    const fetchTeam = async () => {
+      try {
+        const res = await fetch("/api/team", { cache: "no-store" });
+        const data = await res.json();
+        const fetchedTeam = data?.currentTeam || {};
+        if (Object.keys(fetchedTeam).length > 0) {
+          setTeamData(fetchedTeam);
+        }
+      } catch (error) {
+        console.error("Failed to fetch team data:", error);
+      }
+    };
+
+    fetchTeam();
+  }, []);
+
+  useEffect(() => {
+    const categories = Object.keys(teamData);
+    if (!categories.includes(selectedTeam)) {
+      setSelectedTeam(categories[0] || "");
+    }
+  }, [selectedTeam, teamData]);
 
   return (
     <>
@@ -50,7 +77,7 @@ const Team = () => {
                     <div className={`team-flipCardInner`}>
                       <div className={`team-flipCardFront`}>
                         <img
-                          src={member.img || "/placeholder.svg"}
+                          src={member.imageUrl || "/default-avatar.webp"}
                           alt={member.name}
                           className={`team-image`}
                         />
@@ -76,7 +103,10 @@ const Team = () => {
                         )}
                       </div>
                     </div>
-                    <p className={`team-memberName`}>{member.name}</p>
+                    <div className={`team-memberName`}>
+                      <span>{member.name}</span>
+                      {member.role && <small className="team-memberRole">{member.role}</small>}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -237,6 +267,14 @@ const Team = () => {
           font-weight: 600;
           width: 100%;
           box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          gap: 0.2rem;
+        }
+
+        .team-memberRole {
+          font-size: 0.8rem;
+          font-weight: 500;
         }
 
         .team-memberDescription {

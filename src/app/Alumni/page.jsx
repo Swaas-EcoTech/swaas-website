@@ -1,9 +1,11 @@
 'use client';
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar"
 import DecorativeLeaves from '../components/DecorativeLeaves';
 import BottomDecorations from "../components/BottomDecorations";
 import CircularGallery from '../components/CircularGallery';
 import Header from '../components/grid';
+import { defaultTeamPayload } from "@/lib/teamDefaults";
 const DiamondIcon = () => {
   return (
     <svg
@@ -37,6 +39,44 @@ const DiamondIcon = () => {
 // }
 
 const Gallery = () => {
+  const baseStaticAlumni = defaultTeamPayload.alumni;
+  const [alumniItems, setAlumniItems] = useState(
+    baseStaticAlumni.map((member) => ({
+      image: member.imageUrl,
+      text: member.name,
+    }))
+  );
+
+  useEffect(() => {
+    const fetchAlumni = async () => {
+      try {
+        const res = await fetch("/api/team", { cache: "no-store" });
+        const data = await res.json();
+        const dynamicAlumni = data?.alumni || [];
+        const mergedAlumni = [...baseStaticAlumni, ...dynamicAlumni].sort((a, b) => {
+          const yearCompare = String(b.academicYear || "").localeCompare(String(a.academicYear || ""));
+          if (yearCompare !== 0) return yearCompare;
+          const orderCompare = Number(a.sortOrder || 0) - Number(b.sortOrder || 0);
+          if (orderCompare !== 0) return orderCompare;
+          return String(a.name || "").localeCompare(String(b.name || ""));
+        });
+
+        if (mergedAlumni.length > 0) {
+          setAlumniItems(
+            mergedAlumni.map((member) => ({
+              image: member.imageUrl,
+              text: member.name,
+            }))
+          );
+        }
+      } catch (error) {
+        console.error("Failed to fetch alumni data:", error);
+      }
+    };
+
+    fetchAlumni();
+  }, []);
+
   return (
     <div>
         <Navbar/>
@@ -60,7 +100,7 @@ const Gallery = () => {
 
         <DecorativeLeaves />
                 <div style={{ height: '500px' }}>
-          <CircularGallery bend={4} textColor="#000000" borderRadius={0.05} scrollEase={0.05}/>
+          <CircularGallery items={alumniItems} bend={4} textColor="#000000" borderRadius={0.05} scrollEase={0.05}/>
         </div>
       </div>
     </div>

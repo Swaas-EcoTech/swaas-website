@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import AdminPanel from "./AdminPanel"; // Your existing community admin panel
 import EventsPanel from "./EventPanel"; // New events admin panel
+import TeamPanel from "./TeamPanel";
+import CollabsPanel from "./CollabsPanel";
 import "./AdminDashboard.css";
 import Navbar from "../components/Navbar";
 
@@ -79,6 +81,40 @@ const router = useRouter();
                   Access Events Dashboard
                 </button>
               </div>
+
+              <div
+                className="dashboard-option community-option"
+                onClick={() => setSelectedDashboard('team')}
+              >
+                <div className="option-icon">👥</div>
+                <h3>Team Dashboard</h3>
+                <p>Manage current team members, alumni, roles, LinkedIn links, and photos</p>
+                <div className="option-features">
+                  <span>• Team Tabs</span>
+                  <span>• Alumni Gallery</span>
+                  <span>• Member Photos</span>
+                </div>
+                <button className="option-button">
+                  Access Team Dashboard
+                </button>
+              </div>
+
+              <div
+                className="dashboard-option events-option"
+                onClick={() => setSelectedDashboard('collabs')}
+              >
+                <div className="option-icon">🤝</div>
+                <h3>Collabs Dashboard</h3>
+                <p>Manage collaboration cards, stories, gallery images, and Instagram links</p>
+                <div className="option-features">
+                  <span>• Cover Images</span>
+                  <span>• Gallery Images</span>
+                  <span>• Modal Content</span>
+                </div>
+                <button className="option-button">
+                  Access Collabs Dashboard
+                </button>
+              </div>
             </div>
 
             <div className="quick-stats">
@@ -137,6 +173,50 @@ const router = useRouter();
           </button>
         </div>
         <EventsPanel />
+      </div>
+    );
+  }
+
+  if (selectedDashboard === 'team') {
+    return (
+      <div>
+        <div className="dashboard-header">
+          <button
+            onClick={() => setSelectedDashboard(null)}
+            className="back-button"
+          >
+            ← Back to Dashboard Selection
+          </button>
+          <button
+            onClick={() => setSelectedDashboard("events")}
+            className="switch-button"
+          >
+            Switch to Events Dashboard
+          </button>
+        </div>
+        <TeamPanel />
+      </div>
+    );
+  }
+
+  if (selectedDashboard === "collabs") {
+    return (
+      <div>
+        <div className="dashboard-header">
+          <button
+            onClick={() => setSelectedDashboard(null)}
+            className="back-button"
+          >
+            ← Back to Dashboard Selection
+          </button>
+          <button
+            onClick={() => setSelectedDashboard("team")}
+            className="switch-button"
+          >
+            Switch to Team Dashboard
+          </button>
+        </div>
+        <CollabsPanel />
       </div>
     );
   }

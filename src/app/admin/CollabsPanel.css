@@ -1,0 +1,208 @@
+.collabs-panel {
+  min-height: 100vh;
+  background: #f6f7f2;
+  color: #213327;
+}
+
+.collabs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 3rem;
+  background: #fff;
+  border-bottom: 1px solid #d9e1d2;
+}
+
+.collabs-header h1,
+.form-card h2,
+.card-content h3 {
+  margin: 0;
+}
+
+.collabs-header p,
+.subtle-text {
+  color: #5d6f61;
+}
+
+.header-actions,
+.form-actions,
+.card-actions,
+.meta-row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.primary-button,
+.secondary-button,
+.danger-button {
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary-button {
+  background: #567a48;
+  color: #fff;
+}
+
+.secondary-button {
+  background: #dce6d7;
+  color: #213327;
+}
+
+.danger-button {
+  background: #b94c4c;
+  color: #fff;
+}
+
+.form-shell,
+.collabs-list {
+  padding: 2rem 3rem;
+}
+
+.form-card {
+  max-width: 960px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #d9e1d2;
+  border-radius: 18px;
+  padding: 2rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.45rem;
+  font-weight: 600;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #cfd8ca;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  font: inherit;
+}
+
+.upload-box {
+  border: 2px dashed #cfd8ca;
+  border-radius: 14px;
+  padding: 1rem;
+  background: #f8faf6;
+}
+
+.gallery-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.preview-item {
+  position: relative;
+}
+
+.preview-image {
+  width: 180px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-top: 1rem;
+}
+
+.preview-image.small {
+  width: 100px;
+  height: 80px;
+  margin-top: 0;
+}
+
+.remove-button {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 999px;
+  background: #b94c4c;
+  color: #fff;
+  cursor: pointer;
+}
+
+.collabs-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 1rem;
+}
+
+.collab-card {
+  background: #fff;
+  border: 1px solid #d9e1d2;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.cover-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 1rem;
+}
+
+.meta-row {
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: #dce6d7;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.pill.muted {
+  background: #edf1ea;
+}
+
+.empty-state,
+.seed-actions {
+  text-align: center;
+}
+
+.seed-actions {
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .collabs-header,
+  .form-shell,
+  .collabs-list {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .collabs-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
