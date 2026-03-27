@@ -1,4 +1,3 @@
-// app/api/upload/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import cloudinary from "@/lib/cloudinary";
 import { writeFile } from "fs/promises";
@@ -6,11 +5,7 @@ import path from "path";
 import { v4 as uuid } from "uuid";
 import { verifyFirebaseToken } from "@/lib/firebaseAdmin";
 
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
+export const runtime = "nodejs";
 
 export async function POST(req: NextRequest) {
   try {

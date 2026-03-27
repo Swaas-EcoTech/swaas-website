@@ -1,7 +1,7 @@
-import mongoose, { Document, Schema } from "mongoose";
+import mongoose, { Document, Schema , Types} from "mongoose";
 
 export interface ITeamMember extends Document {
-  _id: string;
+  _id: Types.ObjectId;
   name: string;
   role?: string;
   category: string;

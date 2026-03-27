@@ -1,16 +1,16 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import AdminPanel from "./AdminPanel"; // Your existing community admin panel
-import EventsPanel from "./EventPanel"; // New events admin panel
+import AdminPanel from "./AdminPanel";
+import EventsPanel from "./EventPanel";
 import TeamPanel from "./TeamPanel";
 import CollabsPanel from "./CollabsPanel";
 import "./AdminDashboard.css";
 import Navbar from "../components/Navbar";
 
 export default function AdminDashboard() {
-const [selectedDashboard, setSelectedDashboard] = useState<string | null>(null);
-const router = useRouter();
+  const [selectedDashboard, setSelectedDashboard] = useState(null);
+  const router = useRouter();
 
   const handleLogout = async () => {
     if (confirm("Are you sure you want to logout?")) {
@@ -23,203 +23,101 @@ const router = useRouter();
     }
   };
 
+  const dashboards = [
+    {
+      id: "community",
+      label: "Community",
+      description: "Manage posts, content moderation, and user engagement",
+      meta: ["Post Management", "Content Moderation", "User Engagement"],
+    },
+    {
+      id: "events",
+      label: "Events",
+      description: "Create and manage all SWAAS events and activities",
+      meta: ["Event Creation", "Category Management", "Image Gallery"],
+    },
+    {
+      id: "team",
+      label: "Team",
+      description: "Manage members, alumni, roles, and profile links",
+      meta: ["Team Tabs", "Alumni Gallery", "Member Photos"],
+    },
+    {
+      id: "collabs",
+      label: "Collabs",
+      description: "Manage collaboration cards, galleries, and stories",
+      meta: ["Cover Images", "Gallery Images", "Modal Content"],
+    },
+  ];
+
   if (!selectedDashboard) {
     return (
-      <div className="admin-dashboard-selector">
+      <div className="selector-root">
         <Navbar />
-        
-        <div className="">
+        <div className="selector-body">
           <header className="selector-header">
-            <div className="header-content">
-              <h1>SWAAS Admin Dashboard</h1>
-              <p className="header-subtitle">
-                Social Workers and Awakeners Society - Management Portal
-              </p>
-              <div className="swaas-badge">
-                <span className="eco-icon">🌱</span>
-                <span>Eco-Technical Society</span>
-              </div>
+            <div className="header-left">
+              <p className="header-eyebrow">SWAAS Admin</p>
+              <h1 className="header-title">Management Portal</h1>
+              <p className="header-sub">Social Workers and Awakeners Society — Eco-Technical Society</p>
             </div>
-            <button onClick={handleLogout} className="logout-button">
-              Logout
-            </button>
+            <button onClick={handleLogout} className="logout-btn">Logout</button>
           </header>
 
-          <main className="dashboard-options">
-            <h2>Choose Management Dashboard</h2>
-            <div className="options-grid">
-              <div 
-                className="dashboard-option community-option"
-                onClick={() => setSelectedDashboard('community')}
-              >
-                <div className="option-icon">📝</div>
-                <h3>Community Dashboard</h3>
-                <p>Manage community posts, user content, and social interactions</p>
-                <div className="option-features">
-                  <span>• Post Management</span>
-                  <span>• Content Moderation</span>
-                  <span>• User Engagement</span>
-                </div>
-                <button className="option-button">
-                  Access Community Dashboard
+          <section className="panel-section">
+            <p className="section-label">Select a dashboard</p>
+            <div className="cards-grid">
+              {dashboards.map((d) => (
+                <button
+                  key={d.id}
+                  className="dash-card"
+                  onClick={() => setSelectedDashboard(d.id)}
+                >
+                  <div className="card-top">
+                    <h2 className="card-title">{d.label}</h2>
+                    <span className="card-arrow">&#8599;</span>
+                  </div>
+                  <p className="card-desc">{d.description}</p>
+                  <ul className="card-meta">
+                    {d.meta.map((m) => (
+                      <li key={m}>{m}</li>
+                    ))}
+                  </ul>
                 </button>
-              </div>
-
-              <div 
-                className="dashboard-option events-option"
-                onClick={() => setSelectedDashboard('events')}
-              >
-                <div className="option-icon">🎉</div>
-                <h3>Events Dashboard</h3>
-                <p>Create, edit, and manage all SWAAS events and activities</p>
-                <div className="option-features">
-                  <span>• Event Creation</span>
-                  <span>• Category Management</span>
-                  <span>• Image Gallery</span>
-                </div>
-                <button className="option-button">
-                  Access Events Dashboard
-                </button>
-              </div>
-
-              <div
-                className="dashboard-option community-option"
-                onClick={() => setSelectedDashboard('team')}
-              >
-                <div className="option-icon">👥</div>
-                <h3>Team Dashboard</h3>
-                <p>Manage current team members, alumni, roles, LinkedIn links, and photos</p>
-                <div className="option-features">
-                  <span>• Team Tabs</span>
-                  <span>• Alumni Gallery</span>
-                  <span>• Member Photos</span>
-                </div>
-                <button className="option-button">
-                  Access Team Dashboard
-                </button>
-              </div>
-
-              <div
-                className="dashboard-option events-option"
-                onClick={() => setSelectedDashboard('collabs')}
-              >
-                <div className="option-icon">🤝</div>
-                <h3>Collabs Dashboard</h3>
-                <p>Manage collaboration cards, stories, gallery images, and Instagram links</p>
-                <div className="option-features">
-                  <span>• Cover Images</span>
-                  <span>• Gallery Images</span>
-                  <span>• Modal Content</span>
-                </div>
-                <button className="option-button">
-                  Access Collabs Dashboard
-                </button>
-              </div>
+              ))}
             </div>
-
-            <div className="quick-stats">
-              <div className="stat-card">
-                <div className="stat-icon">📊</div>
-                <div className="stat-info">
-                  <h4>Quick Access</h4>
-                  <p>Switch between dashboards anytime using the navigation</p>
-                </div>
-              </div>
-            </div>
-          </main>
+          </section>
         </div>
       </div>
     );
   }
 
-  // Render selected dashboard
-  if (selectedDashboard === 'community') {
-    return (
-      <div>
-        <div className="dashboard-header">
-          <button 
-            onClick={() => setSelectedDashboard(null)}
-            className="back-button"
-          >
-            ← Back to Dashboard Selection
-          </button>
-          <button 
-            onClick={() => setSelectedDashboard('events')}
-            className="switch-button"
-          >
-            Switch to Events Dashboard
-          </button>
-        </div>
-        <AdminPanel />
-      </div>
-    );
-  }
+  const panelMap = {
+    community: <AdminPanel />,
+    events: <EventsPanel />,
+    team: <TeamPanel />,
+    collabs: <CollabsPanel />,
+  };
 
-  if (selectedDashboard === 'events') {
-    return (
-      <div>
-        <div className="dashboard-header">
-          <button 
-            onClick={() => setSelectedDashboard(null)}
-            className="back-button"
-          >
-            ← Back to Dashboard Selection
-          </button>
-          <button 
-            onClick={() => setSelectedDashboard('community')}
-            className="switch-button"
-          >
-            Switch to Community Dashboard
-          </button>
+  return (
+    <div className="panel-root">
+      <div className="panel-nav">
+        <button className="nav-back" onClick={() => setSelectedDashboard(null)}>
+          &#8592; Back
+        </button>
+        <div className="nav-tabs">
+          {["community", "events", "team", "collabs"].map((id) => (
+            <button
+              key={id}
+              className={`nav-tab ${selectedDashboard === id ? "active" : ""}`}
+              onClick={() => setSelectedDashboard(id)}
+            >
+              {id.charAt(0).toUpperCase() + id.slice(1)}
+            </button>
+          ))}
         </div>
-        <EventsPanel />
       </div>
-    );
-  }
-
-  if (selectedDashboard === 'team') {
-    return (
-      <div>
-        <div className="dashboard-header">
-          <button
-            onClick={() => setSelectedDashboard(null)}
-            className="back-button"
-          >
-            ← Back to Dashboard Selection
-          </button>
-          <button
-            onClick={() => setSelectedDashboard("events")}
-            className="switch-button"
-          >
-            Switch to Events Dashboard
-          </button>
-        </div>
-        <TeamPanel />
-      </div>
-    );
-  }
-
-  if (selectedDashboard === "collabs") {
-    return (
-      <div>
-        <div className="dashboard-header">
-          <button
-            onClick={() => setSelectedDashboard(null)}
-            className="back-button"
-          >
-            ← Back to Dashboard Selection
-          </button>
-          <button
-            onClick={() => setSelectedDashboard("team")}
-            className="switch-button"
-          >
-            Switch to Team Dashboard
-          </button>
-        </div>
-        <CollabsPanel />
-      </div>
-    );
-  }
-
-  return null;
+      {panelMap[selectedDashboard]}
+    </div>
+  );
 }
