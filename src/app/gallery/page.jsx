@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image'; // Import the Image component
 import { items } from './galleryData';
 import Navbar from "../components/Navbar";
@@ -8,6 +9,9 @@ import Header from "../components/grid";
 import "./gallery.css";
 
 const Gallery = () => {
+  const [visibleCount, setVisibleCount] = useState(36);
+  const visibleItems = items.slice(0, visibleCount);
+
   return (
     <div>
       <div className="gallery-main">
@@ -26,7 +30,7 @@ const Gallery = () => {
             <DecorativeLeaves />
 
             <div className="simple-masonry-grid">
-              {items.map(item => (
+              {visibleItems.map(item => (
                 <div key={item.id} className="masonry-item">
                   <a href={item.url} target="_blank" rel="noopener noreferrer">
 
@@ -35,11 +39,9 @@ const Gallery = () => {
                       <video
                         src={item.src}
                         poster={item.poster}
-                        autoPlay
-                        loop
                         muted
                         playsInline
-                        loading="lazy" 
+                        preload="metadata"
                       />
                     ) : (
                       <Image
@@ -48,6 +50,7 @@ const Gallery = () => {
                         width={item.height ? item.height * (4/3) : 500} // Approximate width, adjust as needed
                         height={item.height || 500} // Use height from data, or a default
                         loading="lazy" 
+                        sizes="(max-width: 500px) 100vw, (max-width: 800px) 50vw, (max-width: 1200px) 33vw, 25vw"
                         // layout="responsive" // Consider if you want images to scale responsively within their grid item
                         // objectFit="cover" // Useful with layout="fill" or if aspect ratio needs cropping
                       />
@@ -57,6 +60,13 @@ const Gallery = () => {
                 </div>
               ))}
             </div>
+            {visibleCount < items.length && (
+              <div className="load-more-wrap">
+                <button className="load-more-button" onClick={() => setVisibleCount((count) => count + 24)}>
+                  Load More
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -113,6 +123,22 @@ const Gallery = () => {
           .simple-masonry-grid {
             column-count: 1;
           }
+        }
+
+        .load-more-wrap {
+          display: flex;
+          justify-content: center;
+          padding: 0 2rem 3rem;
+        }
+
+        .load-more-button {
+          border: none;
+          border-radius: 999px;
+          background: #73956f;
+          color: white;
+          padding: 0.9rem 1.4rem;
+          font: inherit;
+          cursor: pointer;
         }
       `}</style>
     </div>
