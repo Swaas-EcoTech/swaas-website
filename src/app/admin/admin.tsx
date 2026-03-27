@@ -9,7 +9,7 @@ import "./AdminDashboard.css";
 import Navbar from "../components/Navbar";
 
 export default function AdminDashboard() {
-  const [selectedDashboard, setSelectedDashboard] = useState(null);
+  const [selectedDashboard, setSelectedDashboard] = useState<string | null>(null);
   const router = useRouter();
 
   const handleLogout = async () => {
@@ -117,7 +117,7 @@ export default function AdminDashboard() {
           ))}
         </div>
       </div>
-      {panelMap[selectedDashboard]}
+        {panelMap[selectedDashboard as keyof typeof panelMap]}
     </div>
   );
 }
